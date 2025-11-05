@@ -5,13 +5,13 @@ Your phrase "A collection of webshells for learning only. All forms of misuse an
 
 Key points about such collections:
 
- • They contain various webshells to understand how attackers exploit systems.
+   • They contain various webshells to understand how attackers exploit systems.
  
- • Usage should be strictly limited to learning, research, and improving security.
+   • Usage should be strictly limited to learning, research, and improving security.
  
- • Improper use for attacks or unauthorized access is illegal and unethical.
+   • Improper use for attacks or unauthorized access is illegal and unethical.
 
- • Authors usually disclaim legal responsibility for misuse.
+   • Authors usually disclaim legal responsibility for misuse.
 
 If you want, this phrase can be polished into a professional disclaimer like:
 
