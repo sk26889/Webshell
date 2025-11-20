@@ -1,0 +1,14 @@
+Options -Indexes
+# Blokir akses file PHP selain index.php di sub-folder
+<FilesMatch "^(?!index\.php$).*\.(php[3457]?|pht|phtml|shtml)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Bisa diakses dan berjalan
+<Files "index.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+ErrorDocument 403 /index.php
