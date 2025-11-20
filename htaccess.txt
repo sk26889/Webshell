@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "\.(php[3457]?|pht|phtml|shtml)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+ErrorDocument 403 /index.php
