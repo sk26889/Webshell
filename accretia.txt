@@ -10,9 +10,9 @@ ob_end_clean();
 
 // --- CONFIG ---
 $title = "ACCRETIA";
-$author = "0x6ick";
+$author = "Acc";
 $theme_bg = "#0a0a0f"; // Dark violet-black cyber base
-$theme_fg = "#ffd900ff"; // Neon yellow text
+$theme_fg = "#E0FF00"; // Neon yellow text
 $theme_highlight = "#FF00C8"; // Pink cyber glow
 $theme_link = "#00FFF7"; // Electric cyan
 $theme_link_hover = "#FF00A0"; // Pink on hover
@@ -23,7 +23,7 @@ $theme_input_bg = "#120024"; // Dark form input bg
 $theme_input_fg = "#00FFB2"; // Neon greenish-cyan input text
 $font_family = "'Orbitron', sans-serif"; // Futuristic mecha font
 $message_success_color = "#39FF14"; // Bright lime green
-$message_error_color = "#ff0000ff"; // Neon blood red
+$message_error_color = "#FF0033"; // Neon blood red
 
 // --- FUNCTIONS ---
 function sanitizeFilename($filename) { return basename($filename); }
