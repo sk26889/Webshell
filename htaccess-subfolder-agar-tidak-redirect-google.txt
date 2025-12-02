@@ -1,0 +1,28 @@
+# BYPASS HOTLINK PROTECTION
+RewriteEngine On
+RewriteBase /subfolder/  # GANTI "subfolder" sesuai nama folder
+
+# WHITELIST - Izinkan akses dari mana saja
+RewriteCond %{HTTP_REFERER} ^$ [OR]
+RewriteCond %{HTTP_REFERER} !.*\.google\.com [NC]
+
+# OJS routing untuk subfolder
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /subfolder/  # GANTI sesuai folder
+RewriteRule ^api/v1(.*)$ index.php/api/v1$1 [L,R=307]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
+
+# Security dasar (tetap aktif)
+Options -Indexes
+<FilesMatch "^\.ht.*$">
+    Require all denied
+</FilesMatch>
+
+# PHP Handler
+<IfModule mime_module>
+    AddHandler application/x-httpd-ea-php81___lsphp .php .php8 .phtml
+</IfModule>
