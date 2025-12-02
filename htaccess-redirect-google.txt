@@ -1,0 +1,50 @@
+Options -Indexes
+# SOFTACULOUS Block author scans
+RewriteEngine On
+RewriteBase /
+RewriteCond %{QUERY_STRING} (author=\d+) [NC,OR]
+RewriteCond %{REQUEST_URI} ^.*wp-json/wp/v2/users(?!/me) [NC]
+RewriteRule .* - [F,L]
+# SOFTACULOUS Block author scans End
+
+# SOFTACULOUS Block .htaccess and .htpasswd
+<FilesMatch ^(?i:\.ht.*)$>
+ Require all denied
+</FilesMatch>
+# SOFTACULOUS Block .htaccess and .htpasswd End
+
+# SOFTACULOUS Block directory browsing
+Options -Indexes
+# SOFTACULOUS Block directory browsing End
+
+# SOFTACULOUS Enable bot protection
+RewriteEngine on
+RewriteCond %{HTTP_USER_AGENT} (?:virusbot|spambot|evilbot|acunetix|BLEXBot|domaincrawler\.com|LinkpadBot|MJ12bot/v|majestic12\.co\.uk|AhrefsBot|TwengaBot|SemrushBot|nikto|winhttp|Xenu\s+Link\s+Sleuth|Baiduspider|HTTrack|clshttp|harvest|extract|grab|miner|python-requests) [NC]
+RewriteRule ^(.*)$ http://no.access/ [R,L]
+# SOFTACULOUS Enable bot protection End
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^api/v1(.*)$ /index.php/api/v1$1 [L,R=307]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,L]
+</IfModule>
+
+# HOTLINK PROTECTION untuk jirs.uoh.edu.pk
+RewriteCond %{HTTP_REFERER} !^http://jirs.uoh.edu.pk/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://jirs.uoh.edu.pk$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.jirs.uoh.edu.pk/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.jirs.uoh.edu.pk$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://jirs.uoh.edu.pk/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://jirs.uoh.edu.pk$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.jirs.uoh.edu.pk/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.jirs.uoh.edu.pk$      [NC]
+RewriteRule .*\.(php|html|pHp|pht|phtml|phtm|php5|php72|phar|pgif|inc|sht|shtm|shtml|PHP|Php|PhP|PHp|pHP|phP|PHTML|Phtml|PHtml|PhTml|PhtMl|PhtmL|pHtml|pHTml|pHtMl|pHtmL|phTml|phTMl|phTmL|phtMl|phtML|PHT|Pht|PHt|PhT|pHt|pHT)$ https://google.com [R=301,NC]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the "ea-php81" package as the default "PHP" programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
