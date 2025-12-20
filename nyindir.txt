@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeri Gambar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #111111;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            text-align: center;
+        }
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+        }
+        /* gambar dibikin nyatu dengan background */
+        .image-box {
+            background: transparent;
+            box-shadow: none;
+            border-radius: 0;
+        }
+        .image-box img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            opacity: 0.75; /* sedikit transparan biar soft */
+        }
+        .title {
+            font-size: 1.4rem;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            margin: 4px 0 0;
+            opacity: 0.9;
+        }
+        .footer {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .footer span {
+            font-weight: 700;
+            color: #009f7a;
+        }
+        .footer a {
+            color: #005fcc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="image-box">
+        <img src="https://ukrim.org/img/anak-ayam.gif" alt="Anak ayam">
+    </div>
+
+    <div>
+        <h3 class="title">Server aja kuat menahan beban, masa lu nggak?</h3>
+        <p class="subtitle">Log penuh, error bejibun, tapi yang penting jangan ikut-ikutan crash mentalnya.</p>
+    </div>
+
+    <div class="footer">
+        <p>ACC SHELL <?php echo htmlspecialchars($SHELL_VERSION ?? ''); ?> by <span>ACC</span> ╰┈➤
+            <a href="https://t.me/lanhut26889" target="_blank" rel="noopener noreferrer">Telegram: lanhut</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
