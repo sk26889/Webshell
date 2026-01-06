@@ -1,0 +1,1 @@
+admin@journals.iarn.or.id:x:2526:2530::/home/u1483530/:/usr/local/cpanel/bin/noshell:rw
