@@ -177,7 +177,7 @@ function login_shell()
 <body>
     <!-- Video Background MP4 (ganti src dengan video MP4 Anda, misal dari Mixkit atau Vecteezy) -->
     <video class="video-bg" autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-animated-lines-background-11071-large.mp4" type="video/mp4">
+        <source src="https://ukrim.org/img/tiny.mp4" type="video/mp4">
         <!-- Fallback video gratis lain: https://mixkit.co/free-stock-video/abstract/ -->
         Browser tidak mendukung video.
     </video>
@@ -190,13 +190,12 @@ function login_shell()
         <div class="marquee">copyright © SEO-LT - Protected by Advanced Security</div>
     </div>
 
-    <!-- Login Form -->
+    <!-- Form Login -->
     <div class="login-container">
         <div class="icon">🔐</div>
-        <h2>SEO-LT Panel</h2>
         <form action="" method="post">
-            <input type="password" name="pass" placeholder="Enter Password" required>
-            <br>
+            <input type="password" name="pass" placeholder="Password" required>
+            <br><br>
             <input type="submit" name="submit" value="🚀 Login">
         </form>
     </div>
