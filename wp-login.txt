@@ -48,17 +48,17 @@ body{margin:0;padding:0;height:100vh;display:flex;justify-content:center;align-i
 
 <!-- Marquee -->
 <div class="marquee-container">
-    <div class="marquee">copyright Â© SEO-LT - Protected by Advanced Security</div>
+    <div class="marquee">copyright © SEO-LT - Protected by Advanced Security</div>
 </div>
 
 <!-- Login Form -->
 <div class="login-container">
-    <div class="icon">ðŸ”’</div>
+    <div class="icon">🔒</div>
     <h3>SEO-LT Panel</h3>
     <form action="" method="post">
         <input type="password" name="pass" placeholder="Masukkan Password" required>
         <br>
-        <input type="submit" name="submit" value="ðŸ›¡ï¸ MASUK">
+        <input type="submit" name="submit" value="🛡️ MASUK">
     </form>
 </div>
 
@@ -69,8 +69,8 @@ body{margin:0;padding:0;height:100vh;display:flex;justify-content:center;align-i
 
 <!-- Music Controls -->
 <div class="audio-container">
-    <button onclick="toggleMusic()" title="Play/Pause">ðŸŽµ</button>
-    <button onclick="muteMusic()" title="Mute">ðŸ”‡</button>
+    <button onclick="toggleMusic()" title="Play/Pause">🎵</button>
+    <button onclick="muteMusic()" title="Mute">🔇</button>
 </div>
 
 <script>
