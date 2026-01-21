@@ -1,3 +1,0 @@
-User-agent: *   
-Allow: /   
-Sitemap: https://science.umu.ac.ug/contact-us/sitemap.xml
