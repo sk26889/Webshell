@@ -1,1 +1,0 @@
-admin@umu.ac.ug:x:2526:2530::/home/umu/:/usr/local/cpanel/bin/noshell:rw
