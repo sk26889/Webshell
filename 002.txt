@@ -1,1 +1,0 @@
-admin@journal.uaindonesia.ac.id:x:2526:2530::/home/uaindone/:/usr/local/cpanel/bin/noshell:rw
