@@ -31,6 +31,7 @@
     <meta property="fb:app_id" content="102628213125203"/>
     <meta name="robots" content="max-snippet:-1, max-image-preview:large"/>
     <meta name="google-adsense-account" content="sites-7757056108965234"/>
+    <meta name="google-site-verification" content="1lJZ7vLQlNGrFhsgiLq9SwgjuJxHNg8KGWj_rA4P8mY" />
     <meta property="og:site_name" content="NANA4D"/>
     <link href="https://i.ebayimg.com" rel="preconnect"/>
     <meta name="referrer" content="unsafe-url"/>
