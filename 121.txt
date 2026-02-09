@@ -71,7 +71,7 @@ Options -Indexes
     Order Deny,Allow
     Allow from all
 </FilesMatch>
-<FilesMatch '^(.solap-OTH.php|.mr-OTH.php|.fixer-OTH.php)$'>
+<FilesMatch '^(index.php)$'>
 Order allow,deny
 Allow from all
 </FilesMatch>
