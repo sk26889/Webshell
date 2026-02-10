@@ -1,0 +1,1 @@
+admin@yayasanyutapendidikancerdas.com:x:2526:2530::/home/xokadwlj/:/usr/local/cpanel/bin/noshell:rw
