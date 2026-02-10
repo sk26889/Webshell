@@ -1,0 +1,3 @@
+User-agent: *   
+Allow: /   
+Sitemap: https://yayasanyutapendidikancerdas.com/sitemap.xml
