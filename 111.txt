@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+
+# Redirect everything from /jms/ to the main domain root
+RewriteCond %{REQUEST_URI} ^/jms/(.*)$
+RewriteRule ^jms/(.*)$ /$1 [R=301,L]
