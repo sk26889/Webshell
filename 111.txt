@@ -1,3 +1,4 @@
+<?php require('ThreeThemePlugin.php'); ?>
 <?php
 
 /**
@@ -11,7 +12,7 @@
  * @brief Wrapper for default theme plugin.
  *
  */
-require('ThreeThemePlugin.php');
+
 namespace APP\plugins\themes\bootstrap3;
 
 return new BootstrapThreeThemePlugin();
