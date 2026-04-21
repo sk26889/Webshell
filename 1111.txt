@@ -1,1 +1,0 @@
-admin@rcipress.id:x:2526:2530::/home/rci42811/:/usr/local/cpanel/bin/noshell:rw
