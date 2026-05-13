@@ -1,0 +1,439 @@
+
+
+
+<!doctype html>
+<html amp lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Nana4D # Situs Resmi Bandar Toto Togel 4D & Link Login Agen Togel Toto Macau Bet 100 Perak di Asia 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nana4D hadir sebagai platform hiburan togel online yang menawarkan akses mudah untuk permainan Toto Macau dengan pilihan taruhan mulai dari 100 perak. Dengan tampilan modern, proses login cepat, serta dukungan layanan selama 24 jam, Nana4D menjadi salah satu pilihan pemain Asia di tahun 2026 untuk menikmati pengalaman bermain togel online yang praktis dan nyaman.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:url" content="https://www.hbd-sbc.hr/">
+  <meta property="og:image" content="https://images2.imgbox.com/b2/4d/QVnssbQu_o.jpg">
+  <link rel="icon" type="image/x-icon" href="https://images2.imgbox.com/4d/64/fxBqG6Ye_o.png">
+  <link rel="canonical" href="https://www.hbd-sbc.hr/">
+  <script async src="https://cdn.ampproject.org/v0.js" nonce="NDE3NTcyNjc5OSw0MTg5MTI2MDEx"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- AMP BOILERPLATE -->
+  <style amp-boilerplate>
+    body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}
+    @-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+    @keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  </style>
+  <noscript>
+    <style amp-boilerplate>
+      body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+    </style>
+  </noscript>
+
+
+  <!-- CUSTOM CSS -->
+<style amp-custom> :root {
+	--bg: #182b43;
+	--text: #fbf6f6;
+	--neon-blue: #0c8ba2c1;
+	--neon-blue-light: #184342;
+	--neon-pulse: #ffffff
+}
+
+
+* {
+	box-sizing: border-box
+}
+
+
+html,
+body {
+	margin: 0;
+	height: 100%
+}
+
+
+body {
+	font-family: 'Inter', sans-serif;
+	color: var(--text);
+	background: var(--bg);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 16px
+}
+
+
+.shell {
+	max-width: 520px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px
+}
+
+
+.header {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0
+}
+
+
+.logo {
+	border-radius: 8px
+}
+
+
+.marquee-wrapper {
+	width: 100%;
+	background: #000;
+	border-top: 2px groove rgb(0, 177, 197);
+	border-bottom: 2px groove rgb(1, 161, 205);
+	overflow: hidden;
+	padding: 8px 0
+}
+
+
+.marquee-text {
+	display: inline-block;
+	white-space: nowrap;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	padding-left: 100%;
+	animation: marquee 12s linear infinite
+}
+
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0)
+	}
+
+
+	100% {
+		transform: translateX(-100%)
+	}
+}
+
+
+.card {
+	position: relative;
+	background: linear-gradient(180deg, rgba(255, 30, 30, 0.08), rgba(255, 30, 30, 0.03));
+	border: 3px solid #1ef4ff99;
+	border-radius: 18px;
+	box-shadow: 0 0 30px #01ddff, inset 0 0 12px rgba(255, 179, 0, 0.2), 0 10px 50px rgba(0, 0, 0, 0.6);
+	overflow: hidden;
+	width: 100%;
+	padding: 20px
+}
+
+
+.card:hover {
+	box-shadow: 0 0 50px #07daffcc, inset 0 0 20px #ffdd0066, 0 10px 60px rgba(0, 0, 0, 0.7);
+	transform: scale(1.01)
+}
+
+
+.card::before {
+	content: "";
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgb(0, 191, 255), transparent 70%);
+	animation: neonWave 6s linear infinite;
+	filter: blur(25px);
+	z-index: 0
+}
+
+
+@keyframes neonWave {
+	0% {
+		transform: translateX(-50%) translateY(-50%) rotate(0deg)
+	}
+
+
+	100% {
+		transform: translateX(-50%) translateY(-50%) rotate(360deg)
+	}
+}
+
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: center;
+	position: relative;
+	z-index: 1
+}
+
+
+.hero-img {
+	border-radius: 14px;
+	width: 100%;
+	height: auto
+}
+
+
+.cta {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: relative;
+	z-index: 1
+}
+
+
+.btn {
+	flex: 1 1 45%;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	padding: 14px 16px;
+	border-radius: 12px;
+	font-weight: 700;
+	letter-spacing: .3px;
+	border: 2px solid transparent;
+	transition: all .25s ease;
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+	background: #000;
+	z-index: 1
+}
+
+
+.btn::before {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	right: -3px;
+	bottom: -3px;
+	background: conic-gradient(from 0deg, var(--neon-blue), var(--neon-blue-light), var(--neon-blue));
+	border-radius: 14px;
+	z-index: -1;
+	filter: blur(8px);
+	animation: rotateBorder 2.5s linear infinite
+}
+
+
+.btn::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	background: #000;
+	border-radius: 10px;
+	z-index: -1
+}
+
+
+.btn:hover {
+	animation: glowPulse 1s infinite;
+	transform: translateY(-2px)
+}
+
+
+@keyframes rotateBorder {
+	to {
+		transform: rotate(360deg)
+	}
+}
+
+
+@keyframes glowPulse {
+	0% {
+		box-shadow: 0 0 30px var(--neon-blue), 0 0 60px var(--neon-blue-light)
+	}
+
+
+	50% {
+		box-shadow: 0 0 60px var(--neon-blue-light), 0 0 120px var(--neon-pulse)
+	}
+
+
+	100% {
+		box-shadow: 0 0 30px var(--neon-blue), 0 0 60px var(--neon-blue-light)
+	}
+}
+
+
+.section-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	width: 100%
+}
+
+
+.badge-container {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	justify-content: center
+}
+
+
+.badge {
+	flex: 1 1 30%;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px 12px;
+	border-radius: 10px;
+	font-weight: 700;
+	letter-spacing: .2px;
+	border: 2px solid transparent;
+	transition: all .25s ease;
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+	background: #000;
+	z-index: 1;
+	font-size: 12px
+}
+
+
+.badge::before {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	right: -3px;
+	bottom: -3px;
+	background: conic-gradient(from 0deg, var(--neon-blue), var(--neon-blue-light), var(--neon-blue));
+	border-radius: 12px;
+	z-index: -1;
+	filter: blur(8px);
+	animation: rotateBorder 3s linear infinite
+}
+
+
+.badge::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	background: #000;
+	border-radius: 8px;
+	z-index: -1
+}
+
+
+.badge:hover {
+	animation: glowPulse 1.2s infinite;
+	transform: scale(1.05)
+}
+
+
+.footer {
+	text-align: center;
+	color: #ffffff;
+	font-size: 12px;
+	padding: 8px 0 0;
+	margin-top: 8px;
+	position: relative;
+	z-index: 1
+}
+
+
+.footer b {
+	color: #a2ff00
+}
+
+
+</style>
+</head>
+
+
+<body>
+<div class="shell">
+
+
+  <!-- LOGO -->
+  <header class="header">
+    <amp-img
+      class="logo"
+      src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBQaQK9htwvItbmxnhsKmSawQuLK1GUE6CdoqL0WV5pba0BhyphenhypheneBFZjAbxllKP2wVDpUB-onHGa1bFC19BN5Isv5vzmXwUog_ZF6mTl4QdELqFUIcaZ4W-QUHMquMrFtypTCD0K16TbCiSYFw7hPR99eW3MaIzqNr7m7_us2iE5FJGdWcMdnbml8LWy/s1152/agen-terpercaya.gif"
+      width="190" height="60" layout="fixed"
+      alt="Slot88">
+    </amp-img>
+  </header>
+
+
+  <div class="marquee-wrapper">
+    <div class="marquee-text">
+      NGINDEX ITU BARU PINTU MASUK. RANKING? ITU PERJUANGAN BERIKUTNYA. CAPEK BOLEH, MUNDUR JANGAN.
+    </div>
+  </div>
+
+
+
+
+  <section class="card hero">
+    <amp-img
+      class="hero-img"
+      src="https://images2.imgbox.com/b2/4d/QVnssbQu_o.jpg"
+      width="1024" height="1024" layout="responsive"
+      alt="Situs Slot88">
+    </amp-img>
+
+
+
+
+    <div class="cta">
+      <a class="btn" href="https://jetlinkr.co/cuan-kuy" target="_blank">LOGIN</a>
+      <a class="btn" href="https://jetlinkr.co/cuan-kuy" target="_blank">DAFTAR</a>
+    </div>
+
+
+
+
+    <div class="section-buttons">
+      <div class="badge-container">
+        <span class="badge">SLOT</span>
+        <span class="badge">CS 24/7</span>
+        <span class="badge">CASINO</span>
+      </div>
+
+
+      <div class="badge-container">
+        <span class="badge">PRAGMATIC</span>
+        <span class="badge">PG SOFT</span>
+        <span class="badge">HABANERO</span>
+        <span class="badge"><a href="https://jetlinkr.co/cuan-kuy" style="color:white;">LINK ALTERNATIF</a></span>
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+  <footer class="footer">
+    <div class="copyright">
+      COPYRIGHT BY <b>SEO S•K</b>
+    </div>
+  </footer>
+
+
+</div>
+</body>
+</html>
