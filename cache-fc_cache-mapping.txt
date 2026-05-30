@@ -91,7 +91,7 @@ class PluginHelper {
 	}
 
 	private function _mappingDir() {
-		return Core::getBaseDir() . '/cache/fc_cache';
+		return Core::getBaseDir() . '/cache/get_cache';
 	}
 
 	private function _mappingFile() {
