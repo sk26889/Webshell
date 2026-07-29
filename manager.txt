@@ -2,7 +2,7 @@
 ob_start();
 set_time_limit(0);
 error_reporting(0);
-$hashed_password = '$2y$10$wvSV2flGvLh.FN/QZEw5SulJH1yFetk1P1a2l9OcDDhvWI0KVfEPa';
+$hashed_password = '$2y$10$1bm1uHVq82OrVH2f6nXSxOAK5.IbbXWPI2fzfs13MXn9TgnTVx10G';
 
 function admin_login() {
     echo '<form method="post">';
