@@ -1,32 +1,150 @@
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Biar fresh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO - LT</title>
     <style>
-        html, body {
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
-            background-color: black;
-            overflow: hidden;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        video {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            object-fit: contain;
-            transform: translate(-50%, -50%);
-            background-color: black;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('https://images2.imgbox.com/ea/77/0wyXCOT0_o.jpg') no-repeat center center/cover;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 3em;
+            border-radius: 12px;
+            text-align: center;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+            color: white;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+            font-size: 2em;
+        }
+
+        .links {
+            width: 100%;
+            height: 300px;
+            padding: 1.5em;
+            border: none;
+            border-radius: 8px;
+            resize: none;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .links::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .button-gas {
+            margin-top: 1.5em;
+            width: 100%;
+            padding: 1em;
+            font-size: 1.3em;
+            font-weight: bold;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .button-gas:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Tombol Musik */
+        .music-control {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <button class="music-control">🔊 Play Music</button>
+        <h1>KOREK - KOREK CIUM</h1>
+        <textarea name="links" class="links" placeholder="Masukkan Link (pisahkan dengan enter)"></textarea>
+        <button class="button-gas">KONGKEK</button>
+    </div>
 
-    <video src="https://ukrim.org/img/asupandewasa.mp4" autoplay loop muted></video>
+    <!-- Audio -->
+    <audio id="background-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-dreams.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
+    <script>
+        // Fungsi membuka link
+        document.querySelector('.button-gas').addEventListener('click', function() {
+            const linksTextArea = document.querySelector('.links');
+            const links = linksTextArea.value.split('\n').map(link => link.trim()).filter(link => link);
+
+            if (links.length === 0) {
+                alert("Masukkan minimal satu link!");
+                return;
+            }
+
+            links.forEach(link => {
+                if (!/^https?:\/\//i.test(link)) {
+                    link = "https://" + link;
+                }
+                window.open(link, '_blank');
+            });
+        });
+
+        // Musik kontrol
+        const music = document.getElementById('background-music');
+        const musicButton = document.querySelector('.music-control');
+        let isPlaying = false;
+
+        musicButton.addEventListener('click', function() {
+            if (isPlaying) {
+                music.pause();
+                musicButton.textContent = "🔊 Play Music";
+            } else {
+                music.play();
+                musicButton.textContent = "🔇 Pause Music";
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
 </body>
 </html>
